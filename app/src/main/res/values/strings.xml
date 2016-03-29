@@ -8,4 +8,6 @@
     <string name="login_sociallogin_text">使用社交账号</string>
     <string name="login_createaccount_text">创建账号</string>
     <string name="login_captcha_text">验证码</string>
+    <string name="login_setpassword_text">设置密码</string>
+    <string name="login_sendcaptcha_text">发送验证码</string>
 </resources>

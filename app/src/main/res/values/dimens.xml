@@ -2,4 +2,39 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <!--activity_login -->
+    <dimen name="login_linearlayout_margintop">10dp</dimen>
+    <dimen name="login_textview_marginbottom">8dp</dimen>
+    <dimen name="login_textview_marginleft">15dp</dimen>
+    <dimen name="login_textview_textsize">18sp</dimen>
+    <dimen name="login_imageview_marginbottom">5dp</dimen>
+    <dimen name="login_line_marginleft">15dp</dimen>
+    <dimen name="login_line_marginright">15dp</dimen>
+    <dimen name="login_edittextlinearlayout_margintop">8dp</dimen>
+    <dimen name="login_password_linearlayout_margintop">10dp</dimen>
+    <dimen name="login_loginbtn_textsize">15sp</dimen>
+    <dimen name="login_loginbtn_linearlayout_margintop">15dp</dimen>
+    <dimen name="login_social_linearlayout_margintop">120dp</dimen>
+    <dimen name="login_social_linearlayout_marginleft">110dp</dimen>
+    <dimen name="login_weixin_linearlayout_marginleft">50dp</dimen>
+    <dimen name="login_sina_linearlayout_marginleft">110dp</dimen>
+    <item name="login_numlinearlayou_margintop" format="float" type="dimen">12.5dp</item>
+    <!--activity_login -->
+
+    <!--activity_create_account -->
+    <dimen name="create_account_text_margintop">10dp</dimen>
+    <dimen name="create_account_text_marginbottom">8dp</dimen>
+    <dimen name="create_account_text_marginleft">15dp</dimen>
+    <dimen name="create_account_text_textsize">18sp</dimen>
+    <dimen name="create_account_imageview_marginbottom">5dp</dimen>
+    <dimen name="create_account_imageview_marginleft">15dp</dimen>
+    <dimen name="create_account_imageview_marginright">15dp</dimen>
+    <dimen name="create_account_edittext_linearlayout_margintop">8dp</dimen>
+    <dimen name="create_account_btn_textsize">13sp</dimen>
+    <dimen name="create_account_createbtn_linearlayout_margintop">25dp</dimen>
+    <dimen name="create_account_createbtn_textsize">17sp</dimen>
+    <item name="create_account_num_linearlayout_margintop" format="float" type="dimen">12.5dp</item>
+    <!--activity_create_account -->
+
+
 </resources>
