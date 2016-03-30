@@ -5,7 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <!--login -->
     <color name="loginBackground">#f1f1f1</color>
-
-    <color name="goods_share">#7f000000</color>
+    <!--goods_share -->
+    <color name="goods_share_background">#7f000000</color>
+    <color name="goods_share_content_textColor">#fff</color>
 
 </resources>
