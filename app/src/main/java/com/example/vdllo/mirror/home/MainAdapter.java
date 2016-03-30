@@ -15,6 +15,7 @@ import java.util.List;
  * Created by dllo on 16/3/30.
  */
 public class MainAdapter extends FragmentPagerAdapter{
+
     private ArrayList<Fragment> datas;
 
     public MainAdapter(FragmentManager fm, ArrayList<Fragment> datas) {

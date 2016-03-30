@@ -1,22 +1,25 @@
 package com.example.vdllo.mirror.home;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.vdllo.mirror.R;
+import com.example.vdllo.mirror.base.BaseFragment;
 
 /**
  * Created by dllo on 16/3/30.
  */
-public class ShoppingCartFragment extends Fragment{
-    @Nullable
+public class ShoppingCartFragment extends BaseFragment{
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_shopping_cart,null);
-        return view;
+    public int getLayout() {
+        return R.layout.fragment_shopping_cart;
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void dataView() {
+
     }
 }
