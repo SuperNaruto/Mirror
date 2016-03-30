@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Mirror</string>
+    <string name="login_logintext">账号登录</string>
+    <string name="login_phonenum">手机号</string>
+    <string name="login_password">密码</string>
+    <string name="login_loginbtn">登录</string>
+    <string name="login_create_account">创建账号</string>
+    <string name="login_sociallogin_text">使用社交账号</string>
+    <string name="login_createaccount_text">创建账号</string>
+    <string name="login_captcha_text">验证码</string>
 </resources>
