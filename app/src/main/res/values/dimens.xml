@@ -18,7 +18,7 @@
     <dimen name="login_social_linearlayout_marginleft">110dp</dimen>
     <dimen name="login_weixin_linearlayout_marginleft">50dp</dimen>
     <dimen name="login_sina_linearlayout_marginleft">110dp</dimen>
-    <item name="login_numlinearlayou_margintop" format="float" type="dimen">12.5dp</item>
+    <dimen name="login_numlinearlayou_margintop">13dp</dimen>
     <!--activity_login -->
 
     <!--activity_create_account -->
@@ -33,7 +33,7 @@
     <dimen name="create_account_btn_textsize">13sp</dimen>
     <dimen name="create_account_createbtn_linearlayout_margintop">25dp</dimen>
     <dimen name="create_account_createbtn_textsize">17sp</dimen>
-    <item name="create_account_num_linearlayout_margintop" format="float" type="dimen">12.5dp</item>
+    <dimen name="create_account_num_linearlayout_margintop">13dp</dimen>
     <!--activity_create_account -->
 
 
