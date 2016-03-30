@@ -5,9 +5,14 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import com.example.vdllo.mirror.R;
 
@@ -22,10 +27,13 @@ public class AllTypeFragment extends Fragment{
     private RecyclerView recyclerView;
     private LinearLayoutManager manager;
     private List<Integer> datas;
+    private LinearLayout linearLayout;
+    private PopupWindow popupWindow;
+    View view;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_all_type,null);
+        view = inflater.inflate(R.layout.fragment_all_type,null);
         return view;
     }
 
@@ -34,9 +42,39 @@ public class AllTypeFragment extends Fragment{
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         recyclerView = (RecyclerView) getView().findViewById(R.id.recycleView);
+
+        linearLayout = (LinearLayout) getView().findViewById(R.id.all_type_linearlayout);
+        linearLayout.setOnClickListener(popClick);
         initData();
     }
 
+    // 点击弹出左侧菜单的显示方式
+    View.OnClickListener popClick = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+			/*Toast toast = Toast.makeText(MainActivity.this, "这是一个代图片的Toast!", Toast.LENGTH_LONG);
+			toast.show();*/
+
+            getPopupWindow();
+            // 这里是位置显示方式
+            popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+
+        }
+    };
+
+    /***
+     * 获取PopupWindow实例
+     */
+    private void getPopupWindow() {
+
+        if (null != popupWindow) {
+            popupWindow.dismiss();
+            return;
+        } else {
+            initPopuptWindow();
+        }
+    }
     private void initData(){
         // 1.获取图片的数据
 
@@ -53,6 +91,41 @@ public class AllTypeFragment extends Fragment{
         // 3.设置适配器
         adapter = new AllTypeAdapter(datas);
         recyclerView.setAdapter(adapter);
+
+    }
+
+    /**
+     * 创建PopupWindow
+     */
+    protected void initPopuptWindow() {
+        // 获取自定义布局文件pop.xml的视图
+        View popupWindow_view = getActivity().getLayoutInflater().inflate(R.layout.pop, null,
+                false);
+        DisplayMetrics dm = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+        // 创建PopupWindow实例,200,150分别是宽度和高度
+        popupWindow = new PopupWindow(popupWindow_view, dm.widthPixels,
+                dm.heightPixels, true);
+//         popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+//         popupWindow.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
+
+        // 设置动画效果
+//        popupWindow.setAnimationStyle(R.style.AnimationFade);
+        // 点击其他地方消失
+        popupWindow_view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (popupWindow != null && popupWindow.isShowing()) {
+                    popupWindow.dismiss();
+                    popupWindow = null;
+                }
+                return false;
+            }
+        });
+//        // pop.xml视图里面的控件
+//        initOpenMenuItem(popupWindow_view);
+//        initOpenMenuOther(popupWindow_view);
+//        initOpenPosition(popupWindow_view);
 
     }
 

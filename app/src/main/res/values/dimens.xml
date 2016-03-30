@@ -2,4 +2,22 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="main_glass">14sp</dimen>
+    <dimen name="main_see_top">74dp</dimen>
+    <dimen name="main_see_left">24dp</dimen>
+    <dimen name="main_see_textsize">14sp</dimen>
+    <dimen name="main_line_left">24dp</dimen>
+    <dimen name="main_line_top">11dp</dimen>
+    <dimen name="main_hor">22dp</dimen>
+    <dimen name="main_hor_left">24dp</dimen>
+    <dimen name="main_sun_top">36dp</dimen>
+    <dimen name="main_sun_left">24dp</dimen>
+    <dimen name="main_share_top">36dp</dimen>
+    <dimen name="main_share_left">24dp</dimen>
+    <dimen name="main_shop_top">36dp</dimen>
+    <dimen name="main_shop_left">24dp</dimen>
+    <dimen name="main_return_top">36dp</dimen>
+    <dimen name="main_return_left">24dp</dimen>
+    <dimen name="main_exit_top">36dp</dimen>
+    <dimen name="main_exit_left">24dp</dimen>
 </resources>
