@@ -8,8 +8,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,20 +85,22 @@ public class AllTypeFragment extends BaseFragment {
      */
     protected void initPopuptWindow() {
         // 获取自定义布局文件pop.xml的视图
-        View popupWindow_view = getActivity().getLayoutInflater().inflate(R.layout.pop, null,
+        View popupWindowView = getActivity().getLayoutInflater().inflate(R.layout.pop, null,
                 false);
         DisplayMetrics dm = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
         // 创建PopupWindow实例,200,150分别是宽度和高度
-        popupWindow = new PopupWindow(popupWindow_view, dm.widthPixels,
+        popupWindow = new PopupWindow(popupWindowView, dm.widthPixels,
                 dm.heightPixels, true);
 //         popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
 //         popupWindow.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
 
         // 设置动画效果
-//        popupWindow.setAnimationStyle(R.style.AnimationFade);
+        //PopupWindow的动画显示效果是通过setAnimationStyle(int id)方法设置的，
+        // 其中id为一个style的id，所以我们要在styles.xml文件中设置一个动画样式
+        popupWindow.setAnimationStyle(R.style.popWindow_anim);
         // 点击其他地方消失
-        popupWindow_view.setOnTouchListener(new View.OnTouchListener() {
+        popupWindowView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (popupWindow != null && popupWindow.isShowing()) {
@@ -107,9 +111,9 @@ public class AllTypeFragment extends BaseFragment {
             }
         });
 //        // pop.xml视图里面的控件
-//        initOpenMenuItem(popupWindow_view);
-//        initOpenMenuOther(popupWindow_view);
-//        initOpenPosition(popupWindow_view);
+//        initOpenMenuItem(popupWindowView);
+//        initOpenMenuOther(popupWindowView);
+//        initOpenPosition(popupWindowView);
     }
 }
 
