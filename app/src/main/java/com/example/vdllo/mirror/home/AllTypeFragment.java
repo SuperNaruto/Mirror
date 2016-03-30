@@ -1,81 +1,67 @@
 package com.example.vdllo.mirror.home;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by dllo on 16/3/30.
  */
-public class AllTypeFragment extends BaseFragment{
+public class AllTypeFragment extends BaseFragment {
 
     private AllTypeAdapter adapter;
     private RecyclerView recyclerView;
     private LinearLayoutManager manager;
     private List<Integer> datas;
-<<<<<<< HEAD
+    private LinearLayout linearLayout;
+    private PopupWindow popupWindow;
 
     @Override
     public int getLayout() {
         return R.layout.fragment_all_type;
-=======
-    private LinearLayout linearLayout;
-    private PopupWindow popupWindow;
-    View view;
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_all_type,null);
-        return view;
->>>>>>> feature/LXF_主界面布局
     }
 
     @Override
-<<<<<<< HEAD
     protected void initView() {
         recyclerView = bindView(R.id.recycleView);
+        linearLayout = (LinearLayout) getView().findViewById(R.id.all_type_linearlayout);
+        linearLayout.setOnClickListener(popClick);
     }
 
     @Override
     protected void dataView() {
-=======
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        recyclerView = (RecyclerView) getView().findViewById(R.id.recycleView);
-
-        linearLayout = (LinearLayout) getView().findViewById(R.id.all_type_linearlayout);
-        linearLayout.setOnClickListener(popClick);
-        initData();
+        // 1.获取图片的数据
+        datas = new ArrayList<>();
+        for (int i = 0; i < 7; i++) {
+            datas.add(R.mipmap.home_pic);
+        }
+        // 2.设置布局管理器
+        manager = new LinearLayoutManager(getActivity());
+        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(manager);
+        // 3.设置适配器
+        adapter = new AllTypeAdapter(datas);
+        recyclerView.setAdapter(adapter);
     }
 
     // 点击弹出左侧菜单的显示方式
     View.OnClickListener popClick = new View.OnClickListener() {
-
         @Override
         public void onClick(View v) {
-			/*Toast toast = Toast.makeText(MainActivity.this, "这是一个代图片的Toast!", Toast.LENGTH_LONG);
-			toast.show();*/
-
+            /*Toast toast = Toast.makeText(MainActivity.this, "这是一个代图片的Toast!", Toast.LENGTH_LONG);
+            toast.show();*/
             getPopupWindow();
             // 这里是位置显示方式
             popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
-
         }
     };
 
@@ -91,23 +77,6 @@ public class AllTypeFragment extends BaseFragment{
             initPopuptWindow();
         }
     }
-    private void initData(){
->>>>>>> feature/LXF_主界面布局
-        // 1.获取图片的数据
-        datas = new ArrayList<>();
-        for (int i = 0; i < 7; i++) {
-            datas.add(R.mipmap.home_pic);
-        }
-        // 2.设置布局管理器
-        manager = new LinearLayoutManager(getActivity());
-        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView.setLayoutManager(manager);
-        // 3.设置适配器
-        adapter = new AllTypeAdapter(datas);
-        recyclerView.setAdapter(adapter);
-    }
-<<<<<<< HEAD
-=======
 
     /**
      * 创建PopupWindow
@@ -141,8 +110,6 @@ public class AllTypeFragment extends BaseFragment{
 //        initOpenMenuItem(popupWindow_view);
 //        initOpenMenuOther(popupWindow_view);
 //        initOpenPosition(popupWindow_view);
-
     }
-
->>>>>>> feature/LXF_主界面布局
 }
+
