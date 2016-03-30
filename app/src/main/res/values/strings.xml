@@ -8,7 +8,17 @@
     <string name="login_socialLogin_text">使用社交账号</string>
     <string name="login_createAccount_text">创建账号</string>
     <string name="login_captcha_text">验证码</string>
+<<<<<<< HEAD
     <string name="login_setPassword_text">设置密码</string>
     <string name="login_sendCaptcha_text">发送验证码</string>
     <string name="goods_share_SlideViewDetails">滑动浏览详情</string>
+=======
+    <string name="main_text">浏览平光眼镜</string>
+    <string name="main_see_text">浏览所有分类</string>
+    <string name="main_sun_text">浏览太阳眼镜</string>
+    <string name="main_share_text">专题分享</string>
+    <string name="main_shop_text">我的购物车</string>
+    <string name="main_return_text">返回首页</string>
+    <string name="main_exit_text">退出</string>
+>>>>>>> feature/LXF_主界面布局
 </resources>
