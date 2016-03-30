@@ -9,7 +9,10 @@ import android.view.View;
 /**
  * Created by dllo on 16/3/30.
  */
-public class CustomViewPager extends ViewPager{
+public class CustomViewPager extends ViewPager {
+
+    private float startX,startY;
+
     public CustomViewPager(Context context) {
         super(context);
         init();
@@ -19,7 +22,9 @@ public class CustomViewPager extends ViewPager{
         super(context, attrs);
         init();
     }
+
     private void init() {
+        //设置页面滑动时候的动画
         setPageTransformer(true, new VerticalPageTransformer());
         setOverScrollMode(OVER_SCROLL_NEVER);
     }
@@ -32,12 +37,9 @@ public class CustomViewPager extends ViewPager{
                 page.setAlpha(0);
             } else if (position <= 1) {
                 page.setAlpha(1);
-
                 page.setTranslationX(page.getWidth() * -position);
-
                 float yPosition = position * page.getHeight();
                 page.setTranslationY(yPosition);
-
             } else {
                 page.setAlpha(0);
             }
@@ -47,19 +49,30 @@ public class CustomViewPager extends ViewPager{
     private MotionEvent swapXY(MotionEvent event) {
         float width = getWidth();
         float height = getHeight();
-
         float newX = (event.getY() / height) * width;
         float newY = (event.getX() / width) * height;
-
         event.setLocation(newX, newY);
-
         return event;
     }
 
     @Override
-    public boolean onInterceptHoverEvent(MotionEvent event) {
-        boolean intercepted = super.onInterceptHoverEvent(swapXY(event));
+    public boolean onInterceptTouchEvent(MotionEvent event) {
+        boolean intercepted = super.onInterceptTouchEvent(swapXY(event));
         swapXY(event);
+        int action = event.getAction();
+        switch (action){
+            case MotionEvent.ACTION_DOWN:
+                startX = event.getX();
+                startY = event.getY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                float moveX = event.getX();
+                float moveY = event.getY();
+                if(Math.abs(moveY - startY) - Math.abs(moveX - startX) > 0){
+                    return true;
+                }
+                break;
+        }
         return intercepted;
     }
 

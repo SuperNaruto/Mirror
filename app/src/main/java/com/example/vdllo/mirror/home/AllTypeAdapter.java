@@ -13,7 +13,8 @@ import java.util.List;
 /**
  * Created by dllo on 16/3/30.
  */
-public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHolder>{
+public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHolder> {
+
     List<Integer> datas;
 
     public AllTypeAdapter(List<Integer> datas) {
@@ -30,17 +31,13 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
         holder.iv.setImageResource(datas.get(position));
-
-
     }
 
     @Override
     public int getItemCount() {
         return datas.size();
     }
-
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -50,4 +47,5 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
             super(itemView);
         }
     }
+
 }
