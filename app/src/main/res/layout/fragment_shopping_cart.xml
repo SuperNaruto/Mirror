@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/shopping_cart_myshop_textview"
+        android:text="@string/shopping_cart_myShop_textView"
         android:textSize="@dimen/shopping_cart_shop_textSize"
         android:textColor="@android:color/white"
        />
