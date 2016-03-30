@@ -2,6 +2,7 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
     <dimen name="main_glass">14sp</dimen>
     <dimen name="main_see_top">74dp</dimen>
     <dimen name="main_see_left">24dp</dimen>
@@ -20,4 +21,57 @@
     <dimen name="main_return_left">24dp</dimen>
     <dimen name="main_exit_top">36dp</dimen>
     <dimen name="main_exit_left">24dp</dimen>
+    <!--activity_login -->
+    <dimen name="login_linearLayout_marginTop">10dp</dimen>
+    <dimen name="login_textView_marginBottom">8dp</dimen>
+    <dimen name="login_textView_marginLeft">15dp</dimen>
+    <dimen name="login_textView_textSize">18sp</dimen>
+    <dimen name="login_imageView_marginBottom">5dp</dimen>
+    <dimen name="login_line_marginLeft">15dp</dimen>
+    <dimen name="login_line_marginRight">15dp</dimen>
+    <dimen name="login_editTextLinearLayout_marginTop">8dp</dimen>
+    <dimen name="login_password_linearLayout_marginTop">10dp</dimen>
+    <dimen name="login_loginBtn_textSize">15sp</dimen>
+    <dimen name="login_loginBtn_linearLayout_marginTop">15dp</dimen>
+    <dimen name="login_social_linearLayout_marginTop">120dp</dimen>
+    <dimen name="login_social_linearLayout_marginLeft">110dp</dimen>
+    <dimen name="login_weixin_linearLayout_marginLeft">50dp</dimen>
+    <dimen name="login_sina_linearLayout_marginLeft">110dp</dimen>
+    <dimen name="login_numLinearLayout_marginTop">13dp</dimen>
+    <!--activity_login -->
+
+    <!--activity_create_account -->
+    <dimen name="create_account_text_marginTop">10dp</dimen>
+    <dimen name="create_account_text_marginBottom">8dp</dimen>
+    <dimen name="create_account_text_marginLeft">15dp</dimen>
+    <dimen name="create_account_text_textSize">18sp</dimen>
+    <dimen name="create_account_imageView_marginBottom">5dp</dimen>
+    <dimen name="create_account_imageView_marginLeft">15dp</dimen>
+    <dimen name="create_account_imageView_marginRight">15dp</dimen>
+    <dimen name="create_account_editText_linearLayout_marginTop">8dp</dimen>
+    <dimen name="create_account_btn_textSize">13sp</dimen>
+    <dimen name="create_account_createBtn_linearLayout_marginTop">25dp</dimen>
+    <dimen name="create_account_createBtn_textSize">17sp</dimen>
+    <dimen name="create_account_num_linearLayout_marginTop">13dp</dimen>
+    <!--activity_create_account -->
+
+    <!--goods_share -->
+    <dimen name="goods_share_shareIv_marginBottom">35px</dimen>
+    <dimen name="goods_share_shareIv_marginRight">40px</dimen>
+    <dimen name="goods_share_shareIv_marginTop">95px</dimen>
+    <dimen name="goods_share_content_linearLayout_marginLeft">40px</dimen>
+    <dimen name="goods_share_content_linearLayout_marginRight">40px</dimen>
+    <dimen name="goods_share_content_title_marginTop">40px</dimen>
+    <dimen name="goods_share_content_title_textSize">70px</dimen>
+    <dimen name="goods_share_content_line_marginTop">55px</dimen>
+    <dimen name="goods_share_content_goodsName_marginTop">15px</dimen>
+    <dimen name="goods_share_content_goodsName_textSize">42px</dimen>
+    <dimen name="goods_share_content_secLine_marginTop">15px</dimen>
+    <dimen name="goods_share_content_introduce_marginTop">50px</dimen>
+    <dimen name="goods_share_content_introduce_textSize">24px</dimen>
+    <dimen name="goods_share_content_price_marginTop">50px</dimen>
+    <dimen name="goods_share_content_price_textSize">36px</dimen>
+    <dimen name="goods_share_dropDown_marginTop">15px</dimen>
+    <!--goods_share -->
+
 </resources>

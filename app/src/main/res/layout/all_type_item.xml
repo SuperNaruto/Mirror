@@ -15,7 +15,7 @@
             android:id="@+id/all_type_iv"
             android:layout_width="match_parent"
             android:layout_height="270dp"
-            android:src="@mipmap/home_pic"/>
+            android:src="@mipmap/home_pic" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,12 +49,13 @@
                         android:text="450"
                         android:textSize="15dp"
                         android:textStyle="bold" />
+
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/mymoney"
+                        android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/home_price_Tv"
-                        android:layout_centerVertical="true"/>
+                        android:src="@mipmap/mymoney" />
                 </RelativeLayout>
 
 

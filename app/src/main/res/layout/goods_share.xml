@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/goods_share_background"
+            android:orientation="vertical">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/goods_share_shareIv_marginBottom"
+                android:layout_marginRight="@dimen/goods_share_shareIv_marginRight"
+                android:layout_marginTop="@dimen/goods_share_shareIv_marginTop">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@mipmap/share" />
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/goods_share_content_linearLayout_marginLeft"
+                android:layout_marginRight="@dimen/goods_share_content_linearLayout_marginRight"
+                android:background="@mipmap/goods_share_frame"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/goods_share_content_title_marginTop"
+                    android:text="STEALER"
+                    android:textColor="@color/goods_share_content_textColor"
+                    android:textSize="@dimen/goods_share_content_title_textSize" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/goods_share_content_linearLayout_marginLeft"
+                    android:layout_marginRight="@dimen/goods_share_content_linearLayout_marginRight"
+                    android:layout_marginTop="@dimen/goods_share_content_line_marginTop"
+                    android:background="@mipmap/goods_share_whiteline" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/goods_share_content_goodsName_marginTop"
+                    android:text="水蓝色晶透版材太阳镜"
+                    android:textColor="@color/goods_share_content_textColor"
+                    android:textSize="@dimen/goods_share_content_goodsName_textSize" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/goods_share_content_linearLayout_marginLeft"
+                    android:layout_marginRight="@dimen/goods_share_content_linearLayout_marginRight"
+                    android:layout_marginTop="@dimen/goods_share_content_secLine_marginTop"
+                    android:background="@mipmap/goods_share_whiteline" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/goods_share_content_linearLayout_marginLeft"
+                    android:layout_marginRight="@dimen/goods_share_content_linearLayout_marginRight"
+                    android:layout_marginTop="@dimen/goods_share_content_introduce_marginTop"
+                    android:text="太阳镜，也称遮阳镜，作遮阳之用。人在阳光下通常要靠调节瞳孔大小来调节光通量，当光线强度超过人眼调节能力，就会对人眼造成伤害。所以在户外活动场所，特别是在夏天，需要采用遮阳镜来遮挡阳光，以减轻眼睛调节造成的疲劳或强光刺激造成的伤害。/n很多著名品牌，例如Nike、Timberland、Gucci和Kenneth Cole等，都将太阳镜作为其产品线的一部分。许多太阳镜制造商还会对他们产品的特性和特殊质地大加宣传。根据特性和品牌的不同，太阳镜的价格会在低于20美元到几百美元之间浮动。"
+                    android:textColor="@color/goods_share_content_textColor"
+                    android:textSize="@dimen/goods_share_content_introduce_textSize" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/goods_share_content_price_marginTop"
+                    android:drawableLeft="@mipmap/money_symbol"
+                    android:text="2150"
+                    android:textColor="@color/goods_share_content_textColor"
+                    android:textSize="@dimen/goods_share_content_price_textSize"
+                    android:textStyle="bold" />
+
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/goods_share_content_price_marginTop"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/goods_share_SlideViewDetails"
+                    android:textColor="@color/goods_share_content_textColor"
+                    android:textSize="@dimen/goods_share_content_price_textSize" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/goods_share_dropDown_marginTop"
+                    android:background="@mipmap/drop_down" />
+
+            </com.zhy.autolayout.AutoLinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoFrameLayout>
+
+
+</com.zhy.autolayout.AutoLinearLayout>
