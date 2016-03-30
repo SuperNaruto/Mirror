@@ -8,10 +8,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 
