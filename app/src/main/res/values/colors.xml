@@ -6,4 +6,6 @@
     <!--login -->
     <color name="loginBackground">#f1f1f1</color>
 
+    <color name="goods_share">#7f000000</color>
+
 </resources>

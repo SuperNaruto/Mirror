@@ -35,12 +35,34 @@
             android:layout_marginTop="40px"
             android:text="STEALER"
             android:textColor="#fff"
-            android:textSize="35sp" />
-        
+            android:textSize="70px" />
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40px"
+            android:layout_marginRight="40px"
+            android:layout_marginTop="55px"
+            android:background="@mipmap/goods_share_whiteline" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="水蓝色晶透版材太阳镜"
+            android:textColor="#fff"
+            android:textSize="42px"
+            android:layout_marginTop="15px"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40px"
+            android:layout_marginRight="40px"
+            android:layout_marginTop="15px"
+            android:background="@mipmap/goods_share_whiteline" />
 
     </com.zhy.autolayout.AutoLinearLayout>
 
 
-</>
+</com.zhy.autolayout.AutoLinearLayout>
