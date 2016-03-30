@@ -7,13 +7,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_marginTop="10dp"
-    android:layout_marginLeft="15dp">
+    android:layout_marginTop="@dimen/shopping_cart_top"
+    android:layout_marginLeft="@dimen/shopping_cart_left">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="我的购物车"
-        android:textSize="15sp"
+        android:text="@string/shopping_cart_myshop_textview"
+        android:textSize="@dimen/shopping_cart_shop_textsize"
         android:textColor="@android:color/white"
        />
 
@@ -22,32 +22,32 @@
         android:layout_height="wrap_content"
         android:src="@mipmap/bottom"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="18dp"/>
+        android:layout_marginLeft="@dimen/shopping_cart_bottom_left"/>
 
 </LinearLayout>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/main_line"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="7dp"/>
+        android:layout_marginLeft="@dimen/shopping_cart_line_left"
+        android:layout_marginTop="@dimen/shopping_cart_line_top"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:layout_marginLeft="15dp">
+        android:layout_marginTop="@dimen/shopping_cart_new_text"
+        android:layout_marginLeft="@dimen/shopping_cart_new_top">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="显示排序为最新推荐"
+            android:text="@string/shopping_cart_new_texts"
             android:textColor="@android:color/white"
-            android:textSize="12dp"/>
+            android:textSize="@dimen/shopping_cart_new_textsize"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="118dp">
+        android:layout_marginTop="@dimen/shopping_cart_pic_top">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,9 +56,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="您的购物车没有商品"
+            android:text="@string/shopping_cart_no_text"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="@dimen/shopping_cart_no_top"
             android:textColor="@android:color/white"/>
     </LinearLayout>
 
