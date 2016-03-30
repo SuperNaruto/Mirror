@@ -1,8 +1,6 @@
 package com.example.vdllo.mirror.home;
 
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
 import com.example.vdllo.mirror.toolclass.CustomViewPager;

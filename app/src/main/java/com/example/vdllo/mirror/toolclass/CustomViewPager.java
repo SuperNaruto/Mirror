@@ -10,12 +10,9 @@ import android.view.View;
  * Created by dllo on 16/3/30.
  */
 public class CustomViewPager extends ViewPager {
-<<<<<<< HEAD
 
     private float startX,startY;
 
-=======
->>>>>>> feature/LXF_主界面布局
     public CustomViewPager(Context context) {
         super(context);
         init();
@@ -27,11 +24,8 @@ public class CustomViewPager extends ViewPager {
     }
 
     private void init() {
-<<<<<<< HEAD
         //设置页面滑动时候的动画
-=======
         //设置ViewPager的滑动动画
->>>>>>> feature/LXF_主界面布局
         setPageTransformer(true, new VerticalPageTransformer());
         //设置滚动模式
         setOverScrollMode(OVER_SCROLL_NEVER);
@@ -46,10 +40,7 @@ public class CustomViewPager extends ViewPager {
                 page.setAlpha(0);
             } else if (position <= 1) {
                 page.setAlpha(1);
-<<<<<<< HEAD
-=======
                 //设置可滑动指示器的效果
->>>>>>> feature/LXF_主界面布局
                 page.setTranslationX(page.getWidth() * -position);
                 float yPosition = position * page.getHeight();
                 page.setTranslationY(yPosition);
