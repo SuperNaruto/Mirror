@@ -16,7 +16,7 @@
     <dimen name="login_loginBtn_linearLayout_marginTop">15dp</dimen>
     <dimen name="login_social_linearLayout_marginTop">120dp</dimen>
     <dimen name="login_social_linearLayout_marginLeft">110dp</dimen>
-    <dimen name="login_weixin_linearLayout_marginLeft">50dp</dimen>
+    <dimen name="login_weixin_linearLayout_marginLeft">40dp</dimen>
     <dimen name="login_sina_linearLayout_marginLeft">110dp</dimen>
     <dimen name="login_numLinearLayout_marginTop">13dp</dimen>
     <!--activity_login -->
