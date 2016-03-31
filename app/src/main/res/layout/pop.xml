@@ -4,121 +4,12 @@
     android:layout_height="match_parent"
     android:background="@mipmap/bg">
 
-    <FrameLayout
+
+    <ListView
+        android:id="@+id/pop_listview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/main_see_top">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/main_see_left"
-                    android:text="@string/main_see_text"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/main_see_textSize" />
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/main_line_left"
-                android:layout_marginTop="@dimen/main_line_top"
-                android:src="@mipmap/main_second_line" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/main_hor">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/main_hor_left"
-                    android:text="@string/main_text"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/main_glass" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/main_sun_top">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/main_sun_left"
-                    android:text="@string/main_sun_text"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/main_glass" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/main_share_top">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/main_share_left"
-                    android:text="@string/main_share_text"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/main_glass" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/main_shop_top">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/main_shop_left"
-                    android:text="@string/main_shop_text"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/main_glass" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/main_return_top">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/main_return_left"
-                    android:text="@string/main_return_text"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/main_glass" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/main_exit_top">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/main_exit_left"
-                    android:text="@string/main_exit_text"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/main_glass" />
-            </LinearLayout>
-        </LinearLayout>
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"></ListView>
 
     <FrameLayout
         android:layout_width="wrap_content"
