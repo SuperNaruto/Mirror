@@ -1,4 +1,4 @@
-package com.example.vdllo.mirror.home;
+package com.example.vdllo.mirror.shoppingcart;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseFragment;

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
+import com.example.vdllo.mirror.shoppingcart.ShoppingCartFragment;
 import com.example.vdllo.mirror.toolclass.CustomViewPager;
 import java.util.ArrayList;
 
