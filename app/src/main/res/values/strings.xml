@@ -21,4 +21,5 @@
     <string name="shopping_cart_myShop_textView">我的购物车</string>
     <string name="shopping_cart_new_texts">显示排序为最新推荐</string>
     <string name="shopping_cart_no_text">您的购物车没有商品</string>
+    <string name="pop_textview_text">購物車</string>
 </resources>
