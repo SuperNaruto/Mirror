@@ -1,9 +1,11 @@
 package com.example.vdllo.mirror.home;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Scroller;
@@ -48,13 +50,13 @@ public class MainActivity extends BaseAcitvity {
         viewPager.setAdapter(adapter);
 
         Intent intent = getIntent();
-        int s = intent.getIntExtra("position",0);
+        int s = intent.getIntExtra("position", 0);
         viewPager.setCurrentItem(s);
+
+
         Intent rIntent = getIntent();
-        int m = rIntent.getIntExtra("position",0);
+        int m = rIntent.getIntExtra("position", 0);
         viewPager.setCurrentItem(m);
-
-
     }
 
     @Override
@@ -78,7 +80,7 @@ public class MainActivity extends BaseAcitvity {
         }
     }
 
-    public void getPositionFromPopwindow(int position){
+    public void getPositionFromPopwindow(int position) {
         //这个是设置viewPager切换过度时间的类
         ViewPagerScroller scroller = new ViewPagerScroller(this);
         scroller.setScrollDuration(100);
@@ -91,9 +93,10 @@ public class MainActivity extends BaseAcitvity {
 
         /**
          * 设置速度速度
+         *
          * @param duration
          */
-        public void setScrollDuration(int duration){
+        public void setScrollDuration(int duration) {
             this.mScrollDuration = duration;
         }
 
@@ -113,18 +116,16 @@ public class MainActivity extends BaseAcitvity {
         }
 
 
-
         public void initViewPagerScroll(ViewPager viewPager) {
             try {
                 Field mScroller = ViewPager.class.getDeclaredField("mScroller");
                 mScroller.setAccessible(true);
                 mScroller.set(viewPager, this);
-            } catch(Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
-
 
 
 }

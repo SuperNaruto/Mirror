@@ -21,6 +21,15 @@
         android:layout_marginLeft="24dp"
         android:textColor="@android:color/white"
         android:textSize="14sp"/>
+    <TextView
+        android:id="@+id/pop_exit_textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="退出"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="36dp"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"/>
 </LinearLayout>
     <FrameLayout
         android:layout_width="wrap_content"
