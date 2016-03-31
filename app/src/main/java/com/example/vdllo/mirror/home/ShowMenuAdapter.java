@@ -1,6 +1,7 @@
 package com.example.vdllo.mirror.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,6 +59,9 @@ public class ShowMenuAdapter extends BaseAdapter {
         } else {
             holder.imageView.setVisibility(View.INVISIBLE);
         }
+
+
+
 
         return convertView;
     }

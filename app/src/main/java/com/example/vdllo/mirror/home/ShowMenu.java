@@ -1,15 +1,21 @@
 package com.example.vdllo.mirror.home;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.vdllo.mirror.R;
 
@@ -24,6 +30,8 @@ public class ShowMenu implements AdapterView.OnItemClickListener {
     private PopupWindow popupWindow;
     private ListView listView;
     private ShowMenuAdapter showMenuAdapter;
+    private TextView textView,exitTv;
+    private MainActivity mainActivity;
 
     // 构造方法传入上下文环境
     public ShowMenu(Context context) {
@@ -37,6 +45,8 @@ public class ShowMenu implements AdapterView.OnItemClickListener {
     public void showPopupWindow(View v, ArrayList<String> titleData, int linePosition) {
 
         View view = LayoutInflater.from(context).inflate(R.layout.pop, null);
+        textView = (TextView) view.findViewById(R.id.pop_return_textview);
+        exitTv = (TextView) view.findViewById(R.id.pop_exit_textView);
         // 初始化组件
         initView(view);
 
@@ -44,6 +54,24 @@ public class ShowMenu implements AdapterView.OnItemClickListener {
         showMenuAdapter = new ShowMenuAdapter(titleData, context, linePosition);
         listView.setAdapter(showMenuAdapter);
         listView.setOnItemClickListener(this);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 跳转到MainActivity，显示menu对应的Fragment
+                Intent rIntent = new Intent(context, MainActivity.class);
+                rIntent.putExtra("position", 0);
+                context.startActivity(rIntent);
+
+            }
+        });
+
+        exitTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+                showDialog();
+            }
+        });
 
         // 设置PopupWindow的布局，显示的位置
         popupWindow = new PopupWindow(context);
@@ -80,10 +108,34 @@ public class ShowMenu implements AdapterView.OnItemClickListener {
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        // 跳转到MainActivity，显示menu对应的Fragment
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra("position", position);
-        context.startActivity(intent);
+//        // 跳转到MainActivity，显示menu对应的Fragment
+//        Intent intent = new Intent(context, MainActivity.class);
+//        intent.putExtra("position", position);
+//        context.startActivity(intent);
+        mainActivity = (MainActivity) context;
+        mainActivity.getPositionFromPopwindow(position);
+        popupWindow.dismiss();
+    }
+    public void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("确定退出登录");//设置标题栏
+        //积极响应
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(context, "确定键", Toast.LENGTH_SHORT).show();
+            }
+        });
+        //消极响应
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(context, "取消键", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.show();//显示
+
     }
 }
 
