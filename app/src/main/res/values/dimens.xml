@@ -97,5 +97,22 @@
     <dimen name="pop_item_text_left">24dp</dimen>
     <dimen name="pop_item_image_top">11dp</dimen>
     <dimen name="pop_item_image_left">24dp</dimen>
+    <dimen name="all_type_all_width">270dp</dimen>
+    <dimen name="all_type_all_left">11dp</dimen>
+    <dimen name="all_type_image_height">270dp</dimen>
+    <dimen name="all_type_content_height">115dp</dimen>
+    <dimen name="all_type_content_left">12dp</dimen>
+    <dimen name="all_type_content_right">12dp</dimen>
+    <dimen name="all_type_price_top">10dp</dimen>
+    <dimen name="all_type_textsize">15sp</dimen>
+    <dimen name="all_type_price_textsize">15sp</dimen>
+    <dimen name="all_type_france_text">8dp</dimen>
+    <dimen name="all_type_france_textsize">12sp</dimen>
+    <dimen name="all_type_image_top">10dp</dimen>
+    <dimen name="all_type_fina_text">8dp</dimen>
+    <dimen name="all_type_final_textsize">15sp</dimen>
+    <dimen name="main_bottom_size_bottom">20dp</dimen>
+    <dimen name="main_bottom_image_left">24dp</dimen>
+    <dimen name="main_bottom_textview_text">24dp</dimen>
     <!--shopping_cart -->
 </resources>
