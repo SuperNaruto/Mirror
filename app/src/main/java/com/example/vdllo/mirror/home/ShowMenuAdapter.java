@@ -1,8 +1,6 @@
 package com.example.vdllo.mirror.home;
 
 import android.content.Context;
-import android.net.Uri;
-import android.support.v7.widget.LinearLayoutManager;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +46,7 @@ public class ShowMenuAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = new ViewHolder();
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.show_menu_item, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.popup_window_item, null);
             holder.textView = (TextView) convertView.findViewById(R.id.show_menu_textview);
             holder.imageView = (ImageView) convertView.findViewById(R.id.show_menu_iv);
             convertView.setTag(holder);

@@ -10,14 +10,16 @@
         android:id="@+id/show_menu_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:layout_marginTop="22dp"
-        android:textColor="@android:color/white"/>
+        android:textSize="@dimen/pop_item_textSize"
+        android:layout_marginTop="@dimen/pop_item_text_top"
+        android:layout_marginLeft="@dimen/pop_item_text_left"
+        android:textColor="@android:color/white" />
     <ImageView
         android:id="@+id/show_menu_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="@dimen/pop_item_image_top"
+        android:layout_marginLeft="@dimen/pop_item_image_left"
         android:src="@mipmap/main_second_line"/>
 </LinearLayout>
 </LinearLayout>

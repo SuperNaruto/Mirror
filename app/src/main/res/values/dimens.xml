@@ -88,5 +88,14 @@
     <dimen name="shopping_cart_new_textSize">12sp</dimen>
     <dimen name="shopping_cart_pic_top">118dp</dimen>
     <dimen name="shopping_cart_no_top">15dp</dimen>
+    <dimen name="pop_listview">52dp</dimen>
+    <dimen name="pop_image_bottom">45dp</dimen>
+    <dimen name="pop_image_left">24dp</dimen>
+    <dimen name="pop_textview">24dp</dimen>
+    <dimen name="pop_item_textSize">14sp</dimen>
+    <dimen name="pop_item_text_top">22dp</dimen>
+    <dimen name="pop_item_text_left">24dp</dimen>
+    <dimen name="pop_item_image_top">11dp</dimen>
+    <dimen name="pop_item_image_left">24dp</dimen>
     <!--shopping_cart -->
 </resources>
