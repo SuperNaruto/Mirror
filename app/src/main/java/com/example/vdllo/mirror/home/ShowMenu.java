@@ -34,7 +34,7 @@ public class ShowMenu implements AdapterView.OnItemClickListener {
     // 参数一：当前view
     // 参数二：menu标题的集合
     // 参数三：当前fragment的位置
-    public void showPopupWindow(View v, ArrayList<String> titleData, int linePosition){
+    public void showPopupWindow(View v, ArrayList<String> titleData, int linePosition) {
 
         View view = LayoutInflater.from(context).inflate(R.layout.pop, null);
         // 初始化组件
@@ -58,7 +58,7 @@ public class ShowMenu implements AdapterView.OnItemClickListener {
         popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
         popupWindow.setBackgroundDrawable(null);
         popupWindow.update();
-
+        popupWindow.setAnimationStyle(R.style.popWindow_anim);
         initData(view);
     }
 

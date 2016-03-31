@@ -11,11 +11,10 @@
         android:background="@android:color/white"
         android:orientation="vertical">
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/all_type_iv"
-            android:layout_width="match_parent"
-            android:layout_height="270dp"
-            android:src="@mipmap/home_pic" />
+            android:layout_width="270dp"
+            android:layout_height="270dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,17 +34,20 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/all_type_goods_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5px"
                         android:text="SEE CONCEPT"
                         android:textSize="15dp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/home_price_Tv"
+                        android:id="@+id/all_type_goods_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
+                        android:layout_marginRight="5px"
                         android:text="450"
                         android:textSize="15dp"
                         android:textStyle="bold" />
@@ -54,7 +56,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_toLeftOf="@id/home_price_Tv"
+                        android:layout_toLeftOf="@id/all_type_goods_price"
                         android:src="@mipmap/mymoney" />
                 </RelativeLayout>
 
@@ -67,8 +69,10 @@
                 android:layout_marginTop="8dp">
 
                 <TextView
+                    android:id="@+id/all_type_product_area"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5px"
                     android:text="法国巴黎"
                     android:textSize="12dp" />
             </LinearLayout>
@@ -84,8 +88,10 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/all_type_brand"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5px"
                     android:layout_marginTop="8dp"
                     android:text="草莓红色圆框阅读镜"
                     android:textSize="15dp" />
