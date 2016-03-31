@@ -87,7 +87,7 @@ public class AllTypeFragment extends BaseFragment {
                 manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 recyclerView.setLayoutManager(manager);
                 // 3.设置适配器
-                adapter = new AllTypeAdapter(goodsListBean);
+                adapter = new AllTypeAdapter(goodsListBean, getContext());
                 recyclerView.setAdapter(adapter);
                 return false;
             }

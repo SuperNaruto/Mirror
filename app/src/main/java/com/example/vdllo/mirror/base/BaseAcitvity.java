@@ -3,6 +3,7 @@ package com.example.vdllo.mirror.base;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 
 /**
  * Created by Bo on 16/3/29.
@@ -12,6 +13,9 @@ public abstract class BaseAcitvity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //隐藏状态栏
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(setContent());
         initView();
         initData();
