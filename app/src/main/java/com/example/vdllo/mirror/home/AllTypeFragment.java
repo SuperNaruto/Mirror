@@ -1,5 +1,8 @@
 package com.example.vdllo.mirror.home;
 
+import android.app.FragmentManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -8,8 +11,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
+
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseFragment;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +30,13 @@ public class AllTypeFragment extends BaseFragment {
     private LinearLayoutManager manager;
     private List<Integer> datas;
     private LinearLayout linearLayout;
-    private PopupWindow popupWindow;
+    private ShowMenu showMenu;
+    private ArrayList<String> data;
+    private int i;
+
+    public AllTypeFragment(int i) {
+        this.i = i;
+    }
 
     @Override
     public int getLayout() {
@@ -34,7 +47,18 @@ public class AllTypeFragment extends BaseFragment {
     protected void initView() {
         recyclerView = bindView(R.id.recycleView);
         linearLayout = (LinearLayout) getView().findViewById(R.id.all_type_linearlayout);
-        linearLayout.setOnClickListener(popClick);
+        showMenu = new ShowMenu(getContext());
+        data = new ArrayList<>();
+        data.add("浏览所有分类");
+        data.add("浏览平光眼镜");
+        data.add("浏览太阳眼镜");
+        data.add("专题分享");
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showMenu.showPopupWindow(v,data,i);
+            }
+        });
     }
 
     @Override
@@ -53,65 +77,8 @@ public class AllTypeFragment extends BaseFragment {
         recyclerView.setAdapter(adapter);
     }
 
-    // 点击弹出左侧菜单的显示方式
-    View.OnClickListener popClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            /*Toast toast = Toast.makeText(MainActivity.this, "这是一个代图片的Toast!", Toast.LENGTH_LONG);
-            toast.show();*/
-            getPopupWindow();
-            // 这里是位置显示方式
-            popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
-        }
-    };
 
-    /***
-     * 获取PopupWindow实例
-     */
-    private void getPopupWindow() {
 
-        if (null != popupWindow) {
-            popupWindow.dismiss();
-            return;
-        } else {
-            initPopuptWindow();
-        }
-    }
 
-    /**
-     * 创建PopupWindow
-     */
-    protected void initPopuptWindow() {
-        // 获取自定义布局文件pop.xml的视图
-        View popupWindowView = getActivity().getLayoutInflater().inflate(R.layout.pop, null,
-                false);
-        DisplayMetrics dm = new DisplayMetrics();
-        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        // 创建PopupWindow实例,200,150分别是宽度和高度
-        popupWindow = new PopupWindow(popupWindowView, dm.widthPixels,
-                dm.heightPixels, true);
-//         popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-//         popupWindow.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
-
-        // 设置动画效果
-        //PopupWindow的动画显示效果是通过setAnimationStyle(int id)方法设置的，
-        // 其中id为一个style的id，所以我们要在styles.xml文件中设置一个动画样式
-        popupWindow.setAnimationStyle(R.style.popWindow_anim);
-        // 点击其他地方消失
-        popupWindowView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (popupWindow != null && popupWindow.isShowing()) {
-                    popupWindow.dismiss();
-                    popupWindow = null;
-                }
-                return false;
-            }
-        });
-//        // pop.xml视图里面的控件
-//        initOpenMenuItem(popupWindowView);
-//        initOpenMenuOther(popupWindowView);
-//        initOpenPosition(popupWindowView);
-    }
 }
 

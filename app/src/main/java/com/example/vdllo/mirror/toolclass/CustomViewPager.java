@@ -59,7 +59,7 @@ public class CustomViewPager extends ViewPager {
         return event;
     }
 
-    //是否拦截某个事件，返回false，不拦截事件，向子View进行分发
+    // 是否拦截某个事件，返回false，不拦截事件，向子View进行分发
     // (默认返回的是false）。返回true，则会中断事件传递，
     // 并把事件交由当前View的onTouchEvent处理。
     @Override
