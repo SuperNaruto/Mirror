@@ -111,7 +111,6 @@ public class AllTypeFragment extends BaseFragment {
                 Message message = new Message();
                 message.obj = body;
                 handler.sendMessage(message);
-                Log.d("aa", message.obj.toString());
                 return null;
             }
 

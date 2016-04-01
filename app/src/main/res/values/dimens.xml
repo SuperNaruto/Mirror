@@ -16,7 +16,7 @@
     <dimen name="login_loginBtn_linearLayout_marginTop">15dp</dimen>
     <dimen name="login_social_linearLayout_marginTop">120dp</dimen>
     <dimen name="login_social_linearLayout_marginLeft">110dp</dimen>
-    <dimen name="login_weixin_linearLayout_marginLeft">40dp</dimen>
+    <dimen name="login_weChat_linearLayout_marginLeft">40dp</dimen>
     <dimen name="login_sina_linearLayout_marginLeft">110dp</dimen>
     <dimen name="login_numLinearLayout_marginTop">13dp</dimen>
     <!--activity_login -->
@@ -74,6 +74,9 @@
     <dimen name="main_return_left">24dp</dimen>
     <dimen name="main_exit_top">36dp</dimen>
     <dimen name="main_exit_left">24dp</dimen>
+    <dimen name="main_bottom_size_bottom">20dp</dimen>
+    <dimen name="main_bottom_image_left">24dp</dimen>
+    <dimen name="main_bottom_textView_text">24dp</dimen>
     <!--main_glass -->
 
     <!--shopping_cart -->
@@ -88,37 +91,56 @@
     <dimen name="shopping_cart_new_textSize">12sp</dimen>
     <dimen name="shopping_cart_pic_top">118dp</dimen>
     <dimen name="shopping_cart_no_top">15dp</dimen>
-    <dimen name="pop_listview">52dp</dimen>
+    <!--shopping_cart -->
+
+    <!--all_type_item -->
+    <dimen name="all_type_all_width">230dp</dimen>
+    <dimen name="all_type_all_left">11dp</dimen>
+    <dimen name="all_type_image_height">410dp</dimen>
+    <dimen name="all_type_content_height">115dp</dimen>
+    <dimen name="all_type_content_left">12dp</dimen>
+    <dimen name="all_type_content_right">12dp</dimen>
+    <dimen name="all_type_price_top">10dp</dimen>
+    <dimen name="all_type_textSize">15sp</dimen>
+    <dimen name="all_type_price_textSize">15sp</dimen>
+    <dimen name="all_type_france_text">8dp</dimen>
+    <dimen name="all_type_france_textSize">12sp</dimen>
+    <dimen name="all_type_image_top">10dp</dimen>
+    <dimen name="all_type_fina_text">8dp</dimen>
+    <dimen name="all_type_final_textSize">15sp</dimen>
+    <dimen name="all_type_area_marginTop">8dp</dimen>
+    <dimen name="all_type_goods_name_marginLeft">3dp</dimen>
+    <dimen name="all_type_goods_name_marginRight">3dp</dimen>
+    <!--all_type_item -->
+
+    <!--popWindow -->
+    <dimen name="pop_listView_height">300dp</dimen>
+    <dimen name="pop_return_left">24dp</dimen>
+    <dimen name="pop_return_textSize">14sp</dimen>
+    <dimen name="pop_text_left">24dp</dimen>
+    <dimen name="pop_text_top">36dp</dimen>
+    <dimen name="pop_text_textSize">14sp</dimen>
+    <dimen name="pop_listView">52dp</dimen>
     <dimen name="pop_image_bottom">45dp</dimen>
     <dimen name="pop_image_left">24dp</dimen>
-    <dimen name="pop_textview">24dp</dimen>
+    <dimen name="pop_textView">24dp</dimen>
     <dimen name="pop_item_textSize">14sp</dimen>
     <dimen name="pop_item_text_top">22dp</dimen>
     <dimen name="pop_item_text_left">24dp</dimen>
     <dimen name="pop_item_image_top">11dp</dimen>
     <dimen name="pop_item_image_left">24dp</dimen>
-    <dimen name="all_type_all_width">270dp</dimen>
-    <dimen name="all_type_all_left">11dp</dimen>
-    <dimen name="all_type_image_height">270dp</dimen>
-    <dimen name="all_type_content_height">115dp</dimen>
-    <dimen name="all_type_content_left">12dp</dimen>
-    <dimen name="all_type_content_right">12dp</dimen>
-    <dimen name="all_type_price_top">10dp</dimen>
-    <dimen name="all_type_textsize">15sp</dimen>
-    <dimen name="all_type_price_textsize">15sp</dimen>
-    <dimen name="all_type_france_text">8dp</dimen>
-    <dimen name="all_type_france_textsize">12sp</dimen>
-    <dimen name="all_type_image_top">10dp</dimen>
-    <dimen name="all_type_fina_text">8dp</dimen>
-    <dimen name="all_type_final_textsize">15sp</dimen>
-    <dimen name="main_bottom_size_bottom">20dp</dimen>
-    <dimen name="main_bottom_image_left">24dp</dimen>
-    <dimen name="main_bottom_textview_text">24dp</dimen>
-    <dimen name="pop_listview_height">300dp</dimen>
-    <dimen name="pop_return_left">24dp</dimen>
-    <dimen name="pop_return_textsize">14sp</dimen>
-    <dimen name="pop_text_left">24dp</dimen>
-    <dimen name="pop_text_top">36dp</dimen>
-    <dimen name="pop_text_textsize">14sp</dimen>
-    <!--shopping_cart -->
+    <!--popWindow -->
+
+    <!--fragment_all_type -->
+    <dimen name="fragment_all_type_marginTop">10dp</dimen>
+    <dimen name="fragment_all_type_marginLeft">11dp</dimen>
+    <dimen name="fragment_all_type_textSize">15sp</dimen>
+    <dimen name="fragment_all_type_iv_marginLeft">5dp</dimen>
+    <dimen name="fragment_all_type_iv_marginTop">8dp</dimen>
+    <dimen name="fragment_all_type_new_marginTop">13dp</dimen>
+    <dimen name="fragment_all_type_new_textSize">12sp</dimen>
+    <dimen name="fragment_all_type_recyclerView">30dp</dimen>
+    <!--fragment_all_type -->
+
+
 </resources>
