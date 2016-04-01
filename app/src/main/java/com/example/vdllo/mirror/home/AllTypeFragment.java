@@ -4,20 +4,19 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseFragment;
 import com.example.vdllo.mirror.bean.GoodsListBean;
+import com.example.vdllo.mirror.bean.StoryListBean;
 import com.example.vdllo.mirror.bean.UrlBean;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Response;
@@ -36,6 +35,7 @@ public class AllTypeFragment extends BaseFragment {
     private ArrayList<String> data;
     private Handler handler;
     private int i;
+    private StoryListBean storyListBean;
 
     public AllTypeFragment(int i) {
         this.i = i;
@@ -73,20 +73,24 @@ public class AllTypeFragment extends BaseFragment {
                 //1.Gson解析
                 Gson gson = new Gson();
                 goodsListBean = gson.fromJson(msg.obj.toString(), GoodsListBean.class);
+                storyListBean = gson.fromJson(msg.obj.toString(), StoryListBean.class);
                 // 2.设置布局管理器
                 manager = new LinearLayoutManager(getActivity());
                 manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 recyclerView.setLayoutManager(manager);
                 // 3.设置适配器
-                adapter = new AllTypeAdapter(goodsListBean, getContext(), i);
+                adapter = new AllTypeAdapter(goodsListBean, getContext(), i, storyListBean);
                 recyclerView.setAdapter(adapter);
                 return false;
             }
         });
-        getInfo();
+        //商品列表
+        getGoods();
+        //专题分享
+        getShareInfo();
     }
 
-    public void getInfo() {
+    public void getGoods() {
         //okhttp网络解析
         OkHttpUtils.post().url(UrlBean.GOODS_LIST).addParams("token", "")
                 .addParams("device_type", "2")
@@ -97,6 +101,34 @@ public class AllTypeFragment extends BaseFragment {
             @Override
             public Object parseNetworkResponse(Response response) throws Exception {
                 //子线程无法刷新UI,利用handler发送Message到主线程
+                String body = response.body().string();
+                Message message = new Message();
+                message.what = 1;
+                message.obj = body;
+                handler.sendMessage(message);
+                return null;
+            }
+
+            @Override
+            public void onError(Call call, Exception e) {
+
+            }
+
+            @Override
+            public void onResponse(Object response) {
+
+            }
+        });
+    }
+
+    public void getShareInfo() {
+        OkHttpUtils.post().url(UrlBean.STORY_LIST).addParams("token", "")
+                .addParams("uid", "")
+                .addParams("device_type", "2")
+                .addParams("page", "")
+                .addParams("last_time", "").build().execute(new Callback() {
+            @Override
+            public Object parseNetworkResponse(Response response) throws Exception {
                 String body = response.body().string();
                 Message message = new Message();
                 message.obj = body;
@@ -114,6 +146,7 @@ public class AllTypeFragment extends BaseFragment {
 
             }
         });
+
     }
 }
 
