@@ -5,9 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -113,7 +111,7 @@ public class ShowMenu implements AdapterView.OnItemClickListener {
 //        intent.putExtra("position", position);
 //        context.startActivity(intent);
         mainActivity = (MainActivity) context;
-        mainActivity.getPositionFromPopwindow(position);
+        mainActivity.getPositionFromPopWindow(position);
         popupWindow.dismiss();
     }
     public void showDialog() {
