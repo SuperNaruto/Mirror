@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
 import com.example.vdllo.mirror.R;
+import com.example.vdllo.mirror.base.BaseAcitvity;
 import com.example.vdllo.mirror.base.BaseApplication;
 import com.example.vdllo.mirror.bean.StartImgBean;
 import com.example.vdllo.mirror.bean.UrlBean;
@@ -25,30 +26,36 @@ import okhttp3.Response;
 /**
  * Created by dllo on 16/4/1.
  */
-public class WelcomeActivity extends AppCompatActivity {
+public class WelcomeActivity extends BaseAcitvity {
+
     private SimpleDraweeView welcomeIv;
     private Handler myHandler;
     private StartImgBean startImgBean;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+    protected int setContent() {
+        return R.layout.activity_welcome;
+    }
+
+    @Override
+    protected void initView() {
         welcomeIv = (SimpleDraweeView) findViewById(R.id.welcome_iv);
+    }
+
+    @Override
+    protected void initData() {
         //handler接收消息,Gson解析图片,并刷新UI
         myHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 Gson gson = new Gson();
                 startImgBean = gson.fromJson(msg.obj.toString(), StartImgBean.class);
-//                Picasso.with(BaseApplication.getContext()).load(startImgBean.getImg()).into(welcomeIv);
                 welcomeIv.setImageURI(Uri.parse(startImgBean.getImg()));
                 return false;
             }
         });
         //获取网络图片
         getPic();
-
         //Handler主要用于异步消息的处理,通常用来处理相对耗时比较长的操作。
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -82,7 +89,5 @@ public class WelcomeActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 }
