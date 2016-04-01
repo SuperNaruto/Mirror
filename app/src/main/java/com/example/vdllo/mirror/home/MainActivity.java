@@ -83,8 +83,8 @@ public class MainActivity extends BaseAcitvity {
     public void getPositionFromPopwindow(int position) {
         //这个是设置viewPager切换过度时间的类
         ViewPagerScroller scroller = new ViewPagerScroller(this);
-        scroller.setScrollDuration(100);
-        scroller.initViewPagerScroll(viewPager);  //这个是设置切换过渡时间为0毫秒
+        scroller.setScrollDuration(100);//这个是设置切换过渡时间为0毫秒
+        scroller.initViewPagerScroll(viewPager);
         viewPager.setCurrentItem(position);
     }
 
