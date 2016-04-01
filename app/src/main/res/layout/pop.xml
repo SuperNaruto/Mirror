@@ -20,7 +20,7 @@
         android:text="@string/pop_return_text"
         android:layout_marginLeft="@dimen/pop_return_left"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/pop_return_textsize"/>
+        android:textSize="@dimen/pop_return_textSize"/>
     <TextView
         android:id="@+id/pop_exit_textView"
         android:layout_width="match_parent"
