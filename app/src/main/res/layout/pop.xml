@@ -11,25 +11,25 @@
     <ListView
         android:id="@+id/pop_listview"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="@dimen/pop_listview_height"
         android:layout_marginTop="@dimen/pop_listview"/>
     <TextView
         android:id="@+id/pop_return_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="返回首页"
-        android:layout_marginLeft="24dp"
+        android:text="@string/pop_return_text"
+        android:layout_marginLeft="@dimen/pop_return_left"
         android:textColor="@android:color/white"
-        android:textSize="14sp"/>
+        android:textSize="@dimen/pop_return_textsize"/>
     <TextView
         android:id="@+id/pop_exit_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="退出"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="36dp"
+        android:text="@string/pop_exit_text"
+        android:layout_marginLeft="@dimen/pop_text_left"
+        android:layout_marginTop="@dimen/pop_text_top"
         android:textColor="@android:color/white"
-        android:textSize="14sp"/>
+        android:textSize="@dimen/pop_text_textsize"/>
 </LinearLayout>
     <FrameLayout
         android:layout_width="wrap_content"

@@ -114,5 +114,11 @@
     <dimen name="main_bottom_size_bottom">20dp</dimen>
     <dimen name="main_bottom_image_left">24dp</dimen>
     <dimen name="main_bottom_textview_text">24dp</dimen>
+    <dimen name="pop_listview_height">300dp</dimen>
+    <dimen name="pop_return_left">24dp</dimen>
+    <dimen name="pop_return_textsize">14sp</dimen>
+    <dimen name="pop_text_left">24dp</dimen>
+    <dimen name="pop_text_top">36dp</dimen>
+    <dimen name="pop_text_textsize">14sp</dimen>
     <!--shopping_cart -->
 </resources>

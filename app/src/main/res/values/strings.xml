@@ -24,4 +24,6 @@
     <string name="pop_textview_text">購物車</string>
     <string name="all_type_price_text">450</string>
     <string name="main_bottom_textview_right">購物車</string>
+    <string name="pop_return_text">返回首页</string>
+    <string name="pop_exit_text">退出</string>
 </resources>
