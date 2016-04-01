@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,19 +19,19 @@ import com.example.vdllo.mirror.R;
 import java.util.ArrayList;
 
 /**
- * Created by dllo on 16/3/31.
+ * Created by dllo on 16/4/1.
  */
-public class ShowMenu implements AdapterView.OnItemClickListener {
+public class ShowPopMenu implements AdapterView.OnItemClickListener {
 
     private Context context;
-    private PopupWindow popupWindow;
+    private android.widget.PopupWindow popupWindow;
     private ListView listView;
     private ShowMenuAdapter showMenuAdapter;
     private TextView textView,exitTv;
     private MainActivity mainActivity;
 
     // 构造方法传入上下文环境
-    public ShowMenu(Context context) {
+    public ShowPopMenu(Context context) {
         this.context = context;
     }
 
@@ -72,12 +71,12 @@ public class ShowMenu implements AdapterView.OnItemClickListener {
         });
 
         // 设置PopupWindow的布局，显示的位置
-        popupWindow = new PopupWindow(context);
+        popupWindow = new android.widget.PopupWindow(context);
         popupWindow.setContentView(view);
 
-        //
+        //获取屏幕信息
         DisplayMetrics dm = new DisplayMetrics();
-        popupWindow = new PopupWindow(view, dm.widthPixels,
+        popupWindow = new android.widget.PopupWindow(view, dm.widthPixels,
                 dm.heightPixels, true);
         popupWindow.setWidth(LinearLayout.LayoutParams.MATCH_PARENT);
         popupWindow.setHeight(LinearLayout.LayoutParams.MATCH_PARENT);
@@ -122,13 +121,17 @@ public class ShowMenu implements AdapterView.OnItemClickListener {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(context, "确定键", Toast.LENGTH_SHORT).show();
+                Intent dIntent = new Intent(context,MainActivity.class);
+                dIntent.putExtra("key",1);
+                context.startActivity(dIntent);
+
             }
         });
         //消极响应
         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(context, "取消键", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "取消退出", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -136,4 +139,5 @@ public class ShowMenu implements AdapterView.OnItemClickListener {
 
     }
 }
+
 
