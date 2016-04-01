@@ -1,20 +1,12 @@
 package com.example.vdllo.mirror.home;
 
-import android.app.FragmentManager;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseFragment;
@@ -24,7 +16,6 @@ import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +32,7 @@ public class AllTypeFragment extends BaseFragment {
     private LinearLayoutManager manager;
     private List<Integer> datas;
     private LinearLayout linearLayout;
-    private ShowMenu showMenu;
+    private ShowPopMenu showPopMenu;
     private ArrayList<String> data;
     private int i;
     private Handler handler;
@@ -60,7 +51,7 @@ public class AllTypeFragment extends BaseFragment {
     protected void initView() {
         recyclerView = bindView(R.id.recycleView);
         linearLayout = (LinearLayout) getView().findViewById(R.id.all_type_linearlayout);
-        showMenu = new ShowMenu(getContext());
+        showPopMenu = new ShowPopMenu(getContext());
         data = new ArrayList<>();
         data.add("浏览所有分类");
         data.add("浏览平光眼镜");
@@ -70,7 +61,7 @@ public class AllTypeFragment extends BaseFragment {
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showMenu.showPopupWindow(v, data, i);
+                showPopMenu.showPopupWindow(v, data, i);
             }
         });
     }

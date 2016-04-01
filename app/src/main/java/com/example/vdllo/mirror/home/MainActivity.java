@@ -1,11 +1,9 @@
 package com.example.vdllo.mirror.home;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Scroller;
@@ -50,8 +48,13 @@ public class MainActivity extends BaseAcitvity {
         viewPager.setAdapter(adapter);
 
         Intent intent = getIntent();
-        int s = intent.getIntExtra("position", 0);
-        viewPager.setCurrentItem(s);
+        int s = intent.getIntExtra("key", -1);
+        if (s < 0){
+
+        }else{
+           finish();
+        }
+
 
 
         Intent rIntent = getIntent();
