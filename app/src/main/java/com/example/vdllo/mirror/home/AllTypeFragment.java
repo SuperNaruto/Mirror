@@ -36,16 +36,15 @@ import okhttp3.Response;
  */
 public class AllTypeFragment extends BaseFragment {
 
-    private AllTypeAdapter adapter;
-    private RecyclerView recyclerView;
     private LinearLayoutManager manager;
-    private List<Integer> datas;
-    private LinearLayout linearLayout;
-    private ShowMenu showMenu;
-    private ArrayList<String> data;
-    private int i;
-    private Handler handler;
     private GoodsListBean goodsListBean;
+    private RecyclerView recyclerView;
+    private LinearLayout linearLayout;
+    private AllTypeAdapter adapter;
+    private ArrayList<String> data;
+    private ShowMenu showMenu;
+    private Handler handler;
+    private int i;
 
     public AllTypeFragment(int i) {
         this.i = i;
@@ -77,7 +76,6 @@ public class AllTypeFragment extends BaseFragment {
 
     @Override
     protected void dataView() {
-
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -88,12 +86,11 @@ public class AllTypeFragment extends BaseFragment {
                 manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 recyclerView.setLayoutManager(manager);
                 // 3.设置适配器
-                adapter = new AllTypeAdapter(goodsListBean, getContext());
+                adapter = new AllTypeAdapter(goodsListBean, getContext(), i);
                 recyclerView.setAdapter(adapter);
                 return false;
             }
         });
-
         getInfo();
     }
 
@@ -126,7 +123,5 @@ public class AllTypeFragment extends BaseFragment {
             }
         });
     }
-
-
 }
 
