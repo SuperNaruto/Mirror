@@ -39,7 +39,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="@dimen/main_bottom_textview_text"
+                    android:layout_marginRight="@dimen/main_bottom_textView_text"
                     android:text="@string/main_bottom_textview_right"
                     android:textColor="@android:color/white" />
             </RelativeLayout>

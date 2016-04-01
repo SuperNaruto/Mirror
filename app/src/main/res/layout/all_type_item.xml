@@ -4,16 +4,16 @@
     android:layout_height="wrap_content">
 
     <RelativeLayout
-        android:layout_width="230dp"
-        android:layout_height="410dp"
-        android:layout_marginLeft="11dp"
+        android:layout_width="@dimen/all_type_all_width"
+        android:layout_height="@dimen/all_type_image_height"
+        android:layout_marginLeft="@dimen/all_type_all_left"
         android:background="@android:color/white"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/all_type_iv"
             android:layout_width="match_parent"
-            android:layout_height="410dp" />
+            android:layout_height="@dimen/all_type_image_height" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -23,15 +23,15 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="115dp"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"
+                android:layout_height="@dimen/all_type_content_height"
+                android:layout_marginLeft="@dimen/all_type_content_left"
+                android:layout_marginRight="@dimen/all_type_content_right"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="@dimen/all_type_price_top"
                     android:orientation="horizontal">
 
                     <RelativeLayout
@@ -42,10 +42,10 @@
                             android:id="@+id/all_type_goods_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5px"
+                            android:layout_marginLeft="@dimen/all_type_goods_name_marginLeft"
                             android:text="SEE CONCEPT"
                             android:textColor="@android:color/black"
-                            android:textSize="15dp"
+                            android:textSize="@dimen/all_type_textSize"
                             android:textStyle="bold" />
 
                         <TextView
@@ -53,10 +53,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:layout_marginRight="5px"
+                            android:layout_marginRight="@dimen/all_type_goods_name_marginRight"
                             android:text="450"
                             android:textColor="@android:color/black"
-                            android:textSize="15dp"
+                            android:textSize="@dimen/all_type_textSize"
                             android:textStyle="bold" />
 
                         <ImageView
@@ -73,21 +73,21 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="@dimen/all_type_area_marginTop">
 
                     <TextView
                         android:id="@+id/all_type_product_area"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5px"
+                        android:layout_marginLeft="@dimen/all_type_goods_name_marginLeft"
                         android:text="法国巴黎"
-                        android:textSize="12dp" />
+                        android:textSize="@dimen/all_type_france_textSize" />
                 </LinearLayout>
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="@dimen/all_type_image_top"
                     android:src="@mipmap/blackline" />
 
                 <LinearLayout
@@ -98,11 +98,11 @@
                         android:id="@+id/all_type_brand"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5px"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="@dimen/all_type_goods_name_marginLeft"
+                        android:layout_marginTop="@dimen/all_type_fina_text"
                         android:text="草莓红色圆框阅读镜"
                         android:textColor="@android:color/black"
-                        android:textSize="15dp" />
+                        android:textSize="@dimen/all_type_final_textSize" />
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>

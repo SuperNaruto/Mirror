@@ -79,6 +79,7 @@ public class AllTypeFragment extends BaseFragment {
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
+                //1.Gson解析
                 Gson gson = new Gson();
                 goodsListBean = gson.fromJson(msg.obj.toString(), GoodsListBean.class);
                 // 2.设置布局管理器
@@ -104,11 +105,11 @@ public class AllTypeFragment extends BaseFragment {
                 .addParams("version", "").build().execute(new Callback() {
             @Override
             public Object parseNetworkResponse(Response response) throws Exception {
+                //子线程无法刷新UI,利用handler发送Message到主线程
                 String body = response.body().string();
                 Message message = new Message();
                 message.obj = body;
                 handler.sendMessage(message);
-                Log.d("aa", message.obj.toString());
                 return null;
             }
 
