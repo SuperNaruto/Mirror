@@ -20,7 +20,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/bottom"
+        android:src="@mipmap/drop_down"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="@dimen/shopping_cart_bottom_left"/>
 
