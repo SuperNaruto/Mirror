@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/main_bottom_textView_text"
-                    android:text="@string/main_bottom_textview_right"
+                    android:text="@string/main_bottom_textView_right"
                     android:textColor="@android:color/white" />
             </RelativeLayout>
         </RelativeLayout>

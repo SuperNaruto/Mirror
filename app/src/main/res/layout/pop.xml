@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="@dimen/pop_textView"
-                android:text="@string/pop_textview_text"
+                android:text="@string/pop_textView_text"
                 android:textColor="@android:color/white" />
         </RelativeLayout>
     </FrameLayout>
