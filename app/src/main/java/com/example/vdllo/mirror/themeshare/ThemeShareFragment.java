@@ -14,6 +14,7 @@ import com.example.vdllo.mirror.bean.StoryListBean;
 import com.example.vdllo.mirror.bean.UrlBean;
 import com.example.vdllo.mirror.home.AllTypeAdapter;
 import com.example.vdllo.mirror.home.ShowPopMenu;
+import com.example.vdllo.mirror.net.NetHelper;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
@@ -85,35 +86,10 @@ public class ThemeShareFragment extends BaseFragment {
             }
         });
         //专题分享
-        getShareInfo();
+        NetHelper netHelper = new NetHelper();
+        netHelper.getShareInfo(handler);
     }
 
-    public void getShareInfo() {
-        OkHttpUtils.post().url(UrlBean.STORY_LIST).addParams("token", "")
-                .addParams("uid", "")
-                .addParams("device_type", "2")
-                .addParams("page", "")
-                .addParams("last_time", "").build().execute(new Callback() {
-            @Override
-            public Object parseNetworkResponse(Response response) throws Exception {
-                String body = response.body().string();
-                Message message = new Message();
-                message.obj = body;
-                handler.sendMessage(message);
-                return null;
-            }
 
-            @Override
-            public void onError(Call call, Exception e) {
-
-            }
-
-            @Override
-            public void onResponse(Object response) {
-
-            }
-        });
-
-    }
 }
 

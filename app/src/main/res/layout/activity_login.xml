@@ -100,7 +100,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/login_line_marginLeft"
             android:layout_marginRight="@dimen/login_line_marginRight"
-            android:background="@mipmap/login_phonenum_edittext" />
+            android:background="@mipmap/login_phonenum_edittext"
+            android:inputType="textPassword"/>
 
     </LinearLayout>
 

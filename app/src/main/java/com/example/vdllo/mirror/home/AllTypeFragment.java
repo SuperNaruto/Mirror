@@ -12,6 +12,7 @@ import com.example.vdllo.mirror.base.BaseFragment;
 import com.example.vdllo.mirror.bean.GoodsListBean;
 import com.example.vdllo.mirror.bean.StoryListBean;
 import com.example.vdllo.mirror.bean.UrlBean;
+import com.example.vdllo.mirror.net.NetHelper;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
@@ -84,39 +85,11 @@ public class AllTypeFragment extends BaseFragment {
             }
         });
         //商品列表
-        getGoods();
+        NetHelper netHelper  = new NetHelper();
+        netHelper.getGoods(handler);
     }
 
-    public void getGoods() {
-        //okhttp网络解析
-        OkHttpUtils.post().url(UrlBean.GOODS_LIST).addParams("token", "")
-                .addParams("device_type", "2")
-                .addParams("page", "")
-                .addParams("last_time", "")
-                .addParams("category_id", "")
-                .addParams("version", "").build().execute(new Callback() {
-            @Override
-            public Object parseNetworkResponse(Response response) throws Exception {
-                //子线程无法刷新UI,利用handler发送Message到主线程
-                String body = response.body().string();
-                Message message = new Message();
-                message.what = 1;
-                message.obj = body;
-                handler.sendMessage(message);
-                return null;
-            }
 
-            @Override
-            public void onError(Call call, Exception e) {
-
-            }
-
-            @Override
-            public void onResponse(Object response) {
-
-            }
-        });
-    }
 
 }
 

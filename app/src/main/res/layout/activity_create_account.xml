@@ -141,7 +141,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/create_account_imageView_marginLeft"
             android:layout_marginRight="@dimen/create_account_imageView_marginRight"
-            android:background="@mipmap/login_phonenum_edittext" />
+            android:background="@mipmap/login_phonenum_edittext"
+            android:inputType="textPassword" />
 
     </LinearLayout>
 
