@@ -143,5 +143,13 @@
     <dimen name="fragment_all_type_recyclerView">30dp</dimen>
     <!--fragment_all_type -->
 
+    <!--activity_details -->
+    <dimen name="activity_details_return_iv_marginLeft">10dp</dimen>
+    <dimen name="activity_details_frameLayout_height">50dp</dimen>
+    <dimen name="activity_details_frameLayout_marginBottom">2dp</dimen>
+    <dimen name="activity_details_relativeLayout_height">45dp</dimen>
+    <dimen name="activity_details_btn_marginLeft">30dp</dimen>
+    <dimen name="activity_details_buyIv_marginRight">20dp</dimen>
+    <!--activity_details -->
 
 </resources>

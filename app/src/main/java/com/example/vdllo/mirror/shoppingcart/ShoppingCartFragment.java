@@ -22,7 +22,7 @@ public class ShoppingCartFragment extends BaseFragment{
 
 
     @Override
-    protected void dataView() {
+    protected void initData() {
 
     }
 }

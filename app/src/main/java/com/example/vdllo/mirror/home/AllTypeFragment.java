@@ -67,7 +67,7 @@ public class AllTypeFragment extends BaseFragment {
     }
 
     @Override
-    protected void dataView() {
+    protected void initData() {
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {

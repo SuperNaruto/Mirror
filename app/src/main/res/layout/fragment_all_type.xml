@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/fragment_all_type_iv_marginLeft"
-                    android:src="@mipmap/bottom" />
+                    android:src="@mipmap/drop_down" />
             </LinearLayout>
 
             <ImageView

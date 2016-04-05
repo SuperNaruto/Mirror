@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background">
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_details_frameLayout_height"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/activity_details_frameLayout_marginBottom">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_details_relativeLayout_height">
+
+            <ImageView
+                android:id="@+id/activity_details_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_details_return_iv_marginLeft"
+                android:src="@mipmap/return_back" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_details_btn_marginLeft"
+                android:layout_toRightOf="@+id/activity_details_return"
+                android:background="@mipmap/wear_atlas"
+                android:text="@string/activity_details_wear_atlas_text"
+                android:textColor="@color/goods_share_content_textColor" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/activity_details_buyIv_marginRight"
+                android:src="@mipmap/buy" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+
+</RelativeLayout>
