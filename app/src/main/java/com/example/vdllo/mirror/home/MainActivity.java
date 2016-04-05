@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
 import com.example.vdllo.mirror.shoppingcart.ShoppingCartFragment;
+import com.example.vdllo.mirror.themeshare.ThemeShareFragment;
 import com.example.vdllo.mirror.toolclass.CustomViewPager;
 
 import java.lang.reflect.Field;
@@ -42,7 +43,7 @@ public class MainActivity extends BaseAcitvity {
         datas.add(new AllTypeFragment(0));
         datas.add(new AllTypeFragment(1));
         datas.add(new AllTypeFragment(2));
-        datas.add(new AllTypeFragment(3));
+        datas.add(new ThemeShareFragment(3));
         datas.add(new ShoppingCartFragment());
         adapter = new MainAdapter(getSupportFragmentManager(), datas);
         viewPager.setAdapter(adapter);

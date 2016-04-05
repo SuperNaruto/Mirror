@@ -94,9 +94,9 @@
     <!--shopping_cart -->
 
     <!--all_type_item -->
-    <dimen name="all_type_all_width">230dp</dimen>
+    <dimen name="all_type_all_width">225dp</dimen>
     <dimen name="all_type_all_left">11dp</dimen>
-    <dimen name="all_type_image_height">410dp</dimen>
+    <dimen name="all_type_image_height">400dp</dimen>
     <dimen name="all_type_content_height">115dp</dimen>
     <dimen name="all_type_content_left">12dp</dimen>
     <dimen name="all_type_content_right">12dp</dimen>
@@ -109,8 +109,9 @@
     <dimen name="all_type_fina_text">8dp</dimen>
     <dimen name="all_type_final_textSize">15sp</dimen>
     <dimen name="all_type_area_marginTop">8dp</dimen>
-    <dimen name="all_type_goods_name_marginLeft">3dp</dimen>
+    <dimen name="all_type_goods_name_marginLeft">2dp</dimen>
     <dimen name="all_type_goods_name_marginRight">3dp</dimen>
+    <dimen name="all_type_share_item_height">60dp</dimen>
     <!--all_type_item -->
 
     <!--popWindow -->

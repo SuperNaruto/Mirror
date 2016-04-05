@@ -20,16 +20,15 @@ import com.squareup.picasso.Picasso;
  * Created by dllo on 16/3/30.
  */
 public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHolder> {
-    StoryListBean storyListBean;
+
     GoodsListBean datas;
     Context context;
     int pos;
 
-    public AllTypeAdapter(GoodsListBean datas, Context context, int pos, StoryListBean data) {
+    public AllTypeAdapter(GoodsListBean datas, Context context, int pos) {
         this.pos = pos;
         this.datas = datas;
         this.context = context;
-        this.storyListBean = data;
     }
 
     @Override
@@ -65,16 +64,7 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
             holder.goodsPriceTv.setText(data.getGoods_price());
             holder.brandTv.setText(data.getBrand());
             holder.productAreaTv.setText(data.getProduct_area());
-        } else {
-            //Picasso加载图片
-            Picasso.with(context).load(storyListBean.getData().getList().get(position).getStory_img()).into(holder.goodsPic);
-            holder.brandTv.setText(storyListBean.getData().getList().get(position).getStory_title());
-            holder.productAreaTv.setVisibility(View.GONE);
-            holder.goodsNameTv.setVisibility(View.GONE);
-            holder.goodsPriceTv.setVisibility(View.GONE);
-//            holder.symbolIv.setVisibility(View.GONE);
         }
-
 
     }
 
@@ -85,7 +75,7 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView goodsPic, symbolIv;
+        private ImageView goodsPic;
         private TextView goodsNameTv, goodsPriceTv, productAreaTv, brandTv;
 
         public ViewHolder(View itemView) {
@@ -95,7 +85,6 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
             goodsPriceTv = (TextView) itemView.findViewById(R.id.all_type_goods_price);
             productAreaTv = (TextView) itemView.findViewById(R.id.all_type_product_area);
             brandTv = (TextView) itemView.findViewById(R.id.all_type_brand);
-            symbolIv = (ImageView) itemView.findViewById(R.id.all_type_symbol);
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.vdllo.mirror.home;
+package com.example.vdllo.mirror.themeshare;
 
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +12,8 @@ import com.example.vdllo.mirror.base.BaseFragment;
 import com.example.vdllo.mirror.bean.GoodsListBean;
 import com.example.vdllo.mirror.bean.StoryListBean;
 import com.example.vdllo.mirror.bean.UrlBean;
+import com.example.vdllo.mirror.home.AllTypeAdapter;
+import com.example.vdllo.mirror.home.ShowPopMenu;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
@@ -24,20 +26,19 @@ import okhttp3.Response;
 /**
  * Created by dllo on 16/3/30.
  */
-public class AllTypeFragment extends BaseFragment {
+public class ThemeShareFragment extends BaseFragment {
 
     private LinearLayoutManager manager;
-    private GoodsListBean goodsListBean;
     private RecyclerView recyclerView;
     private LinearLayout linearLayout;
-    private AllTypeAdapter adapter;
+    private ThemeShareAdapter adapter;
     private ShowPopMenu showPopMenu;
     private ArrayList<String> data;
     private Handler handler;
     private int i;
     private StoryListBean storyListBean;
 
-    public AllTypeFragment(int i) {
+    public ThemeShareFragment(int i) {
         this.i = i;
     }
 
@@ -72,35 +73,31 @@ public class AllTypeFragment extends BaseFragment {
             public boolean handleMessage(Message msg) {
                 //1.Gson解析
                 Gson gson = new Gson();
-                goodsListBean = gson.fromJson(msg.obj.toString(), GoodsListBean.class);
+                storyListBean = gson.fromJson(msg.obj.toString(), StoryListBean.class);
                 // 2.设置布局管理器
                 manager = new LinearLayoutManager(getActivity());
                 manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 recyclerView.setLayoutManager(manager);
                 // 3.设置适配器
-                adapter = new AllTypeAdapter(goodsListBean, getContext(), i);
+                adapter = new ThemeShareAdapter(getContext(), storyListBean);
                 recyclerView.setAdapter(adapter);
                 return false;
             }
         });
-        //商品列表
-        getGoods();
+        //专题分享
+        getShareInfo();
     }
 
-    public void getGoods() {
-        //okhttp网络解析
-        OkHttpUtils.post().url(UrlBean.GOODS_LIST).addParams("token", "")
+    public void getShareInfo() {
+        OkHttpUtils.post().url(UrlBean.STORY_LIST).addParams("token", "")
+                .addParams("uid", "")
                 .addParams("device_type", "2")
                 .addParams("page", "")
-                .addParams("last_time", "")
-                .addParams("category_id", "")
-                .addParams("version", "").build().execute(new Callback() {
+                .addParams("last_time", "").build().execute(new Callback() {
             @Override
             public Object parseNetworkResponse(Response response) throws Exception {
-                //子线程无法刷新UI,利用handler发送Message到主线程
                 String body = response.body().string();
                 Message message = new Message();
-                message.what = 1;
                 message.obj = body;
                 handler.sendMessage(message);
                 return null;
@@ -116,7 +113,7 @@ public class AllTypeFragment extends BaseFragment {
 
             }
         });
-    }
 
+    }
 }
 
