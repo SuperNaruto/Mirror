@@ -41,7 +41,7 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if (pos == 0) {
-            GoodsListBean.DataEntity.ListEntity data = datas.getData().getList().get(pos);
+            GoodsListBean.DataEntity.ListEntity data = datas.getData().getList().get(position);
             //Picasso加载图片
             Picasso.with(context).load(data.getGoods_img()).into(holder.goodsPic);
             holder.goodsNameTv.setText(data.getGoods_name());
@@ -70,7 +70,12 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return 2;
+        if (pos == 0) {
+            return datas.getData().getList().size();
+        } else  {
+            return 1;
+        }
+
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

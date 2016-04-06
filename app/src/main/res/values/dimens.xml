@@ -152,4 +152,23 @@
     <dimen name="activity_details_buyIv_marginRight">20dp</dimen>
     <!--activity_details -->
 
+    <!--details_type_one -->
+    <dimen name="details_type_one_linearLayout_marginTop">35dp</dimen>
+    <dimen name="details_type_one_tv_marginLeft">23dp</dimen>
+    <dimen name="details_type_one_tv_textSize">16sp</dimen>
+    <dimen name="details_type_one_tv_marginRight">23dp</dimen>
+    <dimen name="details_type_one_tv_marginTop">8dp</dimen>
+    <dimen name="details_type_one_whileLine_marginTop">10dp</dimen>
+    <dimen name="details_type_one_locationTv_textSize">16sp</dimen>
+    <dimen name="details_type_one_englishTv_marginTop">5dp</dimen>
+    <dimen name="details_type_one_englishTv_textSize">12sp</dimen>
+    <dimen name="details_type_one_countryTv_marginRight">5dp</dimen>
+    <dimen name="details_type_one_countryTv_textSize">30sp</dimen>
+    <dimen name="details_type_one_contentTv_marginBottom">10dp</dimen>
+    <dimen name="details_type_one_contentTv_textSize">13sp</dimen>
+    <dimen name="details_type_one_bg_height">480dp</dimen>
+    <!--details_type_one -->
+
+
+
 </resources>

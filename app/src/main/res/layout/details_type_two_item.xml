@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/details_type_one_bg_height"
+            android:background="@android:color/white" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/details_type_one_tv_marginLeft"
+            android:layout_marginRight="@dimen/details_type_one_tv_marginRight"
+            android:background="@android:color/black"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/details_type_one_tv_marginLeft"
+                android:layout_marginRight="@dimen/details_type_one_tv_marginRight"
+                android:layout_marginTop="@dimen/details_type_one_whileLine_marginTop"
+                android:background="@mipmap/goods_share_whiteline" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/details_type_one_countryTv_marginRight"
+                    android:layout_marginTop="@dimen/details_type_one_whileLine_marginTop"
+                    android:text="专注复古"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/details_type_one_countryTv_textSize"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/details_type_one_tv_marginLeft"
+                android:layout_marginRight="@dimen/details_type_one_tv_marginRight"
+                android:layout_marginTop="@dimen/details_type_one_whileLine_marginTop"
+                android:background="@mipmap/goods_share_whiteline" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/details_type_one_contentTv_marginBottom"
+                android:layout_marginLeft="@dimen/details_type_one_tv_marginLeft"
+                android:layout_marginRight="@dimen/details_type_one_tv_marginRight"
+                android:layout_marginTop="@dimen/details_type_one_whileLine_marginTop"
+                android:text="这款眼镜来自现在正热的韩国大势眼镜品牌Gentle Monster，专注复古，眼镜均为纯手工打造。这款飞行员金属太阳镜，镜圈采用黑色金属框，散发前卫与帅气相融合的气息，银色镜片时髦又新颖。"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/details_type_one_contentTv_textSize" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
