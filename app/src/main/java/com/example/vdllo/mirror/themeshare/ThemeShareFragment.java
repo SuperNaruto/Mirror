@@ -9,20 +9,12 @@ import android.widget.LinearLayout;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseFragment;
-import com.example.vdllo.mirror.bean.GoodsListBean;
 import com.example.vdllo.mirror.bean.StoryListBean;
-import com.example.vdllo.mirror.bean.UrlBean;
-import com.example.vdllo.mirror.home.AllTypeAdapter;
-import com.example.vdllo.mirror.home.ShowPopMenu;
+import com.example.vdllo.mirror.home.CatalogFragment;
 import com.example.vdllo.mirror.net.NetHelper;
 import com.google.gson.Gson;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.Callback;
 
 import java.util.ArrayList;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 /**
  * Created by dllo on 16/3/30.
@@ -33,7 +25,6 @@ public class ThemeShareFragment extends BaseFragment {
     private RecyclerView recyclerView;
     private LinearLayout linearLayout;
     private ThemeShareAdapter adapter;
-    private ShowPopMenu showPopMenu;
     private ArrayList<String> data;
     private Handler handler;
     private int i;
@@ -52,7 +43,6 @@ public class ThemeShareFragment extends BaseFragment {
     protected void initView() {
         recyclerView = bindView(R.id.recycleView);
         linearLayout = (LinearLayout) getView().findViewById(R.id.all_type_linearlayout);
-        showPopMenu = new ShowPopMenu(getContext());
         data = new ArrayList<>();
         data.add("浏览所有分类");
         data.add("浏览平光眼镜");
@@ -62,7 +52,10 @@ public class ThemeShareFragment extends BaseFragment {
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPopMenu.showPopupWindow(v, data, i);
+                android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.add(R.id.main_linearlayout, new CatalogFragment(getActivity(),data,i));
+                ft.addToBackStack(null);
+                ft.commit();
             }
         });
     }

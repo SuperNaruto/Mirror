@@ -4,8 +4,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseFragment;
@@ -32,7 +34,6 @@ public class AllTypeFragment extends BaseFragment {
     private RecyclerView recyclerView;
     private LinearLayout linearLayout;
     private AllTypeAdapter adapter;
-    private ShowPopMenu showPopMenu;
     private ArrayList<String> data;
     private Handler handler;
     private int i;
@@ -51,17 +52,21 @@ public class AllTypeFragment extends BaseFragment {
     protected void initView() {
         recyclerView = bindView(R.id.recycleView);
         linearLayout = (LinearLayout) getView().findViewById(R.id.all_type_linearlayout);
-        showPopMenu = new ShowPopMenu(getContext());
         data = new ArrayList<>();
         data.add("浏览所有分类");
         data.add("浏览平光眼镜");
         data.add("浏览太阳眼镜");
         data.add("专题分享");
         data.add("购物车");
+
+        //设置popupWindow监听
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPopMenu.showPopupWindow(v, data, i);
+                android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.add(R.id.main_linearlayout, new CatalogFragment(getActivity(),data,i));
+                ft.addToBackStack(null);
+                ft.commit();
             }
         });
     }

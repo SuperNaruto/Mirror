@@ -13,6 +13,8 @@ import com.example.vdllo.mirror.bean.GoodsListBean;
 import com.example.vdllo.mirror.bean.StoryListBean;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 /**
  * …
  * Created by dllo on 16/3/30.
@@ -24,6 +26,7 @@ public class ThemeShareAdapter extends RecyclerView.Adapter<ThemeShareAdapter.Vi
     public ThemeShareAdapter(Context context, StoryListBean data) {
         this.context = context;
         this.storyListBean = data;
+
     }
 
     @Override
@@ -42,7 +45,7 @@ public class ThemeShareAdapter extends RecyclerView.Adapter<ThemeShareAdapter.Vi
 
     @Override
     public int getItemCount() {
-        return 2;
+        return storyListBean.getData().getList().size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

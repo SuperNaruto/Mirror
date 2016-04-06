@@ -17,12 +17,12 @@ import java.util.ArrayList;
 /**
  * Created by dllo on 16/3/31.
  */
-public class ShowMenuAdapter extends BaseAdapter {
+public class CatalogAdapter extends BaseAdapter {
     private ArrayList<String> datas;
     private int line;
     private Context context;
 
-    public ShowMenuAdapter(ArrayList<String> datas, Context context, int line) {
+    public CatalogAdapter(ArrayList<String> datas, Context context, int line) {
         this.datas = datas;
         this.line = line;
         this.context = context;
