@@ -172,7 +172,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/login_weixin_linearLayout_marginLeft"
+            android:layout_marginLeft="@dimen/login_weChat_linearLayout_marginLeft"
             android:background="@mipmap/login_weixinicon" />
 
     </LinearLayout>

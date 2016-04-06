@@ -2,71 +2,74 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@mipmap/bg">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <LinearLayout
-        android:id="@+id/all_type_linearlayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/all_type_linearlayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="11dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="@dimen/fragment_all_type_marginTop"
+            android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="浏览平光眼镜"
-                android:textColor="@android:color/white"
-                android:textSize="15sp" />
+                android:layout_marginLeft="@dimen/fragment_all_type_marginLeft"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="浏览平光眼镜"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/fragment_all_type_textSize" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/fragment_all_type_iv_marginLeft"
+                    android:src="@mipmap/bottom" />
+            </LinearLayout>
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="5dp"
-                android:src="@mipmap/bottom" />
+                android:layout_marginLeft="@dimen/fragment_all_type_marginLeft"
+                android:layout_marginTop="@dimen/fragment_all_type_iv_marginTop"
+                android:src="@mipmap/main_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fragment_all_type_new_marginTop">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/fragment_all_type_marginLeft"
+                    android:text="显示排序为最新推荐"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/fragment_all_type_new_textSize" />
+            </LinearLayout>
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="11dp"
-            android:layout_marginTop="8dp"
-            android:src="@mipmap/main_line" />
-
-        <LinearLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycleView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="13dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="11dp"
-                android:text="显示排序为最新推荐"
-                android:textColor="@android:color/white"
-                android:textSize="12sp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycleView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp" />
+            android:layout_marginTop="@dimen/fragment_all_type_recyclerView" />
 
     </LinearLayout>
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
 </LinearLayout>

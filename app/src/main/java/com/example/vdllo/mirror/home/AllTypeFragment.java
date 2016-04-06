@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseFragment;
@@ -27,16 +28,14 @@ import okhttp3.Response;
  */
 public class AllTypeFragment extends BaseFragment {
 
-    private AllTypeAdapter adapter;
-    private RecyclerView recyclerView;
     private LinearLayoutManager manager;
-    private List<Integer> datas;
-    private LinearLayout linearLayout;
-    private ShowPopMenu showPopMenu;
-    private ArrayList<String> data;
-    private int i;
-    private Handler handler;
     private GoodsListBean goodsListBean;
+    private RecyclerView recyclerView;
+    private LinearLayout linearLayout;
+    private AllTypeAdapter adapter;
+    private ArrayList<String> data;
+    private Handler handler;
+    private int i;
 
     public AllTypeFragment(int i) {
         this.i = i;
@@ -51,27 +50,33 @@ public class AllTypeFragment extends BaseFragment {
     protected void initView() {
         recyclerView = bindView(R.id.recycleView);
         linearLayout = (LinearLayout) getView().findViewById(R.id.all_type_linearlayout);
-        showPopMenu = new ShowPopMenu(getContext());
         data = new ArrayList<>();
         data.add("浏览所有分类");
         data.add("浏览平光眼镜");
         data.add("浏览太阳眼镜");
         data.add("专题分享");
         data.add("购物车");
+
+        //设置popupWindow监听
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPopMenu.showPopupWindow(v, data, i);
+                android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.add(R.id.main_linearlayout, new CatalogFragment(getActivity(),data,i));
+                ft.addToBackStack(null);
+                    Log.e("----","click");
+//                ft.hide(AllTypeFragment.this);
+                ft.commit();
             }
         });
     }
 
     @Override
     protected void dataView() {
-
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
+                //1.Gson解析
                 Gson gson = new Gson();
                 goodsListBean = gson.fromJson(msg.obj.toString(), GoodsListBean.class);
                 // 2.设置布局管理器
@@ -79,12 +84,11 @@ public class AllTypeFragment extends BaseFragment {
                 manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 recyclerView.setLayoutManager(manager);
                 // 3.设置适配器
-                adapter = new AllTypeAdapter(goodsListBean, getContext());
+                adapter = new AllTypeAdapter(goodsListBean, getContext(), i);
                 recyclerView.setAdapter(adapter);
                 return false;
             }
         });
-
         getInfo();
     }
 
@@ -98,11 +102,11 @@ public class AllTypeFragment extends BaseFragment {
                 .addParams("version", "").build().execute(new Callback() {
             @Override
             public Object parseNetworkResponse(Response response) throws Exception {
+                //子线程无法刷新UI,利用handler发送Message到主线程
                 String body = response.body().string();
                 Message message = new Message();
                 message.obj = body;
                 handler.sendMessage(message);
-                Log.d("aa", message.obj.toString());
                 return null;
             }
 
@@ -117,7 +121,5 @@ public class AllTypeFragment extends BaseFragment {
             }
         });
     }
-
-
 }
 

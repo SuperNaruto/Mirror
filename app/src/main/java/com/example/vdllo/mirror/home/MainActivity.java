@@ -1,11 +1,15 @@
 package com.example.vdllo.mirror.home;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.widget.FrameLayout;
 import android.widget.Scroller;
 import android.widget.Toast;
 
@@ -19,12 +23,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends BaseAcitvity {
 
-    private CustomViewPager viewPager;
-    private MainAdapter adapter;
-    private ArrayList<Fragment> datas;
     private static final String TAG = MainActivity.class.getSimpleName();
-
-    private long clickTime = 0; //记录第一次点击的时间
+    //记录第一次点击的时间
+    private long clickTime = 0;
 
     @Override
     protected int setContent() {
@@ -33,34 +34,17 @@ public class MainActivity extends BaseAcitvity {
 
     @Override
     protected void initView() {
-        viewPager = bindView(R.id.main_viewpager);
+        android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.main_linearlayout, new BackGroundFragment());
+        ft.commit();
+
     }
 
     @Override
     protected void initData() {
-        datas = new ArrayList<>();
-        datas.add(new AllTypeFragment(0));
-        datas.add(new AllTypeFragment(1));
-        datas.add(new AllTypeFragment(2));
-        datas.add(new AllTypeFragment(3));
-        datas.add(new ShoppingCartFragment());
-        adapter = new MainAdapter(getSupportFragmentManager(), datas);
-        viewPager.setAdapter(adapter);
 
-        Intent intent = getIntent();
-        int s = intent.getIntExtra("key", -1);
-        if (s < 0){
-
-        }else{
-           finish();
-        }
-
-
-
-        Intent rIntent = getIntent();
-        int m = rIntent.getIntExtra("position", 0);
-        viewPager.setCurrentItem(m);
     }
+
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -83,52 +67,5 @@ public class MainActivity extends BaseAcitvity {
         }
     }
 
-    public void getPositionFromPopwindow(int position) {
-        //这个是设置viewPager切换过度时间的类
-        ViewPagerScroller scroller = new ViewPagerScroller(this);
-        scroller.setScrollDuration(100);//这个是设置切换过渡时间为0毫秒
-        scroller.initViewPagerScroll(viewPager);
-        viewPager.setCurrentItem(position);
-    }
-
-    public class ViewPagerScroller extends Scroller {
-        private int mScrollDuration = 2000;             // 滑动速度
-
-        /**
-         * 设置速度速度
-         *
-         * @param duration
-         */
-        public void setScrollDuration(int duration) {
-            this.mScrollDuration = duration;
-        }
-
-        public ViewPagerScroller(Context context) {
-            super(context);
-        }
-
-
-        @Override
-        public void startScroll(int startX, int startY, int dx, int dy, int duration) {
-            super.startScroll(startX, startY, dx, dy, mScrollDuration);
-        }
-
-        @Override
-        public void startScroll(int startX, int startY, int dx, int dy) {
-            super.startScroll(startX, startY, dx, dy, mScrollDuration);
-        }
-
-
-        public void initViewPagerScroll(ViewPager viewPager) {
-            try {
-                Field mScroller = ViewPager.class.getDeclaredField("mScroller");
-                mScroller.setAccessible(true);
-                mScroller.set(viewPager, this);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-
 }
+

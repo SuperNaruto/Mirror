@@ -7,15 +7,14 @@
     tools:context=".home.MainActivity">
 
     <FrameLayout
+        android:id="@+id/main_framelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <com.example.vdllo.mirror.toolclass.CustomViewPager
-            android:id="@+id/main_viewpager"
+        <FrameLayout
+            android:id="@+id/main_linearlayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@mipmap/bg"
-            android:isScrollContainer="true" />
+            />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -39,10 +38,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="@dimen/main_bottom_textview_text"
+                    android:layout_marginRight="@dimen/main_bottom_textView_text"
                     android:text="@string/main_bottom_textview_right"
                     android:textColor="@android:color/white" />
             </RelativeLayout>
         </RelativeLayout>
+
     </FrameLayout>
+
 </LinearLayout>

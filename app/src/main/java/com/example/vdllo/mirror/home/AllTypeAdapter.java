@@ -22,8 +22,10 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
 
     GoodsListBean datas;
     Context context;
+    int pos;
 
-    public AllTypeAdapter(GoodsListBean datas,Context context) {
+    public AllTypeAdapter(GoodsListBean datas, Context context, int pos) {
+        this.pos = pos;
         this.datas = datas;
         this.context = context;
     }
@@ -37,19 +39,38 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        GoodsListBean.DataEntity.ListEntity data = datas.getData().getList().get(position);
-        //Picasso加载图片
-        Picasso.with(context).load(data.getGoods_img()).into(holder.goodsPic);
-        holder.goodsNameTv.setText(data.getGoods_name());
-        holder.goodsPriceTv.setText(data.getGoods_price());
-        holder.brandTv.setText(data.getBrand());
-        holder.productAreaTv.setText(data.getProduct_area());
+        if (pos == 0) {
+            GoodsListBean.DataEntity.ListEntity data = datas.getData().getList().get(pos);
+            //Picasso加载图片
+            Picasso.with(context).load(data.getGoods_img()).into(holder.goodsPic);
+            holder.goodsNameTv.setText(data.getGoods_name());
+            holder.goodsPriceTv.setText(data.getGoods_price());
+            holder.brandTv.setText(data.getBrand());
+            holder.productAreaTv.setText(data.getProduct_area());
+        } else if (pos == 1) {
+            GoodsListBean.DataEntity.ListEntity data = datas.getData().getList().get(pos);
+            //Picasso加载图片
+            Picasso.with(context).load(data.getGoods_img()).into(holder.goodsPic);
+            holder.goodsNameTv.setText(data.getGoods_name());
+            holder.goodsPriceTv.setText(data.getGoods_price());
+            holder.brandTv.setText(data.getBrand());
+            holder.productAreaTv.setText(data.getProduct_area());
+        } else if (pos == 2) {
+            GoodsListBean.DataEntity.ListEntity data = datas.getData().getList().get(pos);
+            //Picasso加载图片
+            Picasso.with(context).load(data.getGoods_img()).into(holder.goodsPic);
+            holder.goodsNameTv.setText(data.getGoods_name());
+            holder.goodsPriceTv.setText(data.getGoods_price());
+            holder.brandTv.setText(data.getBrand());
+            holder.productAreaTv.setText(data.getProduct_area());
+        }
+
 
     }
 
     @Override
     public int getItemCount() {
-        return datas.getData().getList().size();
+        return 1;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

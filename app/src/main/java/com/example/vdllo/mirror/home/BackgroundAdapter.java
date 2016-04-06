@@ -8,11 +8,11 @@ import java.util.ArrayList;
 /**
  * Created by dllo on 16/3/30.
  */
-public class MainAdapter extends FragmentPagerAdapter{
+public class BackgroundAdapter extends FragmentPagerAdapter{
 
     private ArrayList<Fragment> datas;
 
-    public MainAdapter(FragmentManager fm, ArrayList<Fragment> datas) {
+    public BackgroundAdapter(FragmentManager fm, ArrayList<Fragment> datas) {
         super(fm);
         this.datas = datas;
     }
