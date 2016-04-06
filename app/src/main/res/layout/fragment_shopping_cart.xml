@@ -2,71 +2,79 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@mipmap/main_bg">
-<LinearLayout
-    android:id="@+id/shopping_cart_linearLayout"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:background="@mipmap/main_bg"
     android:orientation="vertical">
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_marginTop="@dimen/shopping_cart_top"
-    android:layout_marginLeft="@dimen/shopping_cart_left">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/shopping_cart_myShop_textView"
-        android:textSize="@dimen/shopping_cart_shop_textSize"
-        android:textColor="@android:color/white"
-       />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/drop_down"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="@dimen/shopping_cart_bottom_left"/>
-
-</LinearLayout>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/main_line"
-        android:layout_marginLeft="@dimen/shopping_cart_line_left"
-        android:layout_marginTop="@dimen/shopping_cart_line_top"/>
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/shopping_cart_linearLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/shopping_cart_new_text"
-        android:layout_marginLeft="@dimen/shopping_cart_new_top">
-        <TextView
-            android:layout_width="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/shopping_cart_new_texts"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/shopping_cart_new_textSize"/>
-    </LinearLayout>
-</LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/shopping_cart_pic_top">
+            android:layout_marginLeft="@dimen/shopping_cart_left"
+            android:layout_marginTop="@dimen/shopping_cart_top"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/shopping_cart_myShop_textView"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/shopping_cart_shop_textSize" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/shopping_cart_bottom_left"
+                android:src="@mipmap/drop_down" />
+
+        </LinearLayout>
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/shop"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_marginLeft="@dimen/shopping_cart_line_left"
+            android:layout_marginTop="@dimen/shopping_cart_line_top"
+            android:src="@mipmap/main_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/shopping_cart_new_top"
+            android:layout_marginTop="@dimen/shopping_cart_new_text">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/shopping_cart_new_texts"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/shopping_cart_new_textSize" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/shopping_cart_pic_top"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/shop" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/shopping_cart_no_text"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/shopping_cart_no_top"
-            android:textColor="@android:color/white"/>
+            android:text="@string/shopping_cart_no_text"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
 </LinearLayout>

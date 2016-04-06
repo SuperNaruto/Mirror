@@ -1,7 +1,10 @@
 package com.example.vdllo.mirror.home;
 
+import android.content.Context;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,6 +15,7 @@ import android.widget.PopupWindow;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseFragment;
 import com.example.vdllo.mirror.bean.GoodsListBean;
+import com.example.vdllo.mirror.bean.MenuListBean;
 import com.example.vdllo.mirror.bean.StoryListBean;
 import com.example.vdllo.mirror.bean.UrlBean;
 import com.example.vdllo.mirror.net.NetHelper;
@@ -21,6 +25,7 @@ import com.zhy.http.okhttp.callback.Callback;
 
 import java.util.ArrayList;
 
+import de.greenrobot.event.EventBus;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -38,6 +43,8 @@ public class AllTypeFragment extends BaseFragment {
     private Handler handler;
     private int i;
     private StoryListBean storyListBean;
+    private MenuListBean menuListBean;
+    private boolean isRegister = false;
 
     public AllTypeFragment(int i) {
         this.i = i;
@@ -52,24 +59,9 @@ public class AllTypeFragment extends BaseFragment {
     protected void initView() {
         recyclerView = bindView(R.id.recycleView);
         linearLayout = (LinearLayout) getView().findViewById(R.id.all_type_linearlayout);
-        data = new ArrayList<>();
-        data.add("浏览所有分类");
-        data.add("浏览平光眼镜");
-        data.add("浏览太阳眼镜");
-        data.add("专题分享");
-        data.add("购物车");
-
-        //设置popupWindow监听
-        linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.add(R.id.main_linearlayout, new CatalogFragment(getActivity(),data,i));
-                ft.addToBackStack(null);
-                ft.commit();
-            }
-        });
+        EventBus.getDefault().register(this);
     }
+
 
     @Override
     protected void initData() {
@@ -89,11 +81,30 @@ public class AllTypeFragment extends BaseFragment {
                 return false;
             }
         });
-        //商品列表
-        NetHelper netHelper  = new NetHelper();
-        netHelper.getGoods(handler);
-    }
 
+        //商品列表
+        NetHelper netHelper = new NetHelper();
+        netHelper.getGoods(handler);
+
+        //TODO
+        data = new ArrayList<>();
+        for (int i = 0; i < menuListBean.getData().getList().size(); i++) {
+            data.add(menuListBean.getData().getList().get(i).getTitle());
+        }
+        data.add("专题分享");
+        data.add("购物车");
+
+        //设置popupWindow监听
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.add(R.id.main_linearlayout, new CatalogFragment(getActivity(), data, i));
+                ft.addToBackStack(null);
+                ft.commit();
+            }
+        });
+    }
 
 
 }
