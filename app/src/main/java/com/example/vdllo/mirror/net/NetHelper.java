@@ -2,6 +2,7 @@ package com.example.vdllo.mirror.net;
 
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import com.example.vdllo.mirror.bean.UrlBean;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -77,6 +78,33 @@ public class NetHelper {
 
             }
         });
+
+    }
+
+    //弹出菜单
+    public void getMenu(final Handler handler) {
+        OkHttpUtils.post().url(UrlBean.MENU_LIST).build().execute(new Callback() {
+            @Override
+            public Object parseNetworkResponse(Response response) throws Exception {
+                String body = response.body().string();
+                Message message = new Message();
+                message.what = 2;
+                message.obj = body;
+                handler.sendMessage(message);
+                return null;
+            }
+
+            @Override
+            public void onError(Call call, Exception e) {
+
+            }
+
+            @Override
+            public void onResponse(Object response) {
+
+            }
+        });
+
 
     }
 

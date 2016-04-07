@@ -26,7 +26,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="浏览平光眼镜"
+                    android:text="@string/fragment_all_type_menuText"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/fragment_all_type_textSize" />
 
@@ -54,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/fragment_all_type_marginLeft"
-                    android:text="显示排序为最新推荐"
+                    android:text="@string/fragment_all_type_orderText"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/fragment_all_type_new_textSize" />
             </LinearLayout>

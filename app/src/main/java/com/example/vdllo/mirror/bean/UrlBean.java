@@ -37,6 +37,7 @@ public class UrlBean {
     public static final String INDEX_MRTJ = URL + "index.php/index/mrtj";
     public static final String INDEX_STARTED_IMG = URL + "index.php/index/started_img";
     public static final String INDEX_SHARE_SWITCH = URL + "index.php/index/share_switch";
+    public static final String MENU_LIST = URL + "index.php/index/menu_list";
 
 
 }

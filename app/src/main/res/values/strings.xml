@@ -27,4 +27,6 @@
     <string name="pop_return_text">返回首页</string>
     <string name="pop_exit_text">退出</string>
     <string name="activity_details_wear_atlas_text">佩戴图集</string>
+    <string name="fragment_all_type_menuText">浏览全部分类</string>
+    <string name="fragment_all_type_orderText">显示排序为最新推荐</string>
 </resources>
