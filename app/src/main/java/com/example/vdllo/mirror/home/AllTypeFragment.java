@@ -59,7 +59,6 @@ public class AllTypeFragment extends BaseFragment {
     protected void initView() {
         recyclerView = bindView(R.id.recycleView);
         linearLayout = (LinearLayout) getView().findViewById(R.id.all_type_linearlayout);
-        EventBus.getDefault().register(this);
     }
 
 
@@ -86,15 +85,14 @@ public class AllTypeFragment extends BaseFragment {
         NetHelper netHelper = new NetHelper();
         netHelper.getGoods(handler);
 
-        //TODO
+        //menu
         data = new ArrayList<>();
-        for (int i = 0; i < menuListBean.getData().getList().size(); i++) {
-            data.add(menuListBean.getData().getList().get(i).getTitle());
-        }
+        data.add("浏览所有分类");
+        data.add("浏览平光眼镜");
+        data.add("浏览太阳眼镜");
         data.add("专题分享");
         data.add("购物车");
 
-        //设置popupWindow监听
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
