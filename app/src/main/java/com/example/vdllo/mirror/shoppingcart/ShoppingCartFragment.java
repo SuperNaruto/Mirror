@@ -37,8 +37,8 @@ public class ShoppingCartFragment extends BaseFragment {
         //menu
         data = new ArrayList<>();
         data.add("浏览所有分类");
-        data.add("浏览平光眼镜");
         data.add("浏览太阳眼镜");
+        data.add("浏览平光眼镜");
         data.add("专题分享");
         data.add("购物车");
 

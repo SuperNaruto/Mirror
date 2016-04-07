@@ -14,6 +14,7 @@ import com.example.vdllo.mirror.base.BaseFragment;
 import com.example.vdllo.mirror.bean.MenuListBean;
 import com.example.vdllo.mirror.net.NetHelper;
 import com.example.vdllo.mirror.shoppingcart.ShoppingCartFragment;
+import com.example.vdllo.mirror.themeshare.ThemeShareFragment;
 import com.example.vdllo.mirror.toolclass.CustomViewPager;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -49,7 +50,8 @@ public class BackGroundFragment extends BaseFragment {
         datas.add(new AllTypeFragment(0));
         datas.add(new AllTypeFragment(1));
         datas.add(new AllTypeFragment(2));
-        datas.add(new ShoppingCartFragment(3));
+        datas.add(new ThemeShareFragment(3));
+        datas.add(new ShoppingCartFragment(4));
         adapter = new BackgroundAdapter(getActivity().getSupportFragmentManager(), datas);
         viewPager.setAdapter(adapter);
 

@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@mipmap/main_bg">
+    android:background="@mipmap/main_bg"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,23 +18,26 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/fragment_all_type_marginLeft"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="7">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/all_type_titleTv"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/fragment_all_type_menuText"
+                    android:layout_weight="6"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/fragment_all_type_textSize" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/fragment_all_type_iv_marginLeft"
+                    android:layout_weight="1"
                     android:src="@mipmap/drop_down" />
             </LinearLayout>
 

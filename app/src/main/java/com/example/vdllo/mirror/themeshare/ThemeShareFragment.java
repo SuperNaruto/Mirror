@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseFragment;
@@ -29,6 +30,7 @@ public class ThemeShareFragment extends BaseFragment {
     private Handler handler;
     private int i;
     private StoryListBean storyListBean;
+    private TextView titleTextView;
 
     public ThemeShareFragment(int i) {
         this.i = i;
@@ -42,18 +44,22 @@ public class ThemeShareFragment extends BaseFragment {
     @Override
     protected void initView() {
         recyclerView = bindView(R.id.recycleView);
-        linearLayout = (LinearLayout) getView().findViewById(R.id.all_type_linearlayout);
+        linearLayout = bindView(R.id.all_type_linearlayout);
+        titleTextView = bindView(R.id.all_type_titleTv);
+
         data = new ArrayList<>();
         data.add("浏览所有分类");
-        data.add("浏览平光眼镜");
         data.add("浏览太阳眼镜");
+        data.add("浏览平光眼镜");
         data.add("专题分享");
         data.add("购物车");
+
+        titleTextView.setText(data.get(i));
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.add(R.id.main_linearlayout, new CatalogFragment(getActivity(),data,i));
+                ft.add(R.id.main_linearlayout, new CatalogFragment(getActivity(), data, i));
                 ft.addToBackStack(null);
                 ft.commit();
             }
