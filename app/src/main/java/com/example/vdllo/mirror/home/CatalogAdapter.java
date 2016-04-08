@@ -53,7 +53,7 @@ public class CatalogAdapter extends BaseAdapter {
             convertView.setTag(holder);
         }
         holder = (ViewHolder) convertView.getTag();
-        holder.textView.setText(Html.fromHtml(datas.get(position)));
+        holder.textView.setText(datas.get(position));
         if (line == position) {
             holder.imageView.setVisibility(View.VISIBLE);
         } else {
