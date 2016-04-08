@@ -90,7 +90,7 @@ public class AllTypeFragment extends BaseFragment {
             }
         });
         //商品列表
-        NetHelper netHelper  = new NetHelper();
+        NetHelper netHelper  = new NetHelper(getActivity());
         netHelper.getGoods(handler);
     }
 

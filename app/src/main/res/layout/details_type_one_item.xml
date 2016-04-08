@@ -2,47 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/details_type_one_relativeLayout"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/details_type_one_bg_height"
-            android:background="@android:color/white" />
+    <ImageView
+        android:id="@+id/details_type_one_iv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/details_type_one_bg_height"
+        android:background="@android:color/white" />
 
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/details_type_one_linearLayout_marginTop"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/details_type_one_tv_marginLeft"
-                android:text="水蓝色晶透版材太阳镜"
-                android:textSize="@dimen/details_type_one_tv_textSize"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/details_type_one_tv_marginLeft"
-                android:layout_marginRight="@dimen/details_type_one_tv_marginRight"
-                android:layout_marginTop="@dimen/details_type_one_tv_marginTop"
-                android:background="@mipmap/blackline" />
-
-        </LinearLayout>
-    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -50,6 +19,7 @@
         android:layout_alignParentBottom="true">
 
         <LinearLayout
+            android:id="@+id/details_type_one_linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/details_type_one_tv_marginLeft"
@@ -78,6 +48,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/details_title"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
@@ -87,6 +58,7 @@
                         android:textSize="@dimen/details_type_one_locationTv_textSize" />
 
                     <TextView
+                        android:id="@+id/details_little_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
@@ -103,6 +75,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/details_address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -126,6 +99,7 @@
                 android:background="@mipmap/goods_share_whiteline" />
 
             <TextView
+                android:id="@+id/details_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/details_type_one_contentTv_marginBottom"
