@@ -38,7 +38,7 @@
 
     <!--goods_share -->
     <dimen name="goods_share_shareIv_marginBottom">35px</dimen>
-    <dimen name="goods_share_shareIv_marginRight">40px</dimen>
+    <dimen name="goods_share_shareIv_marginRight">50px</dimen>
     <dimen name="goods_share_shareIv_marginTop">95px</dimen>
     <dimen name="goods_share_content_linearLayout_marginLeft">40px</dimen>
     <dimen name="goods_share_content_linearLayout_marginRight">40px</dimen>

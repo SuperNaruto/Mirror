@@ -4,6 +4,20 @@
     android:layout_height="570dp"
     android:background="#500e0e0e">
 
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/goods_share_shareIv_marginBottom"
+        android:layout_marginRight="@dimen/goods_share_shareIv_marginRight"
+        android:layout_marginTop="@dimen/goods_share_shareIv_marginTop">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/share" />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
 
     <LinearLayout
         android:layout_width="330dp"
@@ -72,18 +86,13 @@
                 android:layout_marginTop="24dp"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:src="@mipmap/money_symbol" />
-
                 <TextView
                     android:id="@+id/detail_head_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="2150"
+                    android:drawableLeft="@mipmap/money_symbol"
                     android:textColor="@android:color/white"
                     android:textSize="18sp" />
             </LinearLayout>

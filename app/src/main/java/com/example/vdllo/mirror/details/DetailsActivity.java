@@ -209,8 +209,8 @@ public class DetailsActivity extends BaseAcitvity {
                 super(itemView);
                 eTitleTv = (TextView) itemView.findViewById(R.id.details_head_item_title);
                 typeTitleTv = (TextView) itemView.findViewById(R.id.details_head_item_little_title);
-                contentTv = (TextView) itemView.findViewById(R.id.details_head_item_content);
-                priceTv = (TextView) itemView.findViewById(R.id.details_head_item_price);
+                contentTv = (TextView) itemView.findViewById(R.id.detail_head_context);
+                priceTv = (TextView) itemView.findViewById(R.id.detail_head_price);
             }
         }
 
