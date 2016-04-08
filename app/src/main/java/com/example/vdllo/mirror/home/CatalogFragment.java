@@ -52,12 +52,13 @@ public class CatalogFragment extends BaseFragment implements AdapterView.OnItemC
     }
 
     @Override
-    protected void dataView() {
+    protected void initData() {
         catalogAdapter = new CatalogAdapter(titleData, context, linePosition);
-        Log.d("android","++__linposition" + linePosition);
         listView.setAdapter(catalogAdapter);
         listView.setOnItemClickListener(this);
+        listView.setDividerHeight(0);
     }
+
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

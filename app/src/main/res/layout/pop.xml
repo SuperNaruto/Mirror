@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/main_bg">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <ListView
+        android:id="@+id/pop_listview"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pop_listView_height"
+        android:layout_marginTop="@dimen/pop_listView"/>
+    <TextView
+        android:id="@+id/pop_return_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pop_return_text"
+        android:layout_marginLeft="@dimen/pop_return_left"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/pop_return_textSize"/>
+    <TextView
+        android:id="@+id/pop_exit_textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pop_exit_text"
+        android:layout_marginLeft="@dimen/pop_text_left"
+        android:layout_marginTop="@dimen/pop_text_top"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/pop_text_textSize"/>
+</LinearLayout>
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/pop_image_bottom">
+
+            <ImageView
+                android:id="@+id/main_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/pop_image_left"
+                android:src="@mipmap/mirror" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/pop_textView"
+                android:text="@string/pop_textView_text"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+    </FrameLayout>
+
+</RelativeLayout>

@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
 import com.example.vdllo.mirror.shoppingcart.ShoppingCartFragment;
+import com.example.vdllo.mirror.themeshare.ThemeShareFragment;
 import com.example.vdllo.mirror.toolclass.CustomViewPager;
 
 import java.lang.reflect.Field;
@@ -61,7 +62,6 @@ public class MainActivity extends BaseAcitvity {
                     Toast.LENGTH_SHORT).show();
             clickTime = System.currentTimeMillis();
         } else {
-            Log.e(TAG, "exit application");
             this.finish();
 
         }

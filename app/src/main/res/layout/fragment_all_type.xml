@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@mipmap/bg">
+    android:background="@mipmap/main_bg"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,25 +18,32 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/fragment_all_type_marginLeft"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="7">
 
                 <TextView
+<<<<<<< HEAD
                     android:id="@+id/all_type_listname_tv"
                     android:layout_width="wrap_content"
+=======
+                    android:id="@+id/all_type_titleTv"
+                    android:layout_width="0dp"
+>>>>>>> 79e9998e9102ac9bfcccd57be22e057f1fc0250b
                     android:layout_height="wrap_content"
-                    android:text="浏览平光眼镜"
+                    android:layout_weight="6"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/fragment_all_type_textSize" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/fragment_all_type_iv_marginLeft"
-                    android:src="@mipmap/bottom" />
+                    android:layout_weight="1"
+                    android:src="@mipmap/drop_down" />
             </LinearLayout>
 
             <ImageView
@@ -55,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/fragment_all_type_marginLeft"
-                    android:text="显示排序为最新推荐"
+                    android:text="@string/fragment_all_type_orderText"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/fragment_all_type_new_textSize" />
             </LinearLayout>

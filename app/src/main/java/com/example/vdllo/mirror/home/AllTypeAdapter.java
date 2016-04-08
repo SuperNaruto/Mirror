@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.bean.GoodsListBean;
+import com.example.vdllo.mirror.bean.StoryListBean;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.squareup.picasso.Picasso;
 
@@ -40,7 +41,7 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if (pos == 0) {
-            GoodsListBean.DataEntity.ListEntity data = datas.getData().getList().get(pos);
+            GoodsListBean.DataEntity.ListEntity data = datas.getData().getList().get(position);
             //Picasso加载图片
             Picasso.with(context).load(data.getGoods_img()).into(holder.goodsPic);
             holder.goodsNameTv.setText(data.getGoods_name());
@@ -65,12 +66,16 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
             holder.productAreaTv.setText(data.getProduct_area());
         }
 
-
     }
 
     @Override
     public int getItemCount() {
-        return 1;
+        if (pos == 0) {
+            return datas.getData().getList().size();
+        } else  {
+            return 1;
+        }
+
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -87,5 +92,6 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
             brandTv = (TextView) itemView.findViewById(R.id.all_type_brand);
         }
     }
+
 
 }

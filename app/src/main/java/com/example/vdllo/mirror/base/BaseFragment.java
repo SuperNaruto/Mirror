@@ -3,6 +3,7 @@ package com.example.vdllo.mirror.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,14 +31,14 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        dataView();
+        initData();
     }
 
     public abstract int getLayout();
 
     protected abstract void initView();
 
-    protected abstract void dataView();
+    protected abstract void initData();
 
     // 方便初始化组件
     protected <T extends View> T bindView(int id) {

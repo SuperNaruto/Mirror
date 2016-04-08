@@ -94,9 +94,9 @@
     <!--shopping_cart -->
 
     <!--all_type_item -->
-    <dimen name="all_type_all_width">230dp</dimen>
+    <dimen name="all_type_all_width">225dp</dimen>
     <dimen name="all_type_all_left">11dp</dimen>
-    <dimen name="all_type_image_height">410dp</dimen>
+    <dimen name="all_type_image_height">400dp</dimen>
     <dimen name="all_type_content_height">115dp</dimen>
     <dimen name="all_type_content_left">12dp</dimen>
     <dimen name="all_type_content_right">12dp</dimen>
@@ -109,8 +109,9 @@
     <dimen name="all_type_fina_text">8dp</dimen>
     <dimen name="all_type_final_textSize">15sp</dimen>
     <dimen name="all_type_area_marginTop">8dp</dimen>
-    <dimen name="all_type_goods_name_marginLeft">3dp</dimen>
+    <dimen name="all_type_goods_name_marginLeft">2dp</dimen>
     <dimen name="all_type_goods_name_marginRight">3dp</dimen>
+    <dimen name="all_type_share_item_height">60dp</dimen>
     <!--all_type_item -->
 
     <!--popWindow -->
@@ -141,6 +142,33 @@
     <dimen name="fragment_all_type_new_textSize">12sp</dimen>
     <dimen name="fragment_all_type_recyclerView">30dp</dimen>
     <!--fragment_all_type -->
+
+    <!--activity_details -->
+    <dimen name="activity_details_return_iv_marginLeft">10dp</dimen>
+    <dimen name="activity_details_frameLayout_height">50dp</dimen>
+    <dimen name="activity_details_frameLayout_marginBottom">2dp</dimen>
+    <dimen name="activity_details_relativeLayout_height">45dp</dimen>
+    <dimen name="activity_details_btn_marginLeft">30dp</dimen>
+    <dimen name="activity_details_buyIv_marginRight">20dp</dimen>
+    <!--activity_details -->
+
+    <!--details_type_one -->
+    <dimen name="details_type_one_linearLayout_marginTop">35dp</dimen>
+    <dimen name="details_type_one_tv_marginLeft">23dp</dimen>
+    <dimen name="details_type_one_tv_textSize">16sp</dimen>
+    <dimen name="details_type_one_tv_marginRight">23dp</dimen>
+    <dimen name="details_type_one_tv_marginTop">8dp</dimen>
+    <dimen name="details_type_one_whileLine_marginTop">10dp</dimen>
+    <dimen name="details_type_one_locationTv_textSize">16sp</dimen>
+    <dimen name="details_type_one_englishTv_marginTop">5dp</dimen>
+    <dimen name="details_type_one_englishTv_textSize">12sp</dimen>
+    <dimen name="details_type_one_countryTv_marginRight">5dp</dimen>
+    <dimen name="details_type_one_countryTv_textSize">30sp</dimen>
+    <dimen name="details_type_one_contentTv_marginBottom">10dp</dimen>
+    <dimen name="details_type_one_contentTv_textSize">13sp</dimen>
+    <dimen name="details_type_one_bg_height">480dp</dimen>
+    <!--details_type_one -->
+
 
 
 </resources>
