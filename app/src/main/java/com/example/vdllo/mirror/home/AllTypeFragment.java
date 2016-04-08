@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseFragment;
@@ -36,6 +37,7 @@ public class AllTypeFragment extends BaseFragment {
     private ArrayList<String> data;
     private Handler handler;
     private int i;
+    private TextView textView;
 
     public AllTypeFragment(int i) {
         this.i = i;
@@ -49,6 +51,7 @@ public class AllTypeFragment extends BaseFragment {
     @Override
     protected void initView() {
         recyclerView = bindView(R.id.recycleView);
+        textView = bindView(R.id.all_type_listname_tv);
         linearLayout = (LinearLayout) getView().findViewById(R.id.all_type_linearlayout);
         data = new ArrayList<>();
         data.add("浏览所有分类");
@@ -56,7 +59,7 @@ public class AllTypeFragment extends BaseFragment {
         data.add("浏览太阳眼镜");
         data.add("专题分享");
         data.add("购物车");
-
+        textView.setText(data.get(i));
         //设置popupWindow监听
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +68,6 @@ public class AllTypeFragment extends BaseFragment {
                 ft.add(R.id.main_linearlayout, new CatalogFragment(getActivity(),data,i));
                 ft.addToBackStack(null);
                     Log.e("----","click");
-//                ft.hide(AllTypeFragment.this);
                 ft.commit();
             }
         });
