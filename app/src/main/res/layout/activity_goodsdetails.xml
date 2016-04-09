@@ -2,19 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/goodsdetail_background"
+        android:id="@+id/goodsDetail_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         fresco:placeholderImage="@mipmap/ic_launcher" />
 
     <com.example.vdllo.mirror.toolclass.LinkageListView
-        android:id="@+id/detail_listview"
+        android:id="@+id/detail_listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -51,6 +50,5 @@
                 android:src="@mipmap/buy" />
 
         </RelativeLayout>
-
     </FrameLayout>
 </RelativeLayout>

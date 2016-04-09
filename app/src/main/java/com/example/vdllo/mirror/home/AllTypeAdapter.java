@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.bean.GoodsListBean;
 import com.example.vdllo.mirror.bean.StoryListBean;
-import com.example.vdllo.mirror.details.DetailsActivity;
 import com.example.vdllo.mirror.details.GoodsDetailsActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.squareup.picasso.Picasso;

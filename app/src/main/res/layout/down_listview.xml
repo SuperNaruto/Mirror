@@ -10,7 +10,7 @@
         android:layout_weight="1" />
 
     <LinearLayout
-
+        android:id="@+id/down_listView_linearLayout"
         android:layout_width="315dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -28,50 +28,60 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="10dp"
                 android:background="@mipmap/main_second_line" />
 
             <LinearLayout
-                android:layout_width="285dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginTop="15dp">
 
                     <TextView
                         android:id="@+id/down_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15sp" />
+                        android:layout_gravity="right"
+                        android:text="来自时尚之都英国"
+                        android:textColor="@color/goods_share_content_textColor"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:id="@+id/down_en_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15sp"
+                        android:layout_gravity="right"
+                        android:text="The frame comes from New Zealand"
+                        android:textColor="@color/goods_share_content_textColor"
+                        android:textSize="11sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/down_country"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:gravity="center"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center_horizontal"
-                    android:text="简约而不简单"
-                    android:textColor="@android:color/white"
-                    android:textSize="30sp" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/down_country"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="新西兰"
+                        android:textColor="@color/goods_share_content_textColor"
+                        android:textSize="30sp" />
+                </LinearLayout>
             </LinearLayout>
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:background="@mipmap/main_line" />
 
             <TextView
@@ -80,12 +90,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="22dp"
                 android:layout_marginTop="15sp"
-                android:text="这是看见大手大脚啊上课的教室里的空间发生了的咖啡机萨里的咖啡机啊实力的咖啡机啊实力的咖啡机撒到路口附近阿萨德了看法"
                 android:textColor="@android:color/white"
                 android:textSize="13sp" />
         </LinearLayout>
-
     </LinearLayout>
-
 
 </LinearLayout>

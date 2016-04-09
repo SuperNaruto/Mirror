@@ -4,7 +4,7 @@
     android:layout_height="570dp"
     android:background="#500e0e0e">
 
-    <com.zhy.autolayout.AutoRelativeLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/goods_share_shareIv_marginBottom"
@@ -17,7 +17,7 @@
             android:layout_alignParentRight="true"
             android:background="@mipmap/share" />
 
-    </com.zhy.autolayout.AutoRelativeLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="330dp"

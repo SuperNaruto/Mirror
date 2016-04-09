@@ -1,23 +1,17 @@
 package com.example.vdllo.mirror.details;
 
 import android.animation.ObjectAnimator;
-import android.content.Context;
 import android.net.Uri;
 import android.os.Handler;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
 import com.example.vdllo.mirror.bean.GoodsListBean;
 import com.example.vdllo.mirror.toolclass.LinkageListView;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.squareup.picasso.Picasso;
 
 /**
  * Created by Bo on 16/4/8.
@@ -42,13 +36,13 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
 
     @Override
     protected int setContent() {
-        return R.layout.activity_goodsdetails;
+        return R.layout.activity_details;
     }
 
     @Override
     protected void initView() {
-        listView = (LinkageListView) findViewById(R.id.detail_listview);
-        background = (SimpleDraweeView) findViewById(R.id.goodsdetail_background);
+        listView = (LinkageListView) findViewById(R.id.detail_listView);
+        background = (SimpleDraweeView) findViewById(R.id.goodsDetail_background);
     }
 
     @Override

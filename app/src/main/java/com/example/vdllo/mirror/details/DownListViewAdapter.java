@@ -73,7 +73,7 @@ public class DownListViewAdapter extends BaseAdapter {
 
         switch (type) {
             case TYPE_1:
-//空布局
+                //空布局
                 convertView = inflater.inflate(R.layout.down_listview_blank, parent, false);
                 break;
             case TYPE_2:
@@ -84,7 +84,6 @@ public class DownListViewAdapter extends BaseAdapter {
                     String s = allGoodsListData.getData().getList().get(myPosition).getGoods_data().get(position - 3).getCountry();
                     if (s.equals("")) {
                         listViewDeatilHolder.goodsCountry.setText(allGoodsListData.getData().getList().get(myPosition).getGoods_data().get(position - 3).getName());
-
                     } else {
                         listViewDeatilHolder.goodsCountry.setText(allGoodsListData.getData().getList().get(myPosition).getGoods_data().get(position - 3).getCountry());
 
@@ -92,7 +91,6 @@ public class DownListViewAdapter extends BaseAdapter {
                 } catch (IndexOutOfBoundsException e) {
                     e.printStackTrace();
                 }
-
                 try {
                     listViewDeatilHolder.goodsContext.setText(allGoodsListData.getData().getList().get(myPosition).getGoods_data().get(position - 3).getIntroContent());
                     listViewDeatilHolder.goodsLoaction.setText(allGoodsListData.getData().getList().get(myPosition).getGoods_data().get(position - 3).getLocation());
@@ -126,6 +124,7 @@ public class DownListViewAdapter extends BaseAdapter {
 
     public class ListViewBlankHolder {
     }
+
     public class ListViewDeatilHolder {
 
         private TextView goodsLoaction, goodsEnLocation, goodsCountry, goodsContext;

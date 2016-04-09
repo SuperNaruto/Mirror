@@ -83,7 +83,7 @@ public class NetHelper {
                 .addParams("page", "")
                 .addParams("last_time", "")
                 .addParams("category_id", "")
-                .addParams("version", "").build().execute(new Callback() {
+                .addParams("version", "1.0.1").build().execute(new Callback() {
             @Override
             public Object parseNetworkResponse(Response response) throws Exception {
                 //子线程无法刷新UI,利用handler发送Message到主线程

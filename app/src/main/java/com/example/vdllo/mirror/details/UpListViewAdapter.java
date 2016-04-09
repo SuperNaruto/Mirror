@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.bean.GoodsListBean;
 import com.squareup.picasso.Picasso;
@@ -22,8 +23,8 @@ public class UpListViewAdapter extends BaseAdapter {
     private int myPosition;
     final int TYPE_0 = 0;
     final int TYPE_1 = 1;
-    final int TYPE_4 = 2;
     final int TYPE_3 = 3;
+    final int TYPE_4 = 4;
 
 
     public UpListViewAdapter(GoodsListBean allGoodsListData, Context context, int position) {
@@ -67,7 +68,6 @@ public class UpListViewAdapter extends BaseAdapter {
         ListViewDetailHolder listViewDetailHolder = null;
         ListViewHeadHolder listViewHeadHolder = null;
         ListViewTitle listViewTitle = null;
-
         int type = getItemViewType(position);
         switch (type) {
             case TYPE_0:
@@ -76,18 +76,17 @@ public class UpListViewAdapter extends BaseAdapter {
                 break;
             //半透明文字
             case TYPE_1:
-                convertView = inflater.inflate(R.layout.down_listview_head, parent, false);
+                convertView = inflater.inflate(R.layout.details_head_item, parent, false);
                 listViewHeadHolder = new ListViewHeadHolder(convertView);
                 listViewHeadHolder.detailContext.setText(allGoodsListData.getData().getList().get(myPosition).getInfo_des());
-                listViewHeadHolder.detailPrice.setText(allGoodsListData.getData().getList().get(myPosition).getDiscount_price());
+                listViewHeadHolder.detailPrice.setText(allGoodsListData.getData().getList().get(myPosition).getGoods_price());
                 listViewHeadHolder.detailTitle.setText(allGoodsListData.getData().getList().get(myPosition).getBrand());
                 listViewHeadHolder.detailBrand.setText(allGoodsListData.getData().getList().get(myPosition).getGoods_name());
                 break;
             case TYPE_3:
-                convertView = inflater.inflate(R.layout.down_listview_title, parent, false);
+                convertView = inflater.inflate(R.layout.details_line_item, parent, false);
                 listViewTitle = new ListViewTitle(convertView);
                 listViewTitle.title.setText(allGoodsListData.getData().getList().get(myPosition).getBrand());
-
                 break;
             case TYPE_4:
                 //第二部分图片
@@ -124,7 +123,6 @@ public class UpListViewAdapter extends BaseAdapter {
     }
 
 
-
     public class ListViewDetailHolder {
         private ImageView background;
 
@@ -138,7 +136,7 @@ public class UpListViewAdapter extends BaseAdapter {
 
 
         public ListViewTitle(View view) {
-            title = (TextView) view.findViewById(R.id.downthress_title);
+            title = (TextView) view.findViewById(R.id.details_line_tv);
         }
     }
 }
