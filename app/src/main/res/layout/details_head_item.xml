@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="600dp"
     android:orientation="vertical">
 
-    <com.zhy.autolayout.AutoFrameLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.zhy.autolayout.AutoLinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/goods_share_background"
             android:orientation="vertical">
 
-            <com.zhy.autolayout.AutoRelativeLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/goods_share_shareIv_marginBottom"
@@ -27,9 +27,9 @@
                     android:layout_alignParentRight="true"
                     android:background="@mipmap/share" />
 
-            </com.zhy.autolayout.AutoRelativeLayout>
+            </RelativeLayout>
 
-            <com.zhy.autolayout.AutoLinearLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/goods_share_content_linearLayout_marginLeft"
@@ -38,6 +38,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/detail_head_brand"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -55,6 +56,7 @@
                     android:background="@mipmap/goods_share_whiteline" />
 
                 <TextView
+                    android:id="@+id/detail_head_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -72,16 +74,18 @@
                     android:background="@mipmap/goods_share_whiteline" />
 
                 <TextView
+                    android:id="@+id/detail_head_context"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/goods_share_content_linearLayout_marginLeft"
                     android:layout_marginRight="@dimen/goods_share_content_linearLayout_marginRight"
                     android:layout_marginTop="@dimen/goods_share_content_introduce_marginTop"
-                    android:text="太阳镜，也称遮阳镜，作遮阳之用。人在阳光下通常要靠调节瞳孔大小来调节光通量，当光线强度超过人眼调节能力，就会对人眼造成伤害。所以在户外活动场所，特别是在夏天，需要采用遮阳镜来遮挡阳光，以减轻眼睛调节造成的疲劳或强光刺激造成的伤害。/n很多著名品牌，例如Nike、Timberland、Gucci和Kenneth Cole等，都将太阳镜作为其产品线的一部分。许多太阳镜制造商还会对他们产品的特性和特殊质地大加宣传。根据特性和品牌的不同，太阳镜的价格会在低于20美元到几百美元之间浮动。"
+                    android:text="人在阳光下通常要靠调节瞳孔大小来调节光通量，当光线强度超过人眼调节能力，就会对人眼造成伤害。所以在户外活动场所，特别是在夏天，需要采用遮阳镜来遮挡阳光，以减轻眼睛调节造成的疲劳或强光刺激造成的伤害。/n很多著名品牌，例如Nike、Timberland、Gucci和Kenneth Cole等，都将太阳镜作为其产品线的一部分。许多太阳镜制造商还会对他们产品的特性和特殊质地大加宣传。根据特性和品牌的不同，太阳镜的价格会在低于20美元到几百美元之间浮动。"
                     android:textColor="@color/goods_share_content_textColor"
                     android:textSize="@dimen/goods_share_content_introduce_textSize" />
 
                 <TextView
+                    android:id="@+id/detail_head_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -92,9 +96,9 @@
                     android:textSize="@dimen/goods_share_content_price_textSize"
                     android:textStyle="bold" />
 
-            </com.zhy.autolayout.AutoLinearLayout>
+            </LinearLayout>
 
-            <com.zhy.autolayout.AutoLinearLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/goods_share_content_price_marginTop"
@@ -115,9 +119,9 @@
                     android:layout_marginTop="@dimen/goods_share_dropDown_marginTop"
                     android:background="@mipmap/drop_down" />
 
-            </com.zhy.autolayout.AutoLinearLayout>
-        </com.zhy.autolayout.AutoLinearLayout>
-    </com.zhy.autolayout.AutoFrameLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
 
 
-</com.zhy.autolayout.AutoLinearLayout>
+</LinearLayout>

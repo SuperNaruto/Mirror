@@ -1,6 +1,7 @@
 package com.example.vdllo.mirror.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.bean.GoodsListBean;
 import com.example.vdllo.mirror.bean.StoryListBean;
+import com.example.vdllo.mirror.details.GoodsDetailsActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.squareup.picasso.Picasso;
 
@@ -39,15 +41,23 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         if (pos == 0) {
-            GoodsListBean.DataEntity.ListEntity data = datas.getData().getList().get(position);
+            final GoodsListBean.DataEntity.ListEntity data = datas.getData().getList().get(position);
             //Picasso加载图片
             Picasso.with(context).load(data.getGoods_img()).into(holder.goodsPic);
             holder.goodsNameTv.setText(data.getGoods_name());
             holder.goodsPriceTv.setText(data.getGoods_price());
             holder.brandTv.setText(data.getBrand());
             holder.productAreaTv.setText(data.getProduct_area());
+            holder.goodsPic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    GoodsDetailsActivity.setData(datas, position);
+                    Intent intent = new Intent(context, GoodsDetailsActivity.class);
+                    context.startActivity(intent);
+                }
+            });
         } else if (pos == 1) {
             GoodsListBean.DataEntity.ListEntity data = datas.getData().getList().get(pos);
             //Picasso加载图片
@@ -65,7 +75,6 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
             holder.brandTv.setText(data.getBrand());
             holder.productAreaTv.setText(data.getProduct_area());
         }
-
     }
 
     @Override
@@ -75,7 +84,6 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
         } else  {
             return 1;
         }
-
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -92,6 +100,4 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
             brandTv = (TextView) itemView.findViewById(R.id.all_type_brand);
         }
     }
-
-
 }

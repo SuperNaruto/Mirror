@@ -58,22 +58,5 @@ public class BackGroundFragment extends BaseFragment {
         Intent intent = getActivity().getIntent();
         int s = intent.getIntExtra("position", 0);
         viewPager.setCurrentItem(s);
-
-        handler = new Handler(new Handler.Callback() {
-            @Override
-            public boolean handleMessage(Message msg) {
-                Gson gson = new Gson();
-                menuListBean = gson.fromJson(msg.obj.toString(), MenuListBean.class);
-                return false;
-            }
-        });
-
-        //menuList
-        NetHelper netHelper = new NetHelper();
-        netHelper.getMenu(handler);
-
-
     }
-
-
 }

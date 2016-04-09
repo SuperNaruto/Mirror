@@ -37,22 +37,22 @@
     <!--activity_create_account -->
 
     <!--goods_share -->
-    <dimen name="goods_share_shareIv_marginBottom">35px</dimen>
-    <dimen name="goods_share_shareIv_marginRight">40px</dimen>
-    <dimen name="goods_share_shareIv_marginTop">95px</dimen>
-    <dimen name="goods_share_content_linearLayout_marginLeft">40px</dimen>
-    <dimen name="goods_share_content_linearLayout_marginRight">40px</dimen>
-    <dimen name="goods_share_content_title_marginTop">40px</dimen>
-    <dimen name="goods_share_content_title_textSize">70px</dimen>
-    <dimen name="goods_share_content_line_marginTop">55px</dimen>
-    <dimen name="goods_share_content_goodsName_marginTop">15px</dimen>
-    <dimen name="goods_share_content_goodsName_textSize">42px</dimen>
-    <dimen name="goods_share_content_secLine_marginTop">15px</dimen>
-    <dimen name="goods_share_content_introduce_marginTop">50px</dimen>
-    <dimen name="goods_share_content_introduce_textSize">24px</dimen>
-    <dimen name="goods_share_content_price_marginTop">50px</dimen>
-    <dimen name="goods_share_content_price_textSize">36px</dimen>
-    <dimen name="goods_share_dropDown_marginTop">15px</dimen>
+    <dimen name="goods_share_shareIv_marginBottom">18dp</dimen>
+    <dimen name="goods_share_shareIv_marginRight">25dp</dimen>
+    <dimen name="goods_share_shareIv_marginTop">43dp</dimen>
+    <dimen name="goods_share_content_linearLayout_marginLeft">20dp</dimen>
+    <dimen name="goods_share_content_linearLayout_marginRight">20dp</dimen>
+    <dimen name="goods_share_content_title_marginTop">20dp</dimen>
+    <dimen name="goods_share_content_title_textSize">35dp</dimen>
+    <dimen name="goods_share_content_line_marginTop">23dp</dimen>
+    <dimen name="goods_share_content_goodsName_marginTop">8dp</dimen>
+    <dimen name="goods_share_content_goodsName_textSize">21dp</dimen>
+    <dimen name="goods_share_content_secLine_marginTop">8dp</dimen>
+    <dimen name="goods_share_content_introduce_marginTop">20dp</dimen>
+    <dimen name="goods_share_content_introduce_textSize">13dp</dimen>
+    <dimen name="goods_share_content_price_marginTop">20dp</dimen>
+    <dimen name="goods_share_content_price_textSize">18dp</dimen>
+    <dimen name="goods_share_dropDown_marginTop">8dp</dimen>
     <!--goods_share -->
 
     <!--main_glass -->
@@ -159,7 +159,7 @@
     <dimen name="details_type_one_tv_marginRight">23dp</dimen>
     <dimen name="details_type_one_tv_marginTop">8dp</dimen>
     <dimen name="details_type_one_whileLine_marginTop">10dp</dimen>
-    <dimen name="details_type_one_locationTv_textSize">16sp</dimen>
+    <dimen name="details_type_one_locationTv_textSize">13sp</dimen>
     <dimen name="details_type_one_englishTv_marginTop">5dp</dimen>
     <dimen name="details_type_one_englishTv_textSize">12sp</dimen>
     <dimen name="details_type_one_countryTv_marginRight">5dp</dimen>

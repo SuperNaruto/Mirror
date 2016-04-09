@@ -87,7 +87,7 @@ public class ThemeShareFragment extends BaseFragment {
             }
         });
         //专题分享
-        NetHelper netHelper = new NetHelper();
+        NetHelper netHelper = new NetHelper(getActivity());
         netHelper.getShareInfo(handler);
     }
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/details_type_one_linearLayout_marginTop"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/details_line_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/details_type_one_tv_marginLeft"
+                android:text="水蓝色晶透版材太阳镜"
+                android:textSize="@dimen/details_type_one_tv_textSize"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/details_line_iv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/details_type_one_tv_marginLeft"
+                android:layout_marginRight="@dimen/details_type_one_tv_marginRight"
+                android:layout_marginTop="@dimen/details_type_one_tv_marginTop"
+                android:background="@mipmap/blackline" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

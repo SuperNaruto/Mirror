@@ -25,13 +25,8 @@
                 android:weightSum="7">
 
                 <TextView
-<<<<<<< HEAD
-                    android:id="@+id/all_type_listname_tv"
-                    android:layout_width="wrap_content"
-=======
                     android:id="@+id/all_type_titleTv"
                     android:layout_width="0dp"
->>>>>>> 79e9998e9102ac9bfcccd57be22e057f1fc0250b
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
                     android:textColor="@android:color/white"
