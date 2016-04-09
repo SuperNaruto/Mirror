@@ -6,6 +6,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
+<<<<<<< HEAD
+import android.widget.PopupWindow;
+=======
+>>>>>>> 79e9998e9102ac9bfcccd57be22e057f1fc0250b
 import android.widget.TextView;
 
 import com.example.vdllo.mirror.R;
@@ -29,7 +33,11 @@ public class AllTypeFragment extends BaseFragment {
     private ArrayList<String> data;
     private Handler handler;
     private int i;
+<<<<<<< HEAD
+    private TextView textView;
+=======
     private TextView titleTextView;
+>>>>>>> 79e9998e9102ac9bfcccd57be22e057f1fc0250b
 
     public AllTypeFragment(int i) {
         this.i = i;
@@ -43,8 +51,31 @@ public class AllTypeFragment extends BaseFragment {
     @Override
     protected void initView() {
         recyclerView = bindView(R.id.recycleView);
+<<<<<<< HEAD
+        textView = bindView(R.id.all_type_listname_tv);
+        linearLayout = (LinearLayout) getView().findViewById(R.id.all_type_linearlayout);
+        data = new ArrayList<>();
+        data.add("浏览所有分类");
+        data.add("浏览平光眼镜");
+        data.add("浏览太阳眼镜");
+        data.add("专题分享");
+        data.add("购物车");
+        textView.setText(data.get(i));
+        //设置popupWindow监听
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.add(R.id.main_linearlayout, new CatalogFragment(getActivity(),data,i));
+                ft.addToBackStack(null);
+                    Log.e("----","click");
+                ft.commit();
+            }
+        });
+=======
         linearLayout = bindView(R.id.all_type_linearlayout);
         titleTextView = bindView(R.id.all_type_titleTv);
+>>>>>>> 79e9998e9102ac9bfcccd57be22e057f1fc0250b
     }
 
 
