@@ -1,5 +1,6 @@
 package com.example.vdllo.mirror.themeshare;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
@@ -81,6 +82,7 @@ public class ThemeShareFragment extends BaseFragment {
                 // 3.设置适配器
                 adapter = new ThemeShareAdapter(getContext(), storyListBean);
                 recyclerView.setAdapter(adapter);
+
                 return false;
             }
         });

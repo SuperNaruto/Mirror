@@ -50,7 +50,7 @@ public class NetHelper {
         });
     }
 
-    //专题分享
+    //一级专题分享
     public void getShareInfo(final Handler handler) {
         OkHttpUtils.post().url(UrlBean.STORY_LIST)
                 .addParams("token", "")

@@ -29,4 +29,7 @@
     <string name="activity_details_wear_atlas_text">佩戴图集</string>
     <string name="fragment_all_type_menuText">浏览全部分类</string>
     <string name="fragment_all_type_orderText">显示排序为最新推荐</string>
+    <string name="share_details_small_text">巴拉巴拉巴拉</string>
+    <string name="share_details_title_text">巴拉巴拉巴拉巴拉</string>
+    <string name="share_details_sub_text">巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉</string>
 </resources>

@@ -1,11 +1,13 @@
 package com.example.vdllo.mirror.themeshare;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.vdllo.mirror.R;
@@ -37,10 +39,23 @@ public class ThemeShareAdapter extends RecyclerView.Adapter<ThemeShareAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         //Picasso加载图片
         Picasso.with(context).load(storyListBean.getData().getList().get(position).getStory_img()).into(holder.goodsPic);
         holder.brandTv.setText(storyListBean.getData().getList().get(position).getStory_title());
+        if (position == 0){
+            return;
+        }else {
+
+            holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, ThemeShareActivity.class);
+                    intent.putExtra("position",storyListBean.getData().getList().get(position).getStory_id());
+                    context.startActivity(intent);
+                }
+            });
+        }
     }
 
     @Override
@@ -51,11 +66,13 @@ public class ThemeShareAdapter extends RecyclerView.Adapter<ThemeShareAdapter.Vi
     static class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView goodsPic;
         private TextView brandTv;
+        private RelativeLayout relativeLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
             goodsPic = (ImageView) itemView.findViewById(R.id.all_type_share_iv);
             brandTv = (TextView) itemView.findViewById(R.id.all_type_share_brand);
+            relativeLayout = (RelativeLayout) itemView.findViewById(R.id.theme_share_relativeLayout);
         }
     }
 
