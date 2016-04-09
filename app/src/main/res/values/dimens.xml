@@ -167,25 +167,30 @@
     <dimen name="details_type_one_contentTv_marginBottom">10dp</dimen>
     <dimen name="details_type_one_contentTv_textSize">13sp</dimen>
     <dimen name="details_type_one_bg_height">480dp</dimen>
+    <!--details_type_one -->
+
+    <!--theme_share -->
     <dimen name="theme_share_close_iv_right">40dp</dimen>
     <dimen name="theme_share_close_iv_top">30dp</dimen>
     <dimen name="theme_share_share_iv_bottom">30dp</dimen>
     <dimen name="theme_share_share_iv_right">40dp</dimen>
+    <!--theme_share -->
+
+    <!--share_details -->
     <dimen name="share_details_bottom">60dp</dimen>
     <dimen name="share_details_right">20dp</dimen>
     <dimen name="share_details_left">20dp</dimen>
     <dimen name="share_details_small_top">30dp</dimen>
     <dimen name="share_details_small_left">30dp</dimen>
-    <dimen name="share_details_small_textsize">11sp</dimen>
+    <dimen name="share_details_small_textSize">11sp</dimen>
     <dimen name="share_details_title_top">11dp</dimen>
     <dimen name="share_details_title_left">30dp</dimen>
-    <dimen name="share_details_title_textsize">17sp</dimen>
+    <dimen name="share_details_title_textSize">17sp</dimen>
     <dimen name="share_details_sub_top">11dp</dimen>
     <dimen name="share_details_sub_left">30dp</dimen>
     <dimen name="share_details_sub_right">30dp</dimen>
-    <dimen name="share_details_sub_textsize">10sp</dimen>
-    <!--details_type_one -->
-
+    <dimen name="share_details_sub_textSize">10sp</dimen>
+    <!--share_details -->
 
 
 </resources>

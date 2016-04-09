@@ -20,7 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/details_type_one_tv_marginLeft"
-                android:text="水蓝色晶透版材太阳镜"
+                android:textColor="#000"
                 android:textSize="@dimen/details_type_one_tv_textSize"
                 android:textStyle="bold" />
 

@@ -25,7 +25,7 @@
                 android:text="@string/share_details_small_text"
                 android:textColor="@android:color/white"
                 android:layout_marginLeft="@dimen/share_details_small_left"
-                android:textSize="@dimen/share_details_small_textsize"/>
+                android:textSize="@dimen/share_details_small_textSize"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,7 +38,7 @@
                 android:text="@string/share_details_title_text"
                 android:textColor="@android:color/white"
                 android:layout_marginLeft="@dimen/share_details_title_left"
-                android:textSize="@dimen/share_details_title_textsize"/>
+                android:textSize="@dimen/share_details_title_textSize"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,7 +52,7 @@
                 android:textColor="@android:color/white"
                 android:layout_marginLeft="@dimen/share_details_sub_left"
                 android:layout_marginRight="@dimen/share_details_sub_right"
-                android:textSize="@dimen/share_details_sub_textsize"/>
+                android:textSize="@dimen/share_details_sub_textSize"/>
         </LinearLayout>
     </LinearLayout>
 
