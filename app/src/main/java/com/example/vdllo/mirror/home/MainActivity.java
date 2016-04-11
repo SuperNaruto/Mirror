@@ -1,5 +1,6 @@
 package com.example.vdllo.mirror.home;
 
+import android.animation.ObjectAnimator;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -9,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
 import android.widget.Toast;
@@ -38,7 +40,19 @@ public class MainActivity extends BaseAcitvity {
         android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.main_linearlayout, new BackGroundFragment());
         ft.commit();
-
+        bindView(R.id.main_iv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 属性动画
+                // ObjectAnimator / ValueAnimator 动画的执行类
+                // ofFloat构建并返回一个objectanimator动画之间的浮点值(小数值)。
+                // 参数1：目标对象（Object target）
+                // 参数2：属性名（String propertyName）
+                // 参数3~N：小数值
+                ObjectAnimator.ofFloat(v, "scaleX", 1.0f, 1.2f, 1.0f, 1.1f, 1.0f).setDuration(500).start();
+                ObjectAnimator.ofFloat(v, "scaleY", 1.0f, 1.2f, 1.0f, 1.1f, 1.0f).setDuration(500).start();
+            }
+        });
     }
 
     @Override
