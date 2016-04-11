@@ -192,5 +192,17 @@
     <dimen name="share_details_sub_textSize">10sp</dimen>
     <!--share_details -->
 
+    <!--activity_wear_atlas -->
+    <dimen name="activity_wear_atlas_linearLayout_marginLeft">13dp</dimen>
+    <dimen name="activity_wear_atlas_linearLayout_marginRight">13dp</dimen>
+    <dimen name="activity_wear_atlas_textSize">18sp</dimen>
+    <dimen name="activity_wear_atlas_line_marginTop">8dp</dimen>
+    <dimen name="activity_wear_atlas_text_marginTop">10dp</dimen>
+    <dimen name="wear_atlas_videoView_height">165dp</dimen>
+    <dimen name="wear_atlas_item_width">400dp</dimen>
+    <dimen name="wear_atlas_item_height">500dp</dimen>
+    <dimen name="wear_atlas_item_iv_marginTop">5dp</dimen>
+    <!--activity_wear_atlas -->
+
 
 </resources>

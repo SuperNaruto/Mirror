@@ -1,6 +1,7 @@
 package com.example.vdllo.mirror.details;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
 import android.view.View;
@@ -23,7 +24,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
     private Handler handler;
     private static int pos;
     private SimpleDraweeView background;
-    private Button backBtn, picturesBtn, buyBtn;
+    private Button backBtn, wearAtlasBtn, buyBtn;
     private boolean btnNotShow = true;
     private ObjectAnimator animation;
     private ObjectAnimator animationBack;
@@ -43,6 +44,8 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
     protected void initView() {
         listView = (LinkageListView) findViewById(R.id.detail_listView);
         background = (SimpleDraweeView) findViewById(R.id.goodsDetail_background);
+        wearAtlasBtn = (Button) findViewById(R.id.activity_details_wearAtlas_btn);
+        wearAtlasBtn.setOnClickListener(this);
     }
 
     @Override
@@ -62,6 +65,11 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.activity_details_wearAtlas_btn:
+                Intent intent = new Intent(GoodsDetailsActivity.this, WearAtlasActivity.class);
+                intent.putExtra("position", pos);
+                startActivity(intent);
+                break;
 
         }
     }

@@ -18,9 +18,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".home.MainActivity" />
-        <activity android:name=".themeshare.ThemeShareActivity"/>
-        <activity android:name=".details.GoodsDetailsActivity"/>
-
+        <activity android:name=".themeshare.ThemeShareActivity" />
+        <activity android:name=".details.GoodsDetailsActivity" />
+        <activity android:name=".details.WearAtlasActivity" />
     </application>
 
 
