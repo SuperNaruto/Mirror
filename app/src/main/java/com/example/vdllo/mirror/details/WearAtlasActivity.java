@@ -1,5 +1,6 @@
 package com.example.vdllo.mirror.details;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
@@ -95,8 +97,8 @@ public class WearAtlasActivity extends BaseAcitvity {
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder holder;
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            final ViewHolder holder;
             if (convertView == null) {
                 convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.wear_atlas_item, null);
                 holder = new ViewHolder();
@@ -106,9 +108,27 @@ public class WearAtlasActivity extends BaseAcitvity {
                 holder = (ViewHolder) convertView.getTag();
             }
             Picasso.with(parent.getContext()).load(bean.getData().getList().get(pos).getWear_video().get(position + 2).getData()).into(holder.imageView);
+            holder.imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(WearAtlasActivity.this, WearAtlasDetailsActivity.class);
+                    int[] location = new int[2];
+                    //获取图片在屏幕上坐标和宽高
+                    holder.imageView.getLocationOnScreen(location);
+                    intent.putExtra("locationX", location[0]);
+                    intent.putExtra("locationY", location[1]);
+                    intent.putExtra("width", holder.imageView.getWidth());
+                    intent.putExtra("height", holder.imageView.getHeight());
+                    intent.putExtra("position", position + 2);
+                    intent.putExtra("pos", pos);
+                    startActivity(intent);
+                    overridePendingTransition(0, 0);
+                }
+            });
             if (datas.getData().getList().get(pos).getWear_video().get(position).getData() != null) {
                 return convertView;
             }
+
             return convertView;
         }
 

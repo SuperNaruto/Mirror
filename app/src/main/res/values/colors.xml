@@ -17,4 +17,7 @@
     <color name="black_a10_color">#1a000000</color>
     <color name="white_fafaf8">#fafaf8</color>
 
+    <!--wear_atlas_activity_background -->
+    <color name="wear_atlas_activity_background">#000000</color>
+
 </resources>
