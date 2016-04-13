@@ -17,8 +17,7 @@ public class BaseApplication extends Application {
         super.onCreate();
         context = this;
         Fresco.initialize(context);
-//        JPushInterface.setDebugMode(true);
-//        JPushInterface.init(this);
+
     }
 
     public static Context getContext() {

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/activity_wear_atlas_linearLayout_marginLeft"
+    android:layout_marginRight="@dimen/activity_wear_atlas_linearLayout_marginRight"
+    android:orientation="vertical"
+    tools:context="com.example.vdllo.wearatlas.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_wear_atlas_text_marginTop"
+                    android:text="@string/activity_wear_atlas_text"
+                    android:textSize="@dimen/activity_wear_atlas_textSize"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_wear_atlas_line_marginTop"
+                    android:src="@mipmap/blackline" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:orientation="vertical">
+
+                <ListView
+                    android:id="@+id/activity_wear_atlas_listView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </ListView>
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_details_frameLayout_height"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/activity_details_frameLayout_marginBottom">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_details_relativeLayout_height">
+
+            <ImageView
+                android:id="@+id/activity_details_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_details_return_iv_marginLeft"
+                android:src="@mipmap/return_back" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/activity_details_buyIv_marginRight"
+                android:src="@mipmap/buy" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</RelativeLayout>

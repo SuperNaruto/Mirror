@@ -9,4 +9,15 @@
     <color name="goods_share_background">#7f000000</color>
     <color name="goods_share_content_textColor">#fff</color>
 
+    <color name="biz_audio_progress_bg">#ff0000</color>
+    <color name="biz_audio_progress_first">#ffffff</color>
+    <color name="biz_audio_progress_second">#6b6666</color>
+    <color name="default_bg">#aa000000</color>
+    <!--special color-->
+    <color name="black_a10_color">#1a000000</color>
+    <color name="white_fafaf8">#fafaf8</color>
+
+    <!--wear_atlas_activity_background -->
+    <color name="wear_atlas_activity_background">#000000</color>
+
 </resources>

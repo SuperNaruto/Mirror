@@ -1,6 +1,7 @@
 package com.example.vdllo.mirror.details;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
@@ -34,7 +35,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
     private Handler handler;
     private static int pos;
     private SimpleDraweeView background;
-    private Button backBtn, picturesBtn, buyBtn;
+    private Button backBtn, wearAtlasBtn, buyBtn;
     private boolean btnNotShow = true;
     private boolean locationNotFinshed = true;
     private int screenWidth;
@@ -57,6 +58,10 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         listView = bindView(R.id.detail_listView);
         background = bindView(R.id.goodsDetail_background);
         showBtnLayout = bindView(R.id.details_relativeLayout);
+        background = (SimpleDraweeView) findViewById(R.id.goodsDetail_background);
+        wearAtlasBtn = (Button) findViewById(R.id.activity_details_wearAtlas_btn);
+        wearAtlasBtn.setOnClickListener(this);
+
     }
 
     @Override
@@ -80,9 +85,15 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.activity_details_wearAtlas_btn:
+                WearAtlasActivity.setData(data, pos);
+                Intent intent = new Intent(GoodsDetailsActivity.this, WearAtlasActivity.class);
+                startActivity(intent);
+                break;
 
         }
     }
+
 
     public class DownListViewAdapter extends BaseAdapter {
 
@@ -316,4 +327,6 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
 //        }).sendEmptyMessageDelayed(50, 1000);
 //
 //    }
+
+
 }
