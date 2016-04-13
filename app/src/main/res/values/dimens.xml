@@ -180,13 +180,13 @@
     <dimen name="share_details_bottom">60dp</dimen>
     <dimen name="share_details_right">20dp</dimen>
     <dimen name="share_details_left">20dp</dimen>
-    <dimen name="share_details_small_top">30dp</dimen>
+    <dimen name="share_details_small_top">20dp</dimen>
     <dimen name="share_details_small_left">30dp</dimen>
     <dimen name="share_details_small_textSize">11sp</dimen>
-    <dimen name="share_details_title_top">11dp</dimen>
+    <dimen name="share_details_title_top">10dp</dimen>
     <dimen name="share_details_title_left">30dp</dimen>
     <dimen name="share_details_title_textSize">17sp</dimen>
-    <dimen name="share_details_sub_top">11dp</dimen>
+    <dimen name="share_details_sub_top">10dp</dimen>
     <dimen name="share_details_sub_left">30dp</dimen>
     <dimen name="share_details_sub_right">30dp</dimen>
     <dimen name="share_details_sub_textSize">10sp</dimen>
@@ -198,11 +198,14 @@
     <dimen name="activity_wear_atlas_textSize">18sp</dimen>
     <dimen name="activity_wear_atlas_line_marginTop">8dp</dimen>
     <dimen name="activity_wear_atlas_text_marginTop">10dp</dimen>
-    <dimen name="wear_atlas_videoView_height">165dp</dimen>
+    <dimen name="wear_atlas_videoView_height">200dp</dimen>
     <dimen name="wear_atlas_item_width">400dp</dimen>
     <dimen name="wear_atlas_item_height">500dp</dimen>
     <dimen name="wear_atlas_item_iv_marginTop">5dp</dimen>
     <!--activity_wear_atlas -->
 
+    <!-- MEDIA CONTROLLER -->
+    <dimen name="media_controller_view_height">40.0dip</dimen>
+    <!-- MEDIA CONTROLLER -->
 
 </resources>

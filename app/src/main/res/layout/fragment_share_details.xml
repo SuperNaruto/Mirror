@@ -7,52 +7,58 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@mipmap/share_details"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/share_details_bottom"
+        android:layout_marginLeft="@dimen/share_details_left"
         android:layout_marginRight="@dimen/share_details_right"
-        android:layout_marginLeft="@dimen/share_details_left">
+        android:background="@mipmap/share_details"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/share_details_small_top">
+
             <TextView
                 android:id="@+id/share_details_smalltitle_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/share_details_small_left"
                 android:text="@string/share_details_small_text"
                 android:textColor="@android:color/white"
-                android:layout_marginLeft="@dimen/share_details_small_left"
-                android:textSize="@dimen/share_details_small_textSize"/>
+                android:textSize="@dimen/share_details_small_textSize" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/share_details_title_top">
+
             <TextView
                 android:id="@+id/share_details_title_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/share_details_title_left"
                 android:text="@string/share_details_title_text"
                 android:textColor="@android:color/white"
-                android:layout_marginLeft="@dimen/share_details_title_left"
-                android:textSize="@dimen/share_details_title_textSize"/>
+                android:textSize="@dimen/share_details_title_textSize" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/share_details_sub_top">
+
             <TextView
                 android:id="@+id/share_details_subtitle_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/share_details_sub_text"
-                android:textColor="@android:color/white"
                 android:layout_marginLeft="@dimen/share_details_sub_left"
                 android:layout_marginRight="@dimen/share_details_sub_right"
-                android:textSize="@dimen/share_details_sub_textSize"/>
+                android:text="@string/share_details_sub_text"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/share_details_sub_textSize" />
         </LinearLayout>
     </LinearLayout>
 

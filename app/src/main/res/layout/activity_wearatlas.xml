@@ -45,12 +45,12 @@
                 android:layout_alignParentStart="true"
                 android:orientation="vertical">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/activity_wear_atlas_recyclerView"
+                <ListView
+                    android:id="@+id/activity_wear_atlas_listView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                </android.support.v7.widget.RecyclerView>
+                </ListView>
 
             </LinearLayout>
         </LinearLayout>

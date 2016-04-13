@@ -21,6 +21,10 @@
         <activity android:name=".themeshare.ThemeShareActivity" />
         <activity android:name=".details.GoodsDetailsActivity" />
         <activity android:name=".details.WearAtlasActivity" />
+        <activity
+            android:name=".toolclass.jcvideoplayer_lib.JCFullScreenActivity"
+            android:configChanges="orientation|keyboardHidden"
+        android:screenOrientation="landscape" />
     </application>
 
 

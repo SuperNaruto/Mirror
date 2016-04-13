@@ -66,8 +66,8 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.activity_details_wearAtlas_btn:
+                WearAtlasActivity.setData(data, pos);
                 Intent intent = new Intent(GoodsDetailsActivity.this, WearAtlasActivity.class);
-                intent.putExtra("position", pos);
                 startActivity(intent);
                 break;
 
