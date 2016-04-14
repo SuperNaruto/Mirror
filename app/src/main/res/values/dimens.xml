@@ -206,6 +206,7 @@
 
     <!-- MEDIA CONTROLLER -->
     <dimen name="media_controller_view_height">40.0dip</dimen>
+    <dimen name="activity_order_details_address_input_linearLayout_marginTop">20dp</dimen>
     <!-- MEDIA CONTROLLER -->
 
 </resources>

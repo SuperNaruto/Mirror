@@ -33,4 +33,5 @@
     <string name="share_details_title_text">巴拉巴拉巴拉巴拉</string>
     <string name="share_details_sub_text">巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉</string>
     <string name="activity_wear_atlas_text">商品细节展示</string>
+    <string name="activity_order_details_text">订单详情</string>
 </resources>

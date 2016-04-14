@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/loginBackground"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/create_account_text_marginTop"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/create_account_text_marginBottom"
+                android:layout_marginLeft="@dimen/create_account_text_marginLeft"
+                android:layout_weight="0.95"
+                android:text="@string/activity_order_details_text"
+                android:textSize="@dimen/create_account_text_textSize"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/create_account_imageView_marginBottom"
+                android:background="@mipmap/close" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/create_account_imageView_marginLeft"
+            android:layout_marginRight="@dimen/create_account_imageView_marginRight"
+            android:background="@mipmap/login_line" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/create_account_imageView_marginLeft"
+        android:layout_marginRight="@dimen/create_account_imageView_marginRight"
+        android:layout_marginTop="@dimen/activity_order_details_address_input_linearLayout_marginTop"
+        android:background="@mipmap/address_input">
+
+    </LinearLayout>
+
+
+</LinearLayout>
