@@ -13,6 +13,7 @@ import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
 import com.example.vdllo.mirror.base.BaseApplication;
 import com.example.vdllo.mirror.bean.GoodsListBean;
+import com.example.vdllo.mirror.db.DaoSingleton;
 import com.example.vdllo.mirror.home.AllTypeAdapter;
 import com.example.vdllo.mirror.net.NetHelper;
 import com.example.vdllo.mirror.toolclass.SmoothImageView;
@@ -64,7 +65,6 @@ public class WearAtlasDetailsActivity extends AppCompatActivity {
         //商品列表
         NetHelper netHelper = new NetHelper(WearAtlasDetailsActivity.this);
         netHelper.getGoods(handler);
-
     }
 
 
