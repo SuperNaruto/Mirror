@@ -28,6 +28,7 @@
         <activity android:name=".themeshare.ThemeShareActivity"/>
         <activity android:name=".Login.LoginActivity"/>
         <activity android:name=".Login.CreateAccountActivity"/>
+        <activity android:name=".shoppingcart.OrderDetailsActivity"/>
 
     </application>
 
