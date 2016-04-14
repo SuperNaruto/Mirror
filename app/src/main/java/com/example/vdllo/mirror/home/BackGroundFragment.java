@@ -56,7 +56,7 @@ public class BackGroundFragment extends BaseFragment {
         datas.add(new AllTypeFragment(1));
         datas.add(new AllTypeFragment(2));
         datas.add(new ThemeShareFragment(3));
-        datas.add(new ShoppingCartFragment(4));
+        datas.add(new ShoppingCartFragment());
         adapter = new BackgroundAdapter(getActivity().getSupportFragmentManager(), datas);
         viewPager.setAdapter(adapter);
 
@@ -85,12 +85,6 @@ public class BackGroundFragment extends BaseFragment {
         if (num == 1){
             textView.setText("购物车");
         }
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewPager.setCurrentItem(num);
-            }
-        });
     }
 
 
