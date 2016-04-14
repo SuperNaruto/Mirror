@@ -66,6 +66,7 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/create_account_phone_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/create_account_imageView_marginLeft"
@@ -97,6 +98,7 @@
         android:weightSum="4">
 
         <EditText
+            android:id="@+id/create_account_num_et"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/create_account_imageView_marginLeft"
@@ -104,6 +106,7 @@
             android:background="@mipmap/login_phonenum_edittext" />
 
         <Button
+            android:id="@+id/create_account_sendout_btn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginRight="@dimen/create_account_imageView_marginRight"
@@ -137,6 +140,7 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/create_account_password_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/create_account_imageView_marginLeft"
@@ -153,6 +157,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/create_account_create_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/create_account_imageView_marginLeft"
