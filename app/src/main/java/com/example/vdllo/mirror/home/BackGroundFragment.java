@@ -7,7 +7,9 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.View;
 import android.widget.Scroller;
+import android.widget.TextView;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseFragment;
@@ -33,6 +35,8 @@ public class BackGroundFragment extends BaseFragment {
     private ArrayList<Fragment> datas;
     private Handler handler;
     private MenuListBean menuListBean;
+    private TextView textView;
+    private int num;
 
     @Override
     public int getLayout() {
@@ -42,6 +46,7 @@ public class BackGroundFragment extends BaseFragment {
     @Override
     protected void initView() {
         viewPager = bindView(R.id.main_viewpager);
+        textView = bindView(R.id.background_login_tv);
     }
 
     @Override
@@ -57,6 +62,19 @@ public class BackGroundFragment extends BaseFragment {
 
         Intent intent = getActivity().getIntent();
         int s = intent.getIntExtra("position", 0);
+
+
         viewPager.setCurrentItem(s);
+        Intent myIntent = getActivity().getIntent();
+        num = myIntent.getIntExtra("key",0);
+        if (num == 1){
+            textView.setText("购物车");
+        }
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewPager.setCurrentItem(num);
+            }
+        });
     }
 }

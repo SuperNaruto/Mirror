@@ -13,8 +13,10 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.vdllo.mirror.Login.LoginActivity;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
 import com.example.vdllo.mirror.shoppingcart.ShoppingCartFragment;
@@ -26,10 +28,10 @@ import java.util.ArrayList;
 
 public class MainActivity extends BaseAcitvity {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
     //记录第一次点击的时间
     private long clickTime = 0;
-
+    private TextView textView;
+    private int num =0;
     @Override
     protected int setContent() {
         return R.layout.activity_main;
@@ -39,6 +41,7 @@ public class MainActivity extends BaseAcitvity {
     protected void initView() {
         android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.main_linearlayout, new BackGroundFragment());
+        textView = bindView(R.id.main_login_tv);
         ft.commit();
         bindView(R.id.main_iv).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +60,29 @@ public class MainActivity extends BaseAcitvity {
 
     @Override
     protected void initData() {
+        if (num==0){
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
+        Intent intent = getIntent();
+        int num = intent.getIntExtra("key",0);
+        if (num == 1){
+            textView.setText("购物车");
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    android.support.v4.app.FragmentTransaction myFt = getSupportFragmentManager().beginTransaction();
+                    myFt.replace(R.id.main_linearlayout, new ShoppingCartFragment(4));
+                    myFt.commit();
+                }
+            });
 
+        }
     }
 
 
