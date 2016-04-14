@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
 import com.example.vdllo.mirror.bean.GoodsListBean;
+import com.example.vdllo.mirror.shoppingcart.OrderDetailsActivity;
 import com.example.vdllo.mirror.toolclass.LinkageListView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.squareup.picasso.Picasso;
@@ -42,6 +43,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
     private ObjectAnimator animation;
     private ObjectAnimator animationBack;
     private RelativeLayout showBtnLayout;
+    private ImageView buyIv;
 
     public static void setData(GoodsListBean data, int pos) {
         GoodsDetailsActivity.data = data;
@@ -60,6 +62,8 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         showBtnLayout = bindView(R.id.details_relativeLayout);
         background = (SimpleDraweeView) findViewById(R.id.goodsDetail_background);
         wearAtlasBtn = (Button) findViewById(R.id.activity_details_wearAtlas_btn);
+        buyIv = bindView(R.id.details_buy_iv);
+        buyIv.setOnClickListener(this);
         wearAtlasBtn.setOnClickListener(this);
 
     }
@@ -89,6 +93,11 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                 WearAtlasActivity.setData(data, pos);
                 Intent intent = new Intent(GoodsDetailsActivity.this, WearAtlasActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.details_buy_iv:
+                WearAtlasActivity.setData(data, pos);
+                Intent bIntent = new Intent(GoodsDetailsActivity.this, OrderDetailsActivity.class);
+                startActivity(bIntent);
                 break;
 
         }

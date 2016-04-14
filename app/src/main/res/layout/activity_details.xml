@@ -45,6 +45,7 @@
                 android:textColor="@color/goods_share_content_textColor" />
 
             <ImageView
+                android:id="@+id/details_buy_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
