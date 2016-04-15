@@ -23,12 +23,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-
-import cn.sharesdk.framework.Platform;
-import cn.sharesdk.framework.PlatformActionListener;
-import cn.sharesdk.framework.ShareSDK;
-import cn.sharesdk.sina.weibo.SinaWeibo;
-import cn.sharesdk.tencent.qzone.QZone;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -176,54 +170,10 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
                 startActivity(myIntent);
                 break;
             case R.id.login_sina_iv:
-                ShareSDK.initSDK(this);
-                Platform platform = ShareSDK.getPlatform(SinaWeibo.NAME);
-                if(platform.isAuthValid()){
-                    platform.removeAccount();
-                }
-                platform.setPlatformActionListener(new PlatformActionListener() {
-                    @Override
-                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-                        Log.i("android", platform.getDb().getUserName());
-                    }
 
-                    @Override
-                    public void onError(Platform platform, int i, Throwable throwable) {
-
-                    }
-
-                    @Override
-                    public void onCancel(Platform platform, int i) {
-
-                    }
-                });
-                platform.SSOSetting(false);
-                platform.showUser(null);
                 break;
             case R.id.login_qq_iv:
-                ShareSDK.initSDK(this);
-                Platform sPlatform = ShareSDK.getPlatform(QZone.NAME);
-                if(sPlatform.isAuthValid()){
-                    sPlatform.removeAccount();
-                }
-                sPlatform.setPlatformActionListener(new PlatformActionListener() {
-                    @Override
-                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-                        Log.i("android", platform.getDb().getUserName());
-                    }
 
-                    @Override
-                    public void onError(Platform platform, int i, Throwable throwable) {
-
-                    }
-
-                    @Override
-                    public void onCancel(Platform platform, int i) {
-
-                    }
-                });
-                sPlatform.SSOSetting(false);
-                sPlatform.showUser(null);
                 break;
         }
     }
