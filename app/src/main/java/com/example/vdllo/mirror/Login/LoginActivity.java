@@ -1,10 +1,12 @@
 package com.example.vdllo.mirror.Login;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,14 +15,17 @@ import android.widget.Toast;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
+import com.example.vdllo.mirror.bean.CreateBean;
 import com.example.vdllo.mirror.bean.UrlBean;
 import com.example.vdllo.mirror.home.MainActivity;
+import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import de.greenrobot.event.EventBus;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -31,21 +36,23 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
     private Button createBtn, loginBtn;
     private EditText numEt, pasEt;
     private ImageView imageView;
-    private String num,password;
+    private String num, password;
 
     Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
 
             try {
-                JSONObject obj =new JSONObject(msg.obj.toString());
-                String result =obj.getString("result");
-                if (result.equals("")){
+                JSONObject obj = new JSONObject(msg.obj.toString());
+                String result = obj.getString("result");
+                //发送给addressActivity
+                EventBus.getDefault().post(obj);
+                if (result.equals("")) {
                     Toast.makeText(LoginActivity.this, obj.getString("msg"), Toast.LENGTH_SHORT).show();
-                }else if (result.equals("1")){
+                } else if (result.equals("1")) {
                     Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                    intent.putExtra("key",1);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("key", 1);
                     startActivity(intent);
                 }
             } catch (JSONException e) {
@@ -113,7 +120,6 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
                                         Message message = new Message();
                                         message.obj = body;
                                         handler.sendMessage(message);
-
                                         return null;
                                     }
 
@@ -154,7 +160,7 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.login_return_iv:
                 finish();
                 break;

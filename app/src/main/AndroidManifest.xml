@@ -24,12 +24,12 @@
             android:name=".toolclass.jcvideoplayer_lib.JCFullScreenActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape" />
-        <activity android:name=".details.WearAtlasDetailsActivity"/>
-        <activity android:name=".themeshare.ThemeShareActivity"/>
-        <activity android:name=".Login.LoginActivity"/>
-        <activity android:name=".Login.CreateAccountActivity"/>
-        <activity android:name=".shoppingcart.OrderDetailsActivity"/>
-
+        <activity android:name=".details.WearAtlasDetailsActivity" />
+        <activity android:name=".themeshare.ThemeShareActivity" />
+        <activity android:name=".Login.LoginActivity" />
+        <activity android:name=".Login.CreateAccountActivity" />
+        <activity android:name=".shoppingcart.OrderDetailsActivity" />
+        <activity android:name=".shoppingcart.AddressActivity" />
     </application>
 
 

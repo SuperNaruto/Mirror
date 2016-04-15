@@ -20,4 +20,7 @@
     <!--wear_atlas_activity_background -->
     <color name="wear_atlas_activity_background">#000000</color>
 
+    <!--activity_address -->
+    <color name="activity_address_textColor">#333</color>
+
 </resources>
