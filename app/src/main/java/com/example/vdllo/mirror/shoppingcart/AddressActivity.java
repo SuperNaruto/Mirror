@@ -24,23 +24,13 @@ public class AddressActivity extends BaseAcitvity {
     @Override
     protected void initView() {
 
+
     }
 
     @Override
     protected void initData() {
-        EventBus.getDefault().register(this);
+        //cadd7128deb9c01cd31fed05dd7fca87
 
     }
 
-    //接收传过来的，使用token
-    public void onEvent(JSONObject jsonObject) throws JSONException {
-        String token = (String) jsonObject.get("token");
-        Log.d("aaa",token);
-    }
-
-    @Override
-    protected void onDestroy() {
-        EventBus.getDefault().unregister(this);
-        super.onDestroy();
-    }
 }

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/address_input"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/address_listView_textView_marginLeft"
+                android:layout_marginTop="@dimen/address_listView_textView_marginTop"
+                android:text="@string/address_listView_recipient_text"
+                android:textSize="@dimen/address_listView_textView_textSize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/address_listView_nameTv_marginLeft"
+                android:layout_marginTop="@dimen/address_listView_textView_marginTop"
+                android:text="刘德华"
+                android:textColor="@color/activity_address_textColor" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/address_listView_addressTv_marginTop"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/address_listView_textView_marginLeft"
+
+                android:text="@string/address_listView_address_text"
+                android:textSize="@dimen/address_listView_textView_textSize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/address_listView_nameTv_marginLeft"
+
+                android:text="中华人民共和国"
+                android:textColor="@color/activity_address_textColor"
+                android:textSize="@dimen/address_listView_textView_textSize" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/address_listView_addressTv_marginTop"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/address_listView_textView_marginLeft"
+                android:text="11111111"
+                android:layout_marginBottom="@dimen/address_listView_tel_marginBottom"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
