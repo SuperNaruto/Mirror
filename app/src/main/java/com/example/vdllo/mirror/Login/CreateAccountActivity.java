@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.vdllo.mirror.R;
@@ -36,6 +37,7 @@ import okhttp3.Response;
 public class CreateAccountActivity extends BaseAcitvity {
     private EditText phoneEt, numEt, passwordEt;
     private Button sendBtn, createBtn;
+    private ImageView returnIv;
 
     private TimerTask timerTask;
     private Timer timer;
@@ -72,6 +74,13 @@ public class CreateAccountActivity extends BaseAcitvity {
 
         sendBtn = bindView(R.id.create_account_sendout_btn);
         createBtn = bindView(R.id.create_account_create_btn);
+        returnIv = bindView(R.id.create_account_return_iv);
+        returnIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override

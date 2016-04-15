@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,13 @@ import com.zhy.http.okhttp.callback.Callback;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.sina.weibo.SinaWeibo;
+import cn.sharesdk.tencent.qzone.QZone;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -30,7 +38,7 @@ import okhttp3.Response;
 public class LoginActivity extends BaseAcitvity implements View.OnClickListener {
     private Button createBtn, loginBtn;
     private EditText numEt, pasEt;
-    private ImageView imageView;
+    private ImageView imageView,sinaIv,qqIv;
     private String num,password;
 
     Handler handler = new Handler(new Handler.Callback() {
@@ -68,8 +76,13 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
         numEt = bindView(R.id.login_phonenumber_et);
         pasEt = bindView(R.id.login_password_et);
         imageView = bindView(R.id.login_return_iv);
+        sinaIv = bindView(R.id.login_sina_iv);
+        qqIv = bindView(R.id.login_qq_iv);
         imageView.setOnClickListener(this);
         createBtn.setOnClickListener(this);
+        sinaIv.setOnClickListener(this);
+        qqIv.setOnClickListener(this);
+
 
         numEt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -161,6 +174,56 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
             case R.id.login_create_btn:
                 Intent myIntent = new Intent(LoginActivity.this, CreateAccountActivity.class);
                 startActivity(myIntent);
+                break;
+            case R.id.login_sina_iv:
+                ShareSDK.initSDK(this);
+                Platform platform = ShareSDK.getPlatform(SinaWeibo.NAME);
+                if(platform.isAuthValid()){
+                    platform.removeAccount();
+                }
+                platform.setPlatformActionListener(new PlatformActionListener() {
+                    @Override
+                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                        Log.i("android", platform.getDb().getUserName());
+                    }
+
+                    @Override
+                    public void onError(Platform platform, int i, Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onCancel(Platform platform, int i) {
+
+                    }
+                });
+                platform.SSOSetting(false);
+                platform.showUser(null);
+                break;
+            case R.id.login_qq_iv:
+                ShareSDK.initSDK(this);
+                Platform sPlatform = ShareSDK.getPlatform(QZone.NAME);
+                if(sPlatform.isAuthValid()){
+                    sPlatform.removeAccount();
+                }
+                sPlatform.setPlatformActionListener(new PlatformActionListener() {
+                    @Override
+                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                        Log.i("android", platform.getDb().getUserName());
+                    }
+
+                    @Override
+                    public void onError(Platform platform, int i, Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onCancel(Platform platform, int i) {
+
+                    }
+                });
+                sPlatform.SSOSetting(false);
+                sPlatform.showUser(null);
                 break;
         }
     }
