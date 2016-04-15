@@ -21,21 +21,27 @@ public class AddressActivityAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return addressBean.getData().getList().size() > 0 && addressBean != null ? addressBean.getData().getList().size() : 0;
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return addressBean.getData().getList().size() > 0 && addressBean.getData().getList() != null ? addressBean.getData().getList().get(position) : null;
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+
+        return convertView;
+    }
+
+    //缓存类
+    class ViewHolder {
+
     }
 }

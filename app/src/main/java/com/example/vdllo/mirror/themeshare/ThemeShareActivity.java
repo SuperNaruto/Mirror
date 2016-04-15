@@ -66,7 +66,6 @@ public class ThemeShareActivity extends BaseAcitvity implements View.OnClickList
                 imgs = new ArrayList();
                 for (int i = 0; i < data.getData().getStory_data().getText_array().size(); i++) {
                     datas.add(new ShareDetailsFragment(i));
-                    Log.d("+++++++++++++++++", "++++++++++++" + data);
                     themeShareActivityAdapter = new ThemeShareActivityAdapter(getSupportFragmentManager(), datas);
                     customViewPager.setAdapter(themeShareActivityAdapter);
                 }
@@ -74,7 +73,6 @@ public class ThemeShareActivity extends BaseAcitvity implements View.OnClickList
                     imgs.add(data.getData().getStory_data().getImg_array().get(j));
 
                 }
-                Log.d("来来来,我看看图片", "有没有吱一声" + imgs);
                 simpleDraweeView.setImageURI(Uri.parse(imgs.get(0)));
                 return false;
             }

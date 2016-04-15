@@ -33,6 +33,8 @@ public class MyClass {
         // 指定自增长主键
         entity.addIdProperty().autoincrement().primaryKey();
         // 添加类的属性,根据属性生成数据库表中的字段
+        entity.addStringProperty("phoneNum");
+        entity.addStringProperty("token");
 
     }
 }

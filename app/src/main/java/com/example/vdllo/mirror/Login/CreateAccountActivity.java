@@ -41,7 +41,7 @@ public class CreateAccountActivity extends BaseAcitvity {
     private Timer timer;
     private int count = 60;
 
-    private String num,number;
+    private String num, number;
     private CreateBean data;
 
 
@@ -53,7 +53,7 @@ public class CreateAccountActivity extends BaseAcitvity {
             data = gson.fromJson(msg.obj.toString(), CreateBean.class);
             String toast;
             toast = data.getMsg();
-            Log.d("我要的东西呢","就是错误信息"+toast);
+            Log.d("我要的东西呢", "就是错误信息" + toast);
             Toast.makeText(CreateAccountActivity.this, toast, Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -69,7 +69,6 @@ public class CreateAccountActivity extends BaseAcitvity {
         phoneEt = bindView(R.id.create_account_phone_et);
         numEt = bindView(R.id.create_account_num_et);
         passwordEt = bindView(R.id.create_account_password_et);
-
         sendBtn = bindView(R.id.create_account_sendout_btn);
         createBtn = bindView(R.id.create_account_create_btn);
     }
@@ -154,7 +153,7 @@ public class CreateAccountActivity extends BaseAcitvity {
                                                                                Message message = new Message();
                                                                                message.obj = body;
                                                                                myHandler.sendMessage(message);
-                                                                               Intent intent = new Intent(CreateAccountActivity.this,LoginActivity.class);
+                                                                               Intent intent = new Intent(CreateAccountActivity.this, LoginActivity.class);
                                                                                startActivity(intent);
                                                                                return null;
                                                                            }
@@ -220,7 +219,7 @@ public class CreateAccountActivity extends BaseAcitvity {
                     sendBtn.setText("" + count);
                     if (count > 0) sendBtn.setText(count + "秒");
                     else
-                    sendBtn.setText("重新获取");
+                        sendBtn.setText("重新获取");
             }
         }
     };

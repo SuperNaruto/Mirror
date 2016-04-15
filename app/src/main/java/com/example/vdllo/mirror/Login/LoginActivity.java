@@ -1,12 +1,10 @@
 package com.example.vdllo.mirror.Login;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,10 +13,11 @@ import android.widget.Toast;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
-import com.example.vdllo.mirror.bean.CreateBean;
 import com.example.vdllo.mirror.bean.UrlBean;
+import com.example.vdllo.mirror.db.DaoSingleton;
+import com.example.vdllo.mirror.db.MirrorEntity;
 import com.example.vdllo.mirror.home.MainActivity;
-import com.google.gson.Gson;
+import com.example.vdllo.mirror.shoppingcart.AddressActivity;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 
@@ -38,6 +37,7 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
     private ImageView imageView;
     private String num, password;
 
+
     Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -45,7 +45,6 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
             try {
                 JSONObject obj = new JSONObject(msg.obj.toString());
                 String result = obj.getString("result");
-                Log.d("aaa", obj.toString());
                 //发送给addressActivity
                 EventBus.getDefault().post(obj);
                 if (result.equals("")) {
@@ -55,6 +54,8 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("key", 1);
                     startActivity(intent);
+                    String token = obj.getJSONObject("data").getString("token");
+                    AddressActivity.setToken(token);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
