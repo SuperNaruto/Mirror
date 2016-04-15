@@ -170,12 +170,14 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/login_sina_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/login_sina_linearLayout_marginLeft"
             android:background="@mipmap/login_sinaicon" />
 
         <ImageView
+            android:id="@+id/login_qq_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/login_weChat_linearLayout_marginLeft"

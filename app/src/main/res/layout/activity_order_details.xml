@@ -28,6 +28,7 @@
                 android:textStyle="bold" />
 
             <ImageView
+                android:id="@+id/order_details_return_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/create_account_imageView_marginBottom"
@@ -150,11 +151,11 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="25dp"
-        android:background="@android:color/holo_red_light"
+        android:background="@mipmap/login_usable_button"
         android:text="确认下单"
         android:textColor="@android:color/white"
         android:textSize="15sp" />

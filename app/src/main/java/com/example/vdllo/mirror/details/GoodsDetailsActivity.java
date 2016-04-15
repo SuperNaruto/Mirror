@@ -43,7 +43,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
     private ObjectAnimator animation;
     private ObjectAnimator animationBack;
     private RelativeLayout showBtnLayout;
-    private ImageView buyIv;
+    private ImageView buyIv,returnIv;
 
     public static void setData(GoodsListBean data, int pos) {
         GoodsDetailsActivity.data = data;
@@ -63,6 +63,8 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         background = (SimpleDraweeView) findViewById(R.id.goodsDetail_background);
         wearAtlasBtn = (Button) findViewById(R.id.activity_details_wearAtlas_btn);
         buyIv = bindView(R.id.details_buy_iv);
+        returnIv = bindView(R.id.activity_details_return);
+        returnIv.setOnClickListener(this);
         buyIv.setOnClickListener(this);
         wearAtlasBtn.setOnClickListener(this);
 
@@ -98,6 +100,9 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                 WearAtlasActivity.setData(data, pos);
                 Intent bIntent = new Intent(GoodsDetailsActivity.this, OrderDetailsActivity.class);
                 startActivity(bIntent);
+                break;
+            case R.id.activity_details_return:
+                finish();
                 break;
 
         }
