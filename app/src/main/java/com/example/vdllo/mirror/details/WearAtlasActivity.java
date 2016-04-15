@@ -58,7 +58,6 @@ public class WearAtlasActivity extends BaseAcitvity {
                 jcVideoPlayer.setUp(datas.getData().getList().get(pos).getWear_video().get(i).getData(), null);
             } else if (datas.getData().getList().get(pos).getWear_video().get(i).getType().equals("9")) {
                 Picasso.with(WearAtlasActivity.this).load(datas.getData().getList().get(pos).getWear_video().get(i).getData()).into(jcVideoPlayer.ivThumb);
-                Log.d("bbb", datas.getData().getList().get(pos).getWear_video().get(i).getData());
             }
         }
 

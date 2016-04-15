@@ -17,9 +17,9 @@ public class ShoppingCartFragment extends BaseFragment {
     private ArrayList<String> data;
     private LinearLayout linearLayout;
 
-    public ShoppingCartFragment(int i) {
-        this.i = i;
-    }
+//    public ShoppingCartFragment(int i) {
+//        this.i = i;
+//    }
 
     @Override
     public int getLayout() {
@@ -41,6 +41,7 @@ public class ShoppingCartFragment extends BaseFragment {
         data.add("浏览平光眼镜");
         data.add("专题分享");
         data.add("购物车");
+
 
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
