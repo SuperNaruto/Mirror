@@ -21,12 +21,15 @@ public class AddressActivityAdapter extends BaseAdapter {
     public AddressActivityAdapter(Context context, AddressBean addressBean) {
         this.context = context;
         this.addressBean = addressBean;
+        notifyDataSetChanged();
     }
+
 
     @Override
     public int getCount() {
         return addressBean.getData().getList().size() > 0 && addressBean != null ? addressBean.getData().getList().size() : 0;
     }
+
 
     @Override
     public Object getItem(int position) {
@@ -48,7 +51,7 @@ public class AddressActivityAdapter extends BaseAdapter {
             viewHolder.addressTv = (TextView) convertView.findViewById(R.id.address_item_address);
             viewHolder.telTv = (TextView) convertView.findViewById(R.id.address_item_tel);
             viewHolder.editIv = (ImageView) convertView.findViewById(R.id.address_edit);
-            convertView.setTag(convertView);
+            convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
@@ -63,5 +66,10 @@ public class AddressActivityAdapter extends BaseAdapter {
         private TextView nameTv, addressTv, telTv;
         private ImageView editIv;
 
+    }
+
+    public void setData(int position) {
+        addressBean.getData().getList().remove(position);
+        notifyDataSetChanged();
     }
 }
