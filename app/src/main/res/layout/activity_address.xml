@@ -28,6 +28,7 @@
                 android:textStyle="bold" />
 
             <ImageView
+                android:id="@+id/activity_address_return"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/create_account_imageView_marginBottom"
@@ -53,6 +54,7 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/activity_address_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@mipmap/address_input"

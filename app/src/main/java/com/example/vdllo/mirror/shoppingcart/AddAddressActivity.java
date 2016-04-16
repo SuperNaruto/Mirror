@@ -1,5 +1,6 @@
 package com.example.vdllo.mirror.shoppingcart;
 
+import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
 
 /**
@@ -8,7 +9,7 @@ import com.example.vdllo.mirror.base.BaseAcitvity;
 public class AddAddressActivity extends BaseAcitvity{
     @Override
     protected int setContent() {
-        return 0;
+        return R.layout.activity_addaddress;
     }
 
     @Override

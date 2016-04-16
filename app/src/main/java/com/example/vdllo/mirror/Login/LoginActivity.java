@@ -45,8 +45,6 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
             try {
                 JSONObject obj = new JSONObject(msg.obj.toString());
                 String result = obj.getString("result");
-                //发送给addressActivity
-                EventBus.getDefault().post(obj);
                 if (result.equals("")) {
                     Toast.makeText(LoginActivity.this, obj.getString("msg"), Toast.LENGTH_SHORT).show();
                 } else if (result.equals("1")) {

@@ -30,6 +30,7 @@
         <activity android:name=".Login.CreateAccountActivity" />
         <activity android:name=".shoppingcart.OrderDetailsActivity" />
         <activity android:name=".shoppingcart.AddressActivity" />
+        <activity android:name=".shoppingcart.AddAddressActivity" />
     </application>
 
 

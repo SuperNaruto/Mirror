@@ -259,7 +259,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                         if (url != null) {
                             //Picasso加载图片
                             Picasso.with(parent.getContext()).cancelRequest(listViewDetailHolder.background);
-                            Picasso.with(GoodsDetailsActivity.this).load(url).into(listViewDetailHolder.background);
+                            Picasso.with(GoodsDetailsActivity.this).load(url).resize(600,600).into(listViewDetailHolder.background);
                         }
                     } catch (ArrayIndexOutOfBoundsException e) {
                         e.printStackTrace();

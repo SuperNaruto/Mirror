@@ -25,6 +25,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/address_item_recipient_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/address_listView_nameTv_marginLeft"
@@ -37,25 +38,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/address_listView_addressTv_marginTop"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="5">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/address_listView_textView_marginLeft"
-
                 android:text="@string/address_listView_address_text"
                 android:textSize="@dimen/address_listView_textView_textSize"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/address_item_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/address_listView_nameTv_marginLeft"
-
+                android:layout_weight="4"
                 android:text="中华人民共和国"
                 android:textColor="@color/activity_address_textColor"
                 android:textSize="@dimen/address_listView_textView_textSize" />
+
+            <ImageView
+                android:id="@+id/address_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@mipmap/edit" />
         </LinearLayout>
 
         <LinearLayout
@@ -65,11 +74,12 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/address_item_tel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/address_listView_tel_marginBottom"
                 android:layout_marginLeft="@dimen/address_listView_textView_marginLeft"
-                android:text="11111111"
-                android:layout_marginBottom="@dimen/address_listView_tel_marginBottom"/>
+                android:text="11111111" />
 
         </LinearLayout>
 
