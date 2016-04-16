@@ -20,7 +20,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23+'
     compile 'com.zhy:autolayout:1.4.3'
@@ -31,10 +30,8 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'de.greenrobot:eventbus:2.4.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
-    compile 'de.greenrobot:greendao:2.1.0'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
-<<<<<<< HEAD
-    compile files('libs/jpush-android-2.1.0.jar')
+    compile 'de.greenrobot:greendao:2.0.0'
     compile files('libs/MobCommons-2016.0301.1053.jar')
     compile files('libs/MobTools-2016.0301.1053.jar')
     compile files('libs/ShareSDK-Core-2.7.0.jar')
@@ -46,7 +43,4 @@ dependencies {
     compile files('libs/ShareSDK-Wechat-Core-2.7.0.jar')
     compile files('libs/ShareSDK-Wechat-Favorite-2.7.0.jar')
     compile files('libs/ShareSDK-Wechat-Moments-2.7.0.jar')
-=======
-    compile 'de.greenrobot:greendao:2.0.0'
->>>>>>> 693904b68d2f39c7a3660861cec3d0505c6a1b96
 }
