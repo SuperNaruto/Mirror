@@ -24,6 +24,8 @@ public class MirrorEntityDao extends AbstractDao<MirrorEntity, Long> {
     */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
+        public final static Property PhoneNum = new Property(1, String.class, "phoneNum", false, "PHONE_NUM");
+        public final static Property Token = new Property(2, String.class, "token", false, "TOKEN");
     };
 
 
@@ -39,7 +41,9 @@ public class MirrorEntityDao extends AbstractDao<MirrorEntity, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"MIRROR_ENTITY\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT );"); // 0: id
+                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
+                "\"PHONE_NUM\" TEXT," + // 1: phoneNum
+                "\"TOKEN\" TEXT);"); // 2: token
     }
 
     /** Drops the underlying database table. */
@@ -57,6 +61,16 @@ public class MirrorEntityDao extends AbstractDao<MirrorEntity, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
+ 
+        String phoneNum = entity.getPhoneNum();
+        if (phoneNum != null) {
+            stmt.bindString(2, phoneNum);
+        }
+ 
+        String token = entity.getToken();
+        if (token != null) {
+            stmt.bindString(3, token);
+        }
     }
 
     /** @inheritdoc */
@@ -69,7 +83,9 @@ public class MirrorEntityDao extends AbstractDao<MirrorEntity, Long> {
     @Override
     public MirrorEntity readEntity(Cursor cursor, int offset) {
         MirrorEntity entity = new MirrorEntity( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0) // id
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // phoneNum
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2) // token
         );
         return entity;
     }
@@ -78,6 +94,8 @@ public class MirrorEntityDao extends AbstractDao<MirrorEntity, Long> {
     @Override
     public void readEntity(Cursor cursor, MirrorEntity entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
+        entity.setPhoneNum(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
+        entity.setToken(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
      }
     
     /** @inheritdoc */

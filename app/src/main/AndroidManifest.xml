@@ -63,7 +63,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".shoppingcart.AddressActivity" />
+        <activity android:name=".shoppingcart.AddAddressActivity" />
     </application>
 
 

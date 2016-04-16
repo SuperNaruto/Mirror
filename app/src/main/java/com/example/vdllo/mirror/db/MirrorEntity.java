@@ -7,6 +7,8 @@ package com.example.vdllo.mirror.db;
 public class MirrorEntity {
 
     private Long id;
+    private String phoneNum;
+    private String token;
 
     public MirrorEntity() {
     }
@@ -15,12 +17,34 @@ public class MirrorEntity {
         this.id = id;
     }
 
+    public MirrorEntity(Long id, String phoneNum, String token) {
+        this.id = id;
+        this.phoneNum = phoneNum;
+        this.token = token;
+    }
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
 }

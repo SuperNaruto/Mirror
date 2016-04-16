@@ -57,6 +57,7 @@ public class WearAtlasActivity extends BaseAcitvity {
             if (datas.getData().getList().get(pos).getWear_video().get(i).getType().equals("8")) {
                 jcVideoPlayer.setUp(datas.getData().getList().get(pos).getWear_video().get(i).getData(), null);
             } else if (datas.getData().getList().get(pos).getWear_video().get(i).getType().equals("9")) {
+                Picasso.with(WearAtlasActivity.this).cancelRequest(jcVideoPlayer.ivThumb);
                 Picasso.with(WearAtlasActivity.this).load(datas.getData().getList().get(pos).getWear_video().get(i).getData()).into(jcVideoPlayer.ivThumb);
             }
         }
@@ -106,6 +107,7 @@ public class WearAtlasActivity extends BaseAcitvity {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
+            Picasso.with(parent.getContext()).cancelRequest(holder.imageView);
             Picasso.with(parent.getContext()).load(bean.getData().getList().get(pos).getWear_video().get(position + 2).getData()).into(holder.imageView);
             holder.imageView.setOnClickListener(new View.OnClickListener() {
                 @Override

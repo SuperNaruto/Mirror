@@ -15,20 +15,21 @@ import android.widget.Toast;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
 import com.example.vdllo.mirror.bean.UrlBean;
+import com.example.vdllo.mirror.db.DaoSingleton;
+import com.example.vdllo.mirror.db.MirrorEntity;
 import com.example.vdllo.mirror.home.MainActivity;
+import com.example.vdllo.mirror.shoppingcart.AddressActivity;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
-
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qzone.QZone;
+import de.greenrobot.event.EventBus;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -38,7 +39,8 @@ import okhttp3.Response;
 public class LoginActivity extends BaseAcitvity implements View.OnClickListener {
     private Button createBtn, loginBtn;
     private EditText numEt, pasEt;
-    private ImageView imageView, sinaIv, qqIv;
+    private ImageView sinaIv, qqIv;
+    private ImageView imageView;
     private String num, password;
 
     Handler handler = new Handler(new Handler.Callback() {
@@ -55,6 +57,8 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("key", 1);
                     startActivity(intent);
+                    String token = obj.getJSONObject("data").getString("token");
+                    AddressActivity.setToken(token);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -126,7 +130,6 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
                                         Message message = new Message();
                                         message.obj = body;
                                         handler.sendMessage(message);
-
                                         return null;
                                     }
 

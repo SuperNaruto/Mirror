@@ -78,17 +78,6 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         listView.setAdapter(new UpListViewAdapter(), new DownListViewAdapter());
         listView.setLinkageSpeed(1.2f);
         background.setImageURI(Uri.parse(data.getData().getList().get(pos).getGoods_img()));
-//        ObjectAnimator animator = ObjectAnimator.ofFloat(showBtnLayout, "translationX", -500);
-//        animator.setDuration(1);
-//        animator.start();
-//        animation = ObjectAnimator.ofFloat(showBtnLayout, "translationX", 500);
-//        animation.setDuration(1000);
-//        animationBack = ObjectAnimator.ofFloat(showBtnLayout, "translationX", -500);
-//        animationBack.setDuration(1000);
-//        screenWidth = getWindowManager().getDefaultDisplay().getWidth();
-//        ObjectAnimator animator = ObjectAnimator.ofFloat(showBtnLayout, "translationX", -1000);
-//        animator.setDuration(1);
-//        animator.start();
     }
 
     @Override
@@ -314,7 +303,8 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                         String url = data.getData().getList().get(pos).getDesign_des().get(position - 3).getImg();
                         if (url != null) {
                             //Picasso加载图片
-                            Picasso.with(GoodsDetailsActivity.this).load(url).into(listViewDetailHolder.background);
+                            Picasso.with(parent.getContext()).cancelRequest(listViewDetailHolder.background);
+                            Picasso.with(GoodsDetailsActivity.this).load(url).resize(600,600).into(listViewDetailHolder.background);
                         }
                     } catch (ArrayIndexOutOfBoundsException e) {
                         e.printStackTrace();

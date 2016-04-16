@@ -34,4 +34,8 @@
     <string name="share_details_sub_text">巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉</string>
     <string name="activity_wear_atlas_text">商品细节展示</string>
     <string name="activity_order_details_text">订单详情</string>
+    <string name="activity_address_text">我的所有地址</string>
+    <string name="activity_address_btn_text">添加地址</string>
+    <string name="address_listView_recipient_text">收件人:</string>
+    <string name="address_listView_address_text">地址:</string>
 </resources>

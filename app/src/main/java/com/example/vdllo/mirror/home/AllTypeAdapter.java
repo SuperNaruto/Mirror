@@ -45,6 +45,7 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
         if (pos == 0) {
             final GoodsListBean.DataEntity.ListEntity data = datas.getData().getList().get(position);
             //Picasso加载图片
+            Picasso.with(context).cancelRequest(holder.goodsPic);
             Picasso.with(context).load(data.getGoods_img()).into(holder.goodsPic);
             holder.goodsNameTv.setText(data.getGoods_name());
             holder.goodsPriceTv.setText(data.getGoods_price());
@@ -61,6 +62,7 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
         } else if (pos == 1) {
             GoodsListBean.DataEntity.ListEntity data = datas.getData().getList().get(pos);
             //Picasso加载图片
+            Picasso.with(context).cancelRequest(holder.goodsPic);
             Picasso.with(context).load(data.getGoods_img()).into(holder.goodsPic);
             holder.goodsNameTv.setText(data.getGoods_name());
             holder.goodsPriceTv.setText(data.getGoods_price());
@@ -69,6 +71,7 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
         } else if (pos == 2) {
             GoodsListBean.DataEntity.ListEntity data = datas.getData().getList().get(pos);
             //Picasso加载图片
+            Picasso.with(context).cancelRequest(holder.goodsPic);
             Picasso.with(context).load(data.getGoods_img()).into(holder.goodsPic);
             holder.goodsNameTv.setText(data.getGoods_name());
             holder.goodsPriceTv.setText(data.getGoods_price());
