@@ -23,6 +23,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.sina.weibo.SinaWeibo;
+import cn.sharesdk.tencent.qzone.QZone;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -32,22 +38,22 @@ import okhttp3.Response;
 public class LoginActivity extends BaseAcitvity implements View.OnClickListener {
     private Button createBtn, loginBtn;
     private EditText numEt, pasEt;
-    private ImageView imageView,sinaIv,qqIv;
-    private String num,password;
+    private ImageView imageView, sinaIv, qqIv;
+    private String num, password;
 
     Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
 
             try {
-                JSONObject obj =new JSONObject(msg.obj.toString());
-                String result =obj.getString("result");
-                if (result.equals("")){
+                JSONObject obj = new JSONObject(msg.obj.toString());
+                String result = obj.getString("result");
+                if (result.equals("")) {
                     Toast.makeText(LoginActivity.this, obj.getString("msg"), Toast.LENGTH_SHORT).show();
-                }else if (result.equals("1")){
+                } else if (result.equals("1")) {
                     Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                    intent.putExtra("key",1);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("key", 1);
                     startActivity(intent);
                 }
             } catch (JSONException e) {
@@ -161,7 +167,7 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.login_return_iv:
                 finish();
                 break;
@@ -170,10 +176,54 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
                 startActivity(myIntent);
                 break;
             case R.id.login_sina_iv:
+                ShareSDK.initSDK(this);
+                Platform platform = ShareSDK.getPlatform(SinaWeibo.NAME);
+                if (platform.isAuthValid()) {
+                    platform.removeAccount();
+                }
+                platform.setPlatformActionListener(new PlatformActionListener() {
+                    @Override
+                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                        Log.i("android", platform.getDb().getUserName());
+                    }
 
+                    @Override
+                    public void onError(Platform platform, int i, Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onCancel(Platform platform, int i) {
+
+                    }
+                });
+                platform.SSOSetting(false);
+                platform.showUser(null);
                 break;
             case R.id.login_qq_iv:
+                ShareSDK.initSDK(this);
+                Platform sPlatform = ShareSDK.getPlatform(QZone.NAME);
+                if (sPlatform.isAuthValid()) {
+                    sPlatform.removeAccount();
+                }
+                sPlatform.setPlatformActionListener(new PlatformActionListener() {
+                    @Override
+                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                        Log.i("android", platform.getDb().getUserName());
+                    }
 
+                    @Override
+                    public void onError(Platform platform, int i, Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onCancel(Platform platform, int i) {
+
+                    }
+                });
+                sPlatform.SSOSetting(false);
+                sPlatform.showUser(null);
                 break;
         }
     }
