@@ -24,6 +24,9 @@ import com.example.vdllo.mirror.toolclass.LinkageListView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.squareup.picasso.Picasso;
 
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
+
 import static android.widget.AbsListView.*;
 
 /**
@@ -43,7 +46,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
     private ObjectAnimator animation;
     private ObjectAnimator animationBack;
     private RelativeLayout showBtnLayout;
-    private ImageView buyIv,returnIv;
+    private ImageView buyIv, returnIv;
 
     public static void setData(GoodsListBean data, int pos) {
         GoodsDetailsActivity.data = data;
@@ -97,8 +100,11 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                 startActivity(intent);
                 break;
             case R.id.details_buy_iv:
-                WearAtlasActivity.setData(data, pos);
                 Intent bIntent = new Intent(GoodsDetailsActivity.this, OrderDetailsActivity.class);
+                bIntent.putExtra("name",data.getData().getList().get(pos).getGoods_name());
+                bIntent.putExtra("pic",data.getData().getList().get(pos).getGoods_pic());
+                bIntent.putExtra("content",data.getData().getList().get(pos).getBrand());
+                bIntent.putExtra("price",data.getData().getList().get(pos).getGoods_price());
                 startActivity(bIntent);
                 break;
             case R.id.activity_details_return:
@@ -259,6 +265,40 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                     listViewHeadHolder.detailPrice.setText(data.getData().getList().get(pos).getGoods_price());
                     listViewHeadHolder.detailTitle.setText(data.getData().getList().get(pos).getBrand());
                     listViewHeadHolder.detailBrand.setText(data.getData().getList().get(pos).getGoods_name());
+                    listViewHeadHolder.shareIv.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            String s = data.getData().getList().get(pos).getGoods_share();
+                            Log.d("我来看看","哈哈哈哈" + s);
+                            ShareSDK.initSDK(GoodsDetailsActivity.this);
+                            OnekeyShare oks = new OnekeyShare();
+                            //关闭sso授权
+                            oks.disableSSOWhenAuthorize();
+
+// 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
+                            //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
+                            // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
+                            oks.setTitle(getString(R.string.app_name));
+                            // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
+                            oks.setTitleUrl("哈哈哈");
+                            // text是分享文本，所有平台都需要这个字段
+                            oks.setText(s);
+                            // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+                            //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+                            // url仅在微信（包括好友和朋友圈）中使用
+                            oks.setUrl("哈哈哈");
+                            // comment是我对这条分享的评论，仅在人人网和QQ空间使用
+                            oks.setComment("我是测试评论文本");
+                            // site是分享此内容的网站名称，仅在QQ空间使用
+                            oks.setSite(getString(R.string.app_name));
+                            // siteUrl是分享此内容的网站地址，仅在QQ空间使用
+                            oks.setSiteUrl("哈哈哈");
+
+// 启动分享GUI
+                            oks.show(GoodsDetailsActivity.this);
+                        }
+                    });
                     break;
                 case TYPE_3:
                     convertView = LayoutInflater.from(GoodsDetailsActivity.this).inflate(R.layout.details_line_item, parent, false);
@@ -286,12 +326,14 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
 
         public class ListViewHeadHolder {
             private TextView detailBrand, detailTitle, detailContext, detailPrice;
+            private ImageView shareIv;
 
             public ListViewHeadHolder(View view) {
                 detailBrand = (TextView) view.findViewById(R.id.detail_head_brand);
                 detailTitle = (TextView) view.findViewById(R.id.detail_head_title);
                 detailContext = (TextView) view.findViewById(R.id.detail_head_context);
                 detailPrice = (TextView) view.findViewById(R.id.detail_head_price);
+                shareIv = (ImageView) view.findViewById(R.id.details_head_share_iv);
             }
         }
 

@@ -12,7 +12,6 @@ import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.bean.GoodsListBean;
 import com.squareup.picasso.Picasso;
 
-
 /**
  * Created by Bo on 16/4/8.
  */
@@ -114,13 +113,12 @@ public class UpListViewAdapter extends BaseAdapter {
 
     public class ListViewHeadHolder {
         private TextView detailBrand, detailTitle, detailContext, detailPrice;
-        private ImageView shareIv;
+
         public ListViewHeadHolder(View view) {
             detailBrand = (TextView) view.findViewById(R.id.detail_head_brand);
             detailTitle = (TextView) view.findViewById(R.id.detail_head_title);
             detailContext = (TextView) view.findViewById(R.id.detail_head_context);
             detailPrice = (TextView) view.findViewById(R.id.detail_head_price);
-            shareIv = (ImageView) view.findViewById(R.id.details_head_share_iv);
         }
 
     }
