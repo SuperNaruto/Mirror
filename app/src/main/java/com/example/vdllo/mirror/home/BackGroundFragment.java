@@ -1,7 +1,9 @@
 package com.example.vdllo.mirror.home;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.widget.Scroller;
 import android.widget.TextView;
 
+import com.example.vdllo.mirror.Login.LoginActivity;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseFragment;
 import com.example.vdllo.mirror.bean.MenuListBean;
@@ -37,6 +40,7 @@ public class BackGroundFragment extends BaseFragment {
     private MenuListBean menuListBean;
     private TextView textView;
     private int num;
+    private boolean ifLogin = true;
 
     @Override
     public int getLayout() {
@@ -62,13 +66,14 @@ public class BackGroundFragment extends BaseFragment {
 
         Intent intent = getActivity().getIntent();
         int s = intent.getIntExtra("position", 0);
-
-
         viewPager.setCurrentItem(s);
-        Intent myIntent = getActivity().getIntent();
-        num = myIntent.getIntExtra("key",0);
-        if (num == 1){
-            textView.setText("购物车");
+
+        SharedPreferences sp = getActivity().getSharedPreferences("Mirror", Context.MODE_PRIVATE);
+        ifLogin = sp.getBoolean("ifLogin", false);
+        if (ifLogin) {
+            textView.setText(R.string.main_activity_shoppingCart_text);
+        } else {
+            textView.setText(R.string.main_activity_login_text);
         }
     }
 }

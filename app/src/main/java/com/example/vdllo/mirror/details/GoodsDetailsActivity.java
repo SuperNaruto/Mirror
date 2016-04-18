@@ -2,6 +2,7 @@ package com.example.vdllo.mirror.details;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
@@ -89,12 +91,20 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                 startActivity(intent);
                 break;
             case R.id.details_buy_iv:
-                Intent bIntent = new Intent(GoodsDetailsActivity.this, OrderDetailsActivity.class);
-                bIntent.putExtra("name",data.getData().getList().get(pos).getGoods_name());
-                bIntent.putExtra("pic",data.getData().getList().get(pos).getGoods_pic());
-                bIntent.putExtra("content",data.getData().getList().get(pos).getBrand());
-                bIntent.putExtra("price",data.getData().getList().get(pos).getGoods_price());
-                startActivity(bIntent);
+                SharedPreferences sp = getSharedPreferences("Mirror", MODE_PRIVATE);
+                String token = sp.getString("token", "");
+                if (!token.equals("")) {
+                    Intent bIntent = new Intent(GoodsDetailsActivity.this, OrderDetailsActivity.class);
+                    bIntent.putExtra("name", data.getData().getList().get(pos).getGoods_name());
+                    bIntent.putExtra("pic", data.getData().getList().get(pos).getGoods_pic());
+                    bIntent.putExtra("content", data.getData().getList().get(pos).getBrand());
+                    bIntent.putExtra("price", data.getData().getList().get(pos).getGoods_price());
+                    bIntent.putExtra("id", data.getData().getList().get(pos).getGoods_id());
+                    startActivity(bIntent);
+                }else {
+                    Toast.makeText(GoodsDetailsActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
             case R.id.activity_details_return:
                 finish();
@@ -259,13 +269,12 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                         public void onClick(View v) {
 
                             String s = data.getData().getList().get(pos).getGoods_share();
-                            Log.d("我来看看","哈哈哈哈" + s);
+                            Log.d("我来看看", "哈哈哈哈" + s);
                             ShareSDK.initSDK(GoodsDetailsActivity.this);
                             OnekeyShare oks = new OnekeyShare();
                             //关闭sso授权
                             oks.disableSSOWhenAuthorize();
-
-// 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
+                            // 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
                             //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
                             // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
                             oks.setTitle(getString(R.string.app_name));
@@ -283,8 +292,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                             oks.setSite(getString(R.string.app_name));
                             // siteUrl是分享此内容的网站地址，仅在QQ空间使用
                             oks.setSiteUrl("哈哈哈");
-
-// 启动分享GUI
+                            // 启动分享GUI
                             oks.show(GoodsDetailsActivity.this);
                         }
                     });
@@ -304,7 +312,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                         if (url != null) {
                             //Picasso加载图片
                             Picasso.with(parent.getContext()).cancelRequest(listViewDetailHolder.background);
-                            Picasso.with(GoodsDetailsActivity.this).load(url).resize(600,600).into(listViewDetailHolder.background);
+                            Picasso.with(GoodsDetailsActivity.this).load(url).resize(600, 600).into(listViewDetailHolder.background);
                         }
                     } catch (ArrayIndexOutOfBoundsException e) {
                         e.printStackTrace();
@@ -343,7 +351,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
             }
         }
     }
-//
+
 //    private void visibleLayout() {
 //        if (btnNotShow && title.getY() <= 0) {
 //            visibleLayout();

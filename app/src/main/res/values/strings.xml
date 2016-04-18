@@ -38,4 +38,6 @@
     <string name="activity_address_btn_text">添加地址</string>
     <string name="address_listView_recipient_text">收件人:</string>
     <string name="address_listView_address_text">地址:</string>
+    <string name="main_activity_shoppingCart_text">購物車</string>
+    <string name="main_activity_login_text">登錄</string>
 </resources>

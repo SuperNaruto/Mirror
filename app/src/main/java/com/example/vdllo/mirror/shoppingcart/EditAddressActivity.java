@@ -22,40 +22,43 @@ import okhttp3.Response;
 /**
  * Created by dllo on 16/4/14.
  */
-public class AddAddressActivity extends BaseAcitvity implements View.OnClickListener {
+public class EditAddressActivity extends BaseAcitvity implements View.OnClickListener {
     private ImageView returnIv;
     private EditText nameEt, telEt, addressEt;
-    private Button addAddressBtn;
+    private Button editAddressBtn;
     private Handler handler;
 
     @Override
     protected int setContent() {
-        return R.layout.activity_addaddress;
+        return R.layout.activity_editaddress;
     }
 
     @Override
     protected void initView() {
-        returnIv = bindView(R.id.activity_addAddress_return);
+        returnIv = bindView(R.id.activity_editAddress_return);
         returnIv.setOnClickListener(this);
-        nameEt = bindView(R.id.add_address_name_et);
-        telEt = bindView(R.id.add_address_phone_et);
-        addressEt = bindView(R.id.add_address_address_et);
-        addAddressBtn = bindView(R.id.activity_addAddress_btn);
-        addAddressBtn.setOnClickListener(this);
+        nameEt = bindView(R.id.edit_address_name_et);
+        telEt = bindView(R.id.edit_address_phone_et);
+        addressEt = bindView(R.id.edit_address_address_et);
+        editAddressBtn = bindView(R.id.activity_editAddress_btn);
+        editAddressBtn.setOnClickListener(this);
     }
 
     @Override
     protected void initData() {
-
+        Intent intent = getIntent();
+        nameEt.setText(intent.getStringExtra("name"));
+        addressEt.setText(intent.getStringExtra("info"));
+        telEt.setText(intent.getStringExtra("tel"));
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.activity_addAddress_return:
+            case R.id.activity_editAddress_return:
                 finish();
                 break;
-            case R.id.activity_addAddress_btn:
+            case R.id.activity_editAddress_btn:
                 String name = nameEt.getText().toString();
                 String tel = telEt.getText().toString();
                 String address = addressEt.getText().toString();
@@ -65,12 +68,14 @@ public class AddAddressActivity extends BaseAcitvity implements View.OnClickList
                     handler = new Handler(new Handler.Callback() {
                         @Override
                         public boolean handleMessage(Message msg) {
-                            Toast.makeText(AddAddressActivity.this, "提交成功", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditAddressActivity.this, "提交编辑成功", Toast.LENGTH_SHORT).show();
                             finish();
                             return false;
                         }
                     });
-                    OkHttpUtils.post().url(UrlBean.USER_ADD_ADDRESS).addParams("token", token).addParams("username", name)
+                    Intent intent = getIntent();
+                    String id = intent.getStringExtra("id");
+                    OkHttpUtils.post().url(UrlBean.USER_EDIT_ADDRESS).addParams("token", token).addParams("addr_id", id).addParams("username", name)
                             .addParams("cellphone", tel).addParams("addr_info", address).build().execute(new Callback() {
                         @Override
                         public Object parseNetworkResponse(Response response) throws Exception {
@@ -92,7 +97,7 @@ public class AddAddressActivity extends BaseAcitvity implements View.OnClickList
                         }
                     });
                 } else {
-                    Toast.makeText(AddAddressActivity.this, "请填写信息", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditAddressActivity.this, "请填写信息", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }

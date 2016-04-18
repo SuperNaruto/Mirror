@@ -1,6 +1,7 @@
 package com.example.vdllo.mirror.Login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
@@ -21,9 +22,12 @@ import com.example.vdllo.mirror.home.MainActivity;
 import com.example.vdllo.mirror.shoppingcart.AddressActivity;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.HashMap;
+
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
@@ -42,31 +46,8 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
     private ImageView sinaIv, qqIv;
     private ImageView imageView;
     private String num, password;
+    private Handler handler;
 
-    Handler handler = new Handler(new Handler.Callback() {
-        @Override
-        public boolean handleMessage(Message msg) {
-
-            try {
-                JSONObject obj = new JSONObject(msg.obj.toString());
-                String result = obj.getString("result");
-                if (result.equals("")) {
-                    Toast.makeText(LoginActivity.this, obj.getString("msg"), Toast.LENGTH_SHORT).show();
-                } else if (result.equals("1")) {
-                    Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.putExtra("key", 1);
-                    startActivity(intent);
-                    String token = obj.getJSONObject("data").getString("token");
-                    AddressActivity.setToken(token);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-
-            }
-            return false;
-        }
-    });
 
     @Override
     protected int setContent() {
@@ -121,6 +102,33 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
                         loginBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                handler = new Handler(new Handler.Callback() {
+                                    @Override
+                                    public boolean handleMessage(Message msg) {
+                                        try {
+                                            JSONObject obj = new JSONObject(msg.obj.toString());
+                                            String result = obj.getString("result");
+                                            if (result.equals("")) {
+                                                Toast.makeText(LoginActivity.this, obj.getString("msg"), Toast.LENGTH_SHORT).show();
+                                            } else if (result.equals("1")) {
+                                                Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+                                                //sp 保存token
+                                                String token = obj.getJSONObject("data").getString("token");
+                                                SharedPreferences sp = getSharedPreferences("Mirror", MODE_PRIVATE);
+                                                SharedPreferences.Editor editor = sp.edit();
+                                                editor.putString("token", token);
+                                                editor.putBoolean("ifLogin", true);
+                                                editor.commit();
+                                                finish();
+                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+
+                                        }
+                                        return false;
+                                    }
+                                });
+
                                 OkHttpUtils.post().url(UrlBean.USER_LOGIN).
                                         addParams("phone number", num).addParams("password", password).build().execute(new Callback() {
                                     @Override

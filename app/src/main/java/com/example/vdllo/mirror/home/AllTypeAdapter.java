@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.vdllo.mirror.R;
@@ -51,7 +52,7 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
             holder.goodsPriceTv.setText(data.getGoods_price());
             holder.brandTv.setText(data.getBrand());
             holder.productAreaTv.setText(data.getProduct_area());
-            holder.goodsPic.setOnClickListener(new View.OnClickListener() {
+            holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     GoodsDetailsActivity.setData(datas, position);
@@ -68,6 +69,14 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
             holder.goodsPriceTv.setText(data.getGoods_price());
             holder.brandTv.setText(data.getBrand());
             holder.productAreaTv.setText(data.getProduct_area());
+            holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    GoodsDetailsActivity.setData(datas, position + 1);
+                    Intent intent = new Intent(context, GoodsDetailsActivity.class);
+                    context.startActivity(intent);
+                }
+            });
         } else if (pos == 2) {
             GoodsListBean.DataEntity.ListEntity data = datas.getData().getList().get(pos);
             //Picasso加载图片
@@ -77,6 +86,14 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
             holder.goodsPriceTv.setText(data.getGoods_price());
             holder.brandTv.setText(data.getBrand());
             holder.productAreaTv.setText(data.getProduct_area());
+            holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    GoodsDetailsActivity.setData(datas, position + 2);
+                    Intent intent = new Intent(context, GoodsDetailsActivity.class);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 
@@ -84,7 +101,7 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
     public int getItemCount() {
         if (pos == 0) {
             return datas.getData().getList().size();
-        } else  {
+        } else {
             return 1;
         }
     }
@@ -93,6 +110,7 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
 
         private ImageView goodsPic;
         private TextView goodsNameTv, goodsPriceTv, productAreaTv, brandTv;
+        private RelativeLayout relativeLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -101,6 +119,7 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.ViewHold
             goodsPriceTv = (TextView) itemView.findViewById(R.id.all_type_goods_price);
             productAreaTv = (TextView) itemView.findViewById(R.id.all_type_product_area);
             brandTv = (TextView) itemView.findViewById(R.id.all_type_brand);
+            relativeLayout = (RelativeLayout) itemView.findViewById(R.id.all_type_relativeLayout);
         }
     }
 }

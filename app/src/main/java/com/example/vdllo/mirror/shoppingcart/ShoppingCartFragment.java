@@ -47,7 +47,7 @@ public class ShoppingCartFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.add(R.id.main_linearlayout, new CatalogFragment(getActivity(), data, i));
+                ft.add(R.id.main_cataLogLayout, new CatalogFragment(getActivity(), data, i));
                 ft.addToBackStack(null);
                 ft.commit();
             }

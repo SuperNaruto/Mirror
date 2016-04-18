@@ -1,6 +1,7 @@
 package com.example.vdllo.mirror.shoppingcart;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,11 @@ public class AddressActivityAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
+    //自定义方法 删除地址时刷新Adapter
+    public void setData(int position) {
+        addressBean.getData().getList().remove(position);
+        notifyDataSetChanged();
+    }
 
     @Override
     public int getCount() {
@@ -42,7 +48,7 @@ public class AddressActivityAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.address_listview_item, parent, false);
@@ -51,6 +57,17 @@ public class AddressActivityAdapter extends BaseAdapter {
             viewHolder.addressTv = (TextView) convertView.findViewById(R.id.address_item_address);
             viewHolder.telTv = (TextView) convertView.findViewById(R.id.address_item_tel);
             viewHolder.editIv = (ImageView) convertView.findViewById(R.id.address_edit);
+            viewHolder.editIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, EditAddressActivity.class);
+                    intent.putExtra("name", addressBean.getData().getList().get(position).getUsername());
+                    intent.putExtra("info", addressBean.getData().getList().get(position).getAddr_info());
+                    intent.putExtra("tel", addressBean.getData().getList().get(position).getCellphone());
+                    intent.putExtra("id", addressBean.getData().getList().get(position).getAddr_id());
+                    context.startActivity(intent);
+                }
+            });
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -68,8 +85,5 @@ public class AddressActivityAdapter extends BaseAdapter {
 
     }
 
-    public void setData(int position) {
-        addressBean.getData().getList().remove(position);
-        notifyDataSetChanged();
-    }
+
 }

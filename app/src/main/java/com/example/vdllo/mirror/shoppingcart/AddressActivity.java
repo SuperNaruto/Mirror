@@ -1,6 +1,7 @@
 package com.example.vdllo.mirror.shoppingcart;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
@@ -35,17 +36,14 @@ import okhttp3.Response;
  * Created by dllo on 16/4/15.
  */
 public class AddressActivity extends BaseAcitvity implements View.OnClickListener {
-    private static String token;
     private SwipeMenuListView myListView;
     private ImageView returnIv;
     private Button addAddressBtn;
     private AddressBean addressBean;
     private Handler listHandler, delHandler, mrHandler;
     private AddressActivityAdapter myAdapter;
+    private int resultCode = 100;
 
-    public static void setToken(String token) {
-        AddressActivity.token = token;
-    }
 
     @Override
     protected int setContent() {
@@ -69,11 +67,14 @@ public class AddressActivity extends BaseAcitvity implements View.OnClickListene
                 Gson gson = new Gson();
                 addressBean = gson.fromJson(msg.obj.toString(), AddressBean.class);
                 myAdapter = new AddressActivityAdapter(AddressActivity.this, addressBean);
+                myAdapter.notifyDataSetChanged();
                 myListView.setAdapter(myAdapter);
                 return false;
             }
         });
         //解析地址数据，传到适配器
+        SharedPreferences sp = getSharedPreferences("Mirror", MODE_PRIVATE);
+        String token = sp.getString("token", "");
         OkHttpUtils.post().url(UrlBean.USER_ADDRESS_LIST).addParams("token", token)
                 .addParams("device_type", "2").addParams("page", "").addParams("last_time", "")
                 .build().execute(new Callback() {
@@ -96,7 +97,6 @@ public class AddressActivity extends BaseAcitvity implements View.OnClickListene
 
             }
         });
-
 
         //SwipeMenuListView
         //1.create a SwipeMenuCreator to add items
@@ -122,7 +122,6 @@ public class AddressActivity extends BaseAcitvity implements View.OnClickListene
         };
         myListView.setMenuCreator(creator);
 
-
         //2.deleteItem
         myListView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
@@ -138,6 +137,9 @@ public class AddressActivity extends BaseAcitvity implements View.OnClickListene
                                 return false;
                             }
                         });
+
+                        SharedPreferences sp = getSharedPreferences("Mirror", MODE_PRIVATE);
+                        String token = sp.getString("token", "");
                         OkHttpUtils.post().url(UrlBean.USER_DEL_ADDRESS).addParams("token", token)
                                 .addParams("addr_id", addressBean.getData().getList().get(position).getAddr_id()).build().execute(new Callback() {
                             @Override
@@ -169,20 +171,33 @@ public class AddressActivity extends BaseAcitvity implements View.OnClickListene
         //listView行监听
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 mrHandler = new Handler(new Handler.Callback() {
                     @Override
                     public boolean handleMessage(Message msg) {
                         try {
                             JSONObject object = new JSONObject(msg.obj.toString());
                             String result = object.getString("result");
-                            Log.d("aaa",result);
+                            if (result.equals("1")) {
+                                myAdapter.notifyDataSetChanged();
+                                Toast.makeText(AddressActivity.this, "设置默认地址成功", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(AddressActivity.this, OrderDetailsActivity.class);
+                                intent.putExtra("name", addressBean.getData().getList().get(position).getUsername());
+                                intent.putExtra("tel", addressBean.getData().getList().get(position).getCellphone());
+                                intent.putExtra("info", addressBean.getData().getList().get(position).getAddr_info());
+                                setResult(resultCode, intent);
+                                finish();
+                            }
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                         return false;
                     }
                 });
+
+                SharedPreferences sp = getSharedPreferences("Mirror", MODE_PRIVATE);
+                String token = sp.getString("token", "");
                 OkHttpUtils.post().url(UrlBean.USER_MR_ADDRESS).addParams("token", token).addParams("addr_id", addressBean.getData().getList().get(position).getAddr_id())
                         .build().execute(new Callback() {
                     @Override
@@ -223,5 +238,46 @@ public class AddressActivity extends BaseAcitvity implements View.OnClickListene
 
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        listHandler = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+                Gson gson = new Gson();
+                addressBean = gson.fromJson(msg.obj.toString(), AddressBean.class);
+                myAdapter = new AddressActivityAdapter(AddressActivity.this, addressBean);
+                myAdapter.notifyDataSetChanged();
+                myListView.setAdapter(myAdapter);
+                return false;
+            }
+        });
+        //解析地址数据，传到适配器
+        SharedPreferences sp = getSharedPreferences("Mirror", MODE_PRIVATE);
+        String token = sp.getString("token", "");
+        OkHttpUtils.post().url(UrlBean.USER_ADDRESS_LIST).addParams("token", token)
+                .addParams("device_type", "2").addParams("page", "").addParams("last_time", "")
+                .build().execute(new Callback() {
+            @Override
+            public Object parseNetworkResponse(final Response response) throws Exception {
+                String body = response.body().string();
+                Message message = new Message();
+                message.obj = body;
+                listHandler.sendMessage(message);
+                return null;
+            }
+
+            @Override
+            public void onError(Call call, Exception e) {
+
+            }
+
+            @Override
+            public void onResponse(Object response) {
+
+            }
+        });
     }
 }
