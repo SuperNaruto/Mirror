@@ -3,63 +3,82 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-<LinearLayout
-    android:layout_width="300dp"
-    android:layout_height="194dp"
-    android:orientation="vertical"
-    android:layout_gravity="center_horizontal"
-    android:background="@drawable/payment_shape">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="43dp"
-    android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="选择支付方式"
-        android:textSize="15sp"
-        android:textColor="#333"
-        android:layout_gravity="center"
-        android:layout_marginTop="14dp"/>
-</LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dip"
-        android:background="#ddd"/>
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@mipmap/weixinpay"
-    android:layout_gravity="center"
-    android:layout_marginTop="25dp"
-    android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="微信支付"
-        android:textSize="15sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:textColor="#fff"
-        android:drawableLeft="@mipmap/weixin"/>
-</LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/weixinpay"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_width="@dimen/popwindow_payment_width"
+        android:layout_height="@dimen/popwindow_payment_height"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/payment_shape"
         android:orientation="vertical">
-        <TextView
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/popwindow_payment_change_height"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/popwindow_payment_change_top"
+                android:text="@string/popwindow_payment_change_text"
+                android:textColor="@color/payment_popwindow"
+                android:textSize="@dimen/popwindow_payment_change_textsize" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/popwindow_payment_view_height"
+            android:background="@color/payment_popwindow_iv" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="支付宝支付"
-            android:textSize="15sp"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:textColor="#fff"
-            android:drawableLeft="@mipmap/zhifubao"/>
+            android:layout_marginTop="@dimen/popwindow_payment_weixin_top"
+            android:background="@mipmap/weixinpay"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/popwindow_payment_weixin_iv_left"
+                android:src="@mipmap/weixin" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/popwindow_payment_weixin_tv_left"
+                android:text="@string/popwindow_payment_weixin_iv_text"
+                android:textColor="@color/payment_popwindow_tv"
+                android:textSize="@dimen/popwindow_payment_weixin_iv_textsize" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/popwindow_payment_zhifubao_iv_left"
+            android:background="@mipmap/weixinpay"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/popwindow_payment_zhifubao_left"
+                android:src="@mipmap/zhifubao" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/popwindow_payment_zhifubao_tv_left"
+                android:text="@string/popwindow_payment_zhifubao_iv_text"
+                android:textColor="@color/payment_popwindow_tv"
+                android:textSize="@dimen/popwindow_payment_zhifubao_iv_textsize" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 </LinearLayout>
