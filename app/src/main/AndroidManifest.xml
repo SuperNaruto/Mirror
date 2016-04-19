@@ -66,6 +66,7 @@
         <activity android:name=".shoppingcart.AddressActivity" />
         <activity android:name=".shoppingcart.AddAddressActivity" />
         <activity android:name=".shoppingcart.EditAddressActivity" />
+
     </application>
 
 
