@@ -64,6 +64,7 @@ public class OrderDetailsActivity extends BaseAcitvity {
         buyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                
 
             }
         });
