@@ -19,5 +19,8 @@
 
     <!--wear_atlas_activity_background -->
     <color name="wear_atlas_activity_background">#000000</color>
-
+    <!--payment_popwindow -->
+    <color name="payment_popwindow">#333</color>
+    <color name="payment_popwindow_iv">#ddd</color>
+    <color name="payment_popwindow_tv">#fff</color>
 </resources>

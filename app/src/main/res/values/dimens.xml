@@ -207,6 +207,20 @@
     <!-- MEDIA CONTROLLER -->
     <dimen name="media_controller_view_height">40.0dip</dimen>
     <dimen name="activity_order_details_address_input_linearLayout_marginTop">20dp</dimen>
+    <dimen name="popwindow_payment_width">300dp</dimen>
+    <dimen name="popwindow_payment_height">194dp</dimen>
+    <dimen name="popwindow_payment_change_height">43dp</dimen>
+    <dimen name="popwindow_payment_change_top">14dp</dimen>
+    <dimen name="popwindow_payment_change_textsize">15sp</dimen>
+    <dimen name="popwindow_payment_view_height">1dip</dimen>
+    <dimen name="popwindow_payment_weixin_top">20dp</dimen>
+    <dimen name="popwindow_payment_weixin_iv_left">45dp</dimen>
+    <dimen name="popwindow_payment_weixin_tv_left">12dp</dimen>
+    <dimen name="popwindow_payment_weixin_iv_textsize">15sp</dimen>
+    <dimen name="popwindow_payment_zhifubao_iv_left">20dp</dimen>
+    <dimen name="popwindow_payment_zhifubao_left">45dp</dimen>
+    <dimen name="popwindow_payment_zhifubao_tv_left">12dp</dimen>
+    <dimen name="popwindow_payment_zhifubao_iv_textsize">15sp</dimen>
     <!-- MEDIA CONTROLLER -->
 
 </resources>

@@ -34,4 +34,7 @@
     <string name="share_details_sub_text">巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉</string>
     <string name="activity_wear_atlas_text">商品细节展示</string>
     <string name="activity_order_details_text">订单详情</string>
+    <string name="popwindow_payment_change_text">选择支付方式</string>
+    <string name="popwindow_payment_weixin_iv_text">微信支付</string>
+    <string name="popwindow_payment_zhifubao_iv_text">支付宝支付</string>
 </resources>
