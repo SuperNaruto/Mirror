@@ -26,23 +26,28 @@
         android:layout_width="match_parent"
         android:layout_height="1dip"
         android:background="#ddd"/>
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@mipmap/weixinpay"
-    android:layout_gravity="center"
-    android:layout_marginTop="25dp"
-    android:orientation="vertical">
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="微信支付"
-        android:textSize="15sp"
+        android:background="@mipmap/weixinpay"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:textColor="#fff"
-        android:drawableLeft="@mipmap/weixin"/>
-</LinearLayout>
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/weixin"
+            android:layout_marginLeft="45dp"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="微信支付"
+            android:textSize="15sp"
+            android:layout_marginLeft="12dp"
+            android:layout_gravity="center"
+            android:textColor="#fff" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -50,16 +55,21 @@
         android:background="@mipmap/weixinpay"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:orientation="vertical">
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/zhifubao"
+            android:layout_marginLeft="45dp"
+            android:layout_gravity="center"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="支付宝支付"
             android:textSize="15sp"
+            android:layout_marginLeft="12dp"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:textColor="#fff"
-            android:drawableLeft="@mipmap/zhifubao"/>
+            android:textColor="#fff" />
     </LinearLayout>
 </LinearLayout>
 </LinearLayout>
