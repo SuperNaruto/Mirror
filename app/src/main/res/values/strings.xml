@@ -34,16 +34,14 @@
     <string name="share_details_sub_text">巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉</string>
     <string name="activity_wear_atlas_text">商品细节展示</string>
     <string name="activity_order_details_text">订单详情</string>
-<<<<<<< HEAD
     <string name="popwindow_payment_change_text">选择支付方式</string>
     <string name="popwindow_payment_weixin_iv_text">微信支付</string>
     <string name="popwindow_payment_zhifubao_iv_text">支付宝支付</string>
-=======
     <string name="activity_address_text">我的所有地址</string>
     <string name="activity_address_btn_text">添加地址</string>
     <string name="address_listView_recipient_text">收件人:</string>
     <string name="address_listView_address_text">地址:</string>
     <string name="main_activity_shoppingCart_text">購物車</string>
     <string name="main_activity_login_text">登錄</string>
->>>>>>> 7d68c70701b09850377a339a0820d09a3f193daa
+
 </resources>

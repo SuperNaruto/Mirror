@@ -8,6 +8,7 @@ import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.vdllo.mirror.R;
@@ -33,6 +34,8 @@ public class OrderDetailsActivity extends BaseAcitvity {
     private int requestCode = 200;
     private Handler handler;
     private OrderDetailsBean orderDetailsBean;
+    private Button buyBtn;
+    private PopupWindow myPopupWindow;
 
     @Override
     protected int setContent() {
@@ -55,6 +58,13 @@ public class OrderDetailsActivity extends BaseAcitvity {
             public void onClick(View v) {
                 Intent intent = new Intent(OrderDetailsActivity.this, AddressActivity.class);
                 startActivityForResult(intent, requestCode);
+            }
+        });
+        buyBtn = bindView(R.id.order_details_buyBtn);
+        buyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }
