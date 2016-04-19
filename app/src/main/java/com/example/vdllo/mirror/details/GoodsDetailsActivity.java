@@ -21,13 +21,20 @@ import android.widget.Toast;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
 import com.example.vdllo.mirror.bean.GoodsListBean;
+import com.example.vdllo.mirror.bean.OrderDetailsBean;
+import com.example.vdllo.mirror.bean.UrlBean;
 import com.example.vdllo.mirror.shoppingcart.OrderDetailsActivity;
 import com.example.vdllo.mirror.toolclass.LinkageListView;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.Callback;
 
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
+import okhttp3.Call;
+import okhttp3.Response;
 
 import static android.widget.AbsListView.*;
 
@@ -49,6 +56,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
     private ObjectAnimator animationBack;
     private RelativeLayout showBtnLayout;
     private ImageView buyIv, returnIv;
+    private OrderDetailsBean orderDetailsBean;
 
     public static void setData(GoodsListBean data, int pos) {
         GoodsDetailsActivity.data = data;
@@ -94,16 +102,50 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                 SharedPreferences sp = getSharedPreferences("Mirror", MODE_PRIVATE);
                 String token = sp.getString("token", "");
                 if (!token.equals("")) {
-                    Intent bIntent = new Intent(GoodsDetailsActivity.this, OrderDetailsActivity.class);
-                    bIntent.putExtra("name", data.getData().getList().get(pos).getGoods_name());
-                    bIntent.putExtra("pic", data.getData().getList().get(pos).getGoods_pic());
-                    bIntent.putExtra("content", data.getData().getList().get(pos).getBrand());
-                    bIntent.putExtra("price", data.getData().getList().get(pos).getGoods_price());
-                    bIntent.putExtra("id", data.getData().getList().get(pos).getGoods_id());
-                    startActivity(bIntent);
-                }else {
+                    handler = new Handler(new Handler.Callback() {
+                        @Override
+                        public boolean handleMessage(Message msg) {
+                            Gson gson = new Gson();
+                            orderDetailsBean = gson.fromJson(msg.obj.toString(), OrderDetailsBean.class);
+                            Intent bIntent = new Intent(GoodsDetailsActivity.this, OrderDetailsActivity.class);
+                            bIntent.putExtra("name", orderDetailsBean.getData().getGoods().getGoods_name());
+                            bIntent.putExtra("pic", orderDetailsBean.getData().getGoods().getPic());
+                            bIntent.putExtra("content", orderDetailsBean.getData().getGoods().getDes());
+                            bIntent.putExtra("price", orderDetailsBean.getData().getGoods().getPrice());
+                            bIntent.putExtra("order_id", orderDetailsBean.getData().getOrder_id());
+                            bIntent.putExtra("addr_id", orderDetailsBean.getData().getAddress().getAddr_id());
+                            bIntent.putExtra("id", data.getData().getList().get(pos).getGoods_id());
+                            startActivity(bIntent);
+                            return false;
+                        }
+                    });
+                    //点击购买下订单
+                    OkHttpUtils.post().url(UrlBean.ORDER_SUB).addParams("token", token).addParams("goods_id", data.getData().getList().get(pos).getGoods_id())
+                            .addParams("goods_num", "1").addParams("price", data.getData().getList().get(pos).getGoods_price())
+                            .addParams("discout_id", "").addParams("device_type", "2").build().execute(new Callback() {
+                        @Override
+                        public Object parseNetworkResponse(Response response) throws Exception {
+                            String body = response.body().string();
+                            Message message = new Message();
+                            message.obj = body;
+                            handler.sendMessage(message);
+                            return null;
+                        }
+
+                        @Override
+                        public void onError(Call call, Exception e) {
+
+                        }
+
+                        @Override
+                        public void onResponse(Object response) {
+
+                        }
+                    });
+                } else {
                     Toast.makeText(GoodsDetailsActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
                 }
+
 
                 break;
             case R.id.activity_details_return:
