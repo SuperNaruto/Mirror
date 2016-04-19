@@ -47,7 +47,8 @@
             <ImageView
                 android:id="@+id/details_buy_iv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="wrap_
+                content"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="@dimen/activity_details_buyIv_marginRight"
                 android:src="@mipmap/buy" />
