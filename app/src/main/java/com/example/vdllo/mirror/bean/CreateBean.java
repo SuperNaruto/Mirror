@@ -14,6 +14,8 @@ public class CreateBean {
     private String result;
     private String msg;
     private String data;
+    private String token;
+    private String uid;
 
     public void setResult(String result) {
         this.result = result;
@@ -37,5 +39,21 @@ public class CreateBean {
 
     public String getData() {
         return data;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

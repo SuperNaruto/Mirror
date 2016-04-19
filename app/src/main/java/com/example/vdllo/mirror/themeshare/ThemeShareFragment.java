@@ -1,6 +1,5 @@
 package com.example.vdllo.mirror.themeshare;
 
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
@@ -60,7 +59,7 @@ public class ThemeShareFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.add(R.id.main_linearlayout, new CatalogFragment(getActivity(), data, i));
+                ft.add(R.id.main_cataLogLayout, new CatalogFragment(getActivity(), data, i));
                 ft.addToBackStack(null);
                 ft.commit();
             }

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -28,7 +30,7 @@ public class CatalogFragment extends BaseFragment implements AdapterView.OnItemC
     private int linePosition;
 
     //构造方法传入上下文
-    public CatalogFragment(Context context, ArrayList titleData,int linePosition) {
+    public CatalogFragment(Context context, ArrayList titleData, int linePosition) {
         this.context = context;
         this.titleData = titleData;
         this.linePosition = linePosition;
@@ -58,7 +60,6 @@ public class CatalogFragment extends BaseFragment implements AdapterView.OnItemC
         listView.setOnItemClickListener(this);
         listView.setDividerHeight(0);
     }
-
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

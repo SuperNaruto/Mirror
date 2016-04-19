@@ -10,8 +10,9 @@
         android:id="@+id/main_framelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <FrameLayout
-            android:id="@+id/main_linearlayout"
+            android:id="@+id/main_cataLogLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:isScrollContainer="true" />
@@ -40,7 +41,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/main_bottom_textView_text"
-                    android:text="@string/main_bottom_textView_right"
                     android:textColor="@android:color/white" />
             </RelativeLayout>
         </RelativeLayout>

@@ -4,6 +4,7 @@
     android:layout_height="wrap_content">
 
     <RelativeLayout
+        android:id="@+id/all_type_relativeLayout"
         android:layout_width="@dimen/all_type_all_width"
         android:layout_height="@dimen/all_type_image_height"
         android:layout_marginLeft="@dimen/all_type_all_left"

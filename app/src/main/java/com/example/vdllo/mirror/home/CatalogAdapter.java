@@ -59,10 +59,6 @@ public class CatalogAdapter extends BaseAdapter {
         } else {
             holder.imageView.setVisibility(View.INVISIBLE);
         }
-
-
-
-
         return convertView;
     }
 

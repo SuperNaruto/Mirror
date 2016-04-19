@@ -1,10 +1,14 @@
 package com.example.vdllo.mirror.home;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -61,7 +65,7 @@ public class AllTypeFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.add(R.id.main_linearlayout, new CatalogFragment(getActivity(), data, i));
+                ft.add(R.id.main_cataLogLayout, new CatalogFragment(getActivity(), data, i));
                 ft.addToBackStack(null);
                 ft.commit();
             }
@@ -100,20 +104,18 @@ public class AllTypeFragment extends BaseFragment {
         data.add("浏览平光眼镜");
         data.add("专题分享");
         data.add("购物车");
-
         titleTextView.setText(data.get(i));
 
-        linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.add(R.id.main_linearlayout, new CatalogFragment(getActivity(), data, i));
-                ft.addToBackStack(null);
-                ft.commit();
-            }
-        });
+//        linearLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+//                ft.add(R.id.main_cataLogLayout, new CatalogFragment(getActivity(), data, i));
+//                ft.addToBackStack(null);
+//                ft.commit();
+//            }
+//        });
     }
-
 
 }
 

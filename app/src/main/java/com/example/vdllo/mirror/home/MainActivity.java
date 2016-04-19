@@ -1,18 +1,13 @@
 package com.example.vdllo.mirror.home;
 
 import android.animation.ObjectAnimator;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
+import android.content.SharedPreferences;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
-import android.widget.Scroller;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,18 +15,15 @@ import com.example.vdllo.mirror.Login.LoginActivity;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
 import com.example.vdllo.mirror.shoppingcart.ShoppingCartFragment;
-import com.example.vdllo.mirror.themeshare.ThemeShareFragment;
-import com.example.vdllo.mirror.toolclass.CustomViewPager;
-
-import java.lang.reflect.Field;
-import java.util.ArrayList;
 
 public class MainActivity extends BaseAcitvity {
 
     //记录第一次点击的时间
     private long clickTime = 0;
     private TextView textView;
-    private int num =0;
+    private boolean ifLogin = true;
+
+
     @Override
     protected int setContent() {
         return R.layout.activity_main;
@@ -40,7 +32,7 @@ public class MainActivity extends BaseAcitvity {
     @Override
     protected void initView() {
         android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.main_linearlayout, new BackGroundFragment());
+        ft.replace(R.id.main_cataLogLayout, new BackGroundFragment());
         textView = bindView(R.id.main_login_tv);
         ft.commit();
         bindView(R.id.main_iv).setOnClickListener(new View.OnClickListener() {
@@ -60,7 +52,20 @@ public class MainActivity extends BaseAcitvity {
 
     @Override
     protected void initData() {
-        if (num==0){
+        SharedPreferences sp = getSharedPreferences("Mirror", MODE_PRIVATE);
+        ifLogin = sp.getBoolean("ifLogin", false);
+        if (ifLogin) {
+            textView.setText(R.string.main_activity_shoppingCart_text);
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    android.support.v4.app.FragmentTransaction myFt = getSupportFragmentManager().beginTransaction();
+                    myFt.replace(R.id.main_cataLogLayout, new ShoppingCartFragment());
+                    myFt.commit();
+                }
+            });
+        } else {
+            textView.setText(R.string.main_activity_login_text);
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -68,20 +73,6 @@ public class MainActivity extends BaseAcitvity {
                     startActivity(intent);
                 }
             });
-        }
-        Intent intent = getIntent();
-        int num = intent.getIntExtra("key",0);
-        if (num == 1){
-            textView.setText("购物车");
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    android.support.v4.app.FragmentTransaction myFt = getSupportFragmentManager().beginTransaction();
-                    myFt.replace(R.id.main_linearlayout, new ShoppingCartFragment());
-                    myFt.commit();
-                }
-            });
-
         }
     }
 
@@ -97,12 +88,10 @@ public class MainActivity extends BaseAcitvity {
 
     private void exit() {
         if ((System.currentTimeMillis() - clickTime) > 2000) {
-            Toast.makeText(getApplicationContext(), "再按一次退出程序",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
             clickTime = System.currentTimeMillis();
         } else {
             this.finish();
-
         }
     }
 

@@ -15,10 +15,11 @@ import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
 import com.example.vdllo.mirror.base.BaseApplication;
 import com.example.vdllo.mirror.bean.GoodsListBean;
+import com.example.vdllo.mirror.shoppingcart.OrderDetailsActivity;
 import com.example.vdllo.mirror.toolclass.jcvideoplayer_lib.JCVideoPlayer;
 import com.squareup.picasso.Picasso;
 
-public class WearAtlasActivity extends BaseAcitvity {
+public class WearAtlasActivity extends BaseAcitvity implements View.OnClickListener {
     private ListView listView;
     private WearAtlasAdapter wearAtlasAdapter;
     private static GoodsListBean datas;
@@ -26,6 +27,7 @@ public class WearAtlasActivity extends BaseAcitvity {
     private Handler handler;
     private JCVideoPlayer jcVideoPlayer;
     private View headView;
+    private ImageView returnIv, buyIv;
 
     @Override
     protected int setContent() {
@@ -49,6 +51,10 @@ public class WearAtlasActivity extends BaseAcitvity {
         listView = bindView(R.id.activity_wear_atlas_listView);
         headView = LayoutInflater.from(BaseApplication.getContext()).inflate(R.layout.wear_atlas_head_item, null);
         jcVideoPlayer = (JCVideoPlayer) headView.findViewById(R.id.wear_atlas_video);
+        returnIv = bindView(R.id.activity_details_return);
+        returnIv.setOnClickListener(this);
+        buyIv = bindView(R.id.activity_details_buy);
+        buyIv.setOnClickListener(this);
     }
 
     @Override
@@ -57,6 +63,7 @@ public class WearAtlasActivity extends BaseAcitvity {
             if (datas.getData().getList().get(pos).getWear_video().get(i).getType().equals("8")) {
                 jcVideoPlayer.setUp(datas.getData().getList().get(pos).getWear_video().get(i).getData(), null);
             } else if (datas.getData().getList().get(pos).getWear_video().get(i).getType().equals("9")) {
+                Picasso.with(WearAtlasActivity.this).cancelRequest(jcVideoPlayer.ivThumb);
                 Picasso.with(WearAtlasActivity.this).load(datas.getData().getList().get(pos).getWear_video().get(i).getData()).into(jcVideoPlayer.ivThumb);
             }
         }
@@ -66,6 +73,24 @@ public class WearAtlasActivity extends BaseAcitvity {
         listView.setDividerHeight(0);
         listView.addHeaderView(headView);
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.activity_details_return:
+                finish();
+                break;
+            case R.id.activity_details_buy:
+                Intent Intent = new Intent(WearAtlasActivity.this, OrderDetailsActivity.class);
+                Intent.putExtra("name", datas.getData().getList().get(pos).getGoods_name());
+                Intent.putExtra("pic", datas.getData().getList().get(pos).getGoods_pic());
+                Intent.putExtra("content", datas.getData().getList().get(pos).getBrand());
+                Intent.putExtra("price", datas.getData().getList().get(pos).getGoods_price());
+                Intent.putExtra("id", datas.getData().getList().get(pos).getGoods_id());
+                startActivity(Intent);
+                break;
+        }
     }
 
 
@@ -106,6 +131,7 @@ public class WearAtlasActivity extends BaseAcitvity {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
+            Picasso.with(parent.getContext()).cancelRequest(holder.imageView);
             Picasso.with(parent.getContext()).load(bean.getData().getList().get(pos).getWear_video().get(position + 2).getData()).into(holder.imageView);
             holder.imageView.setOnClickListener(new View.OnClickListener() {
                 @Override

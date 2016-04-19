@@ -41,6 +41,7 @@ public class ThemeShareAdapter extends RecyclerView.Adapter<ThemeShareAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         //Picasso加载图片
+        Picasso.with(context).cancelRequest(holder.goodsPic);
         Picasso.with(context).load(storyListBean.getData().getList().get(position).getStory_img()).into(holder.goodsPic);
         holder.brandTv.setText(storyListBean.getData().getList().get(position).getStory_title());
         if (position == 0){
