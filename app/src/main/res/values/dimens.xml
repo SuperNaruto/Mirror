@@ -206,7 +206,6 @@
 
     <!-- MEDIA CONTROLLER -->
     <dimen name="media_controller_view_height">40.0dip</dimen>
-<<<<<<< HEAD
     <dimen name="activity_order_details_address_input_linearLayout_marginTop">20dp</dimen>
     <dimen name="popwindow_payment_width">300dp</dimen>
     <dimen name="popwindow_payment_height">194dp</dimen>
@@ -222,12 +221,9 @@
     <dimen name="popwindow_payment_zhifubao_left">45dp</dimen>
     <dimen name="popwindow_payment_zhifubao_tv_left">12dp</dimen>
     <dimen name="popwindow_payment_zhifubao_iv_textsize">15sp</dimen>
-=======
->>>>>>> 7d68c70701b09850377a339a0820d09a3f193daa
     <!-- MEDIA CONTROLLER -->
 
     <!--activity_address -->
-    <dimen name="activity_order_details_address_input_linearLayout_marginTop">20dp</dimen>
     <dimen name="activity_address_btn_marginTop">25dp</dimen>
     <dimen name="activity_address_btn_textSize">18sp</dimen>
     <dimen name="address_listView_textView_marginTop">20dp</dimen>

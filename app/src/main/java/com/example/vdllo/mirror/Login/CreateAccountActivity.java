@@ -24,6 +24,9 @@ import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -50,13 +53,21 @@ public class CreateAccountActivity extends BaseAcitvity {
     Handler myHandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
-            //1.Gson解析
-            Gson gson = new Gson();
-            data = gson.fromJson(msg.obj.toString(), CreateBean.class);
-            String toast;
-            toast = data.getMsg();
-            Log.d("我要的东西呢", "就是错误信息" + toast);
-            Toast.makeText(CreateAccountActivity.this, toast, Toast.LENGTH_SHORT).show();
+            try {
+                JSONObject obj = new JSONObject(msg.obj.toString());
+                String result = obj.getString("result");
+                if (result.equals("")) {
+                    Toast.makeText(CreateAccountActivity.this, obj.getString("msg"), Toast.LENGTH_SHORT).show();
+                } else if (result.equals("1")) {
+                    Toast.makeText(CreateAccountActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();}
+//                String mess = obj.getString("Msg");
+//                Toast.makeText(CreateAccountActivity.this, mess, Toast.LENGTH_SHORT).show();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+//
+
             return false;
         }
     });
@@ -162,8 +173,7 @@ public class CreateAccountActivity extends BaseAcitvity {
                                                                                Message message = new Message();
                                                                                message.obj = body;
                                                                                myHandler.sendMessage(message);
-                                                                               Intent intent = new Intent(CreateAccountActivity.this, LoginActivity.class);
-                                                                               startActivity(intent);
+                                                                               finish();
                                                                                return null;
                                                                            }
 
