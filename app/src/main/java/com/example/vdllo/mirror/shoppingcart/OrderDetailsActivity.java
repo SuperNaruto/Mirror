@@ -52,6 +52,7 @@ public class OrderDetailsActivity extends BaseAcitvity {
     private LinearLayout aliPay;
     private AlipayBean alipayBean;
     private String str;
+    private LinearLayout background;
     //支付宝调用
     private static final int SDK_PAY_FLAG = 1;
 
@@ -106,6 +107,7 @@ public class OrderDetailsActivity extends BaseAcitvity {
         recipientTv = bindView(R.id.order_details_nameTv);
         infoTv = bindView(R.id.order_details_infoTv);
         telTv = bindView(R.id.order_details_telTv);
+        background = bindView(R.id.order_buy_background);
         inputAddressBtn = bindView(R.id.input_address_btn);
         inputAddressBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,6 +122,7 @@ public class OrderDetailsActivity extends BaseAcitvity {
             public void onClick(View v) {
                 initPay();
                 showPopWindow(v);
+                background.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -207,12 +210,6 @@ public class OrderDetailsActivity extends BaseAcitvity {
                 Thread payThread = new Thread(payRunnable);
                 payThread.start();
 
-//                view.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        myPopupWindow.dismiss();
-//                    }
-//                });
             }
         });
 
@@ -222,6 +219,7 @@ public class OrderDetailsActivity extends BaseAcitvity {
     public boolean onTouchEvent(MotionEvent event) {
         if (myPopupWindow != null && myPopupWindow.isShowing()) {
             myPopupWindow.dismiss();
+            background.setVisibility(View.INVISIBLE);
             myPopupWindow = null;
         }
         return super.onTouchEvent(event);

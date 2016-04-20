@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="@dimen/popwindow_payment_width"
         android:layout_height="@dimen/popwindow_payment_height"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="center"
         android:background="@drawable/payment_shape"
         android:orientation="vertical">
 
