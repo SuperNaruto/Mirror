@@ -85,16 +85,16 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         returnIv.setOnClickListener(this);
         buyIv.setOnClickListener(this);
         wearAtlasBtn.setOnClickListener(this);
-        Point size = new Point();
-        Display display = getWindowManager().getDefaultDisplay();
-        display.getRealSize(size);
-        screenHeight = size.y;
-        screenWidth = size.x;
-        //开始的时候先移出屏幕,好看不少
-        screenWidth = getWindowManager().getDefaultDisplay().getWidth();
-        ObjectAnimator animator = ObjectAnimator.ofFloat(showBtnLayout, "translationX", -1500);
-        animator.setDuration(1);
-        animator.start();
+//        Point size = new Point();
+//        Display display = getWindowManager().getDefaultDisplay();
+//        display.getRealSize(size);
+//        screenHeight = size.y;
+//        screenWidth = size.x;
+//        //开始的时候先移出屏幕,好看不少
+//        screenWidth = getWindowManager().getDefaultDisplay().getWidth();
+//        ObjectAnimator animator = ObjectAnimator.ofFloat(showBtnLayout, "translationX", -1500);
+//        animator.setDuration(1);
+//        animator.start();
     }
 
     @Override
