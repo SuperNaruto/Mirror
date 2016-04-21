@@ -3,10 +3,12 @@ package com.example.vdllo.mirror.details;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +48,8 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
     private boolean btnNotShow = true;
     private boolean locationNotFinshed = true;
     private int screenWidth;
+    private int screenHeight;
+    private float itemHeight = 0;
     private ObjectAnimator animation;
     private ObjectAnimator animationBack;
     private RelativeLayout showBtnLayout;
@@ -72,7 +77,16 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         returnIv.setOnClickListener(this);
         buyIv.setOnClickListener(this);
         wearAtlasBtn.setOnClickListener(this);
-
+        Point size = new Point();
+        Display display = getWindowManager().getDefaultDisplay();
+        display.getRealSize(size);
+        screenHeight = size.y;
+        screenWidth = size.x;
+        //开始的时候先移出屏幕,好看不少
+        screenWidth = getWindowManager().getDefaultDisplay().getWidth();
+        ObjectAnimator animator = ObjectAnimator.ofFloat(showBtnLayout, "translationX", -1500);
+        animator.setDuration(1);
+        animator.start();
     }
 
     @Override
@@ -325,6 +339,9 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         public class ListViewHeadHolder {
             private TextView detailBrand, detailTitle, detailContext, detailPrice;
             private ImageView shareIv;
+            private LinearLayout linearLayout;
+            private boolean isFirst = true;
+            private float height;
 
             public ListViewHeadHolder(View view) {
                 detailBrand = (TextView) view.findViewById(R.id.detail_head_brand);
@@ -332,6 +349,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                 detailContext = (TextView) view.findViewById(R.id.detail_head_context);
                 detailPrice = (TextView) view.findViewById(R.id.detail_head_price);
                 shareIv = (ImageView) view.findViewById(R.id.details_head_share_iv);
+                linearLayout = (LinearLayout) view.findViewById(R.id.detail_head_linearLayout);
             }
         }
 
@@ -346,41 +364,46 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         public class ListViewTitle {
             private TextView title;
 
-            public ListViewTitle(View view) {
+            public ListViewTitle(final View view) {
                 title = (TextView) view.findViewById(R.id.details_line_tv);
+                view.setOnScrollChangeListener(new OnScrollChangeListener() {
+                    @Override
+                    public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                        if (btnNotShow && (view.getY() <= 0 || (itemHeight == view.getY() && view.getY() < 300))) {
+                            visibleLayout();
+                            btnNotShow = false;
+                        }
+                        if (view.getY() > 0 && !btnNotShow && (itemHeight != view.getY())) {
+                            goneLayout();
+                            btnNotShow = true;
+                        }
+                        itemHeight = view.getY();
+                    }
+                });
             }
         }
     }
 
-//    private void visibleLayout() {
-//        if (btnNotShow && title.getY() <= 0) {
-//            visibleLayout();
-//            btnNotShow = false;
-//        }
-//        if (title.getY() > 0 && !btnNotShow) {
-//            goneLayout();
-//            btnNotShow = true;
-//        }
-//        if (locationNotFinshed) {
-//            animation = ObjectAnimator.ofFloat(showBtnLayout, "translationX", (screenWidth - showBtnLayout.getWidth()) / 2);
-//            animation.setDuration(500);
-//            locationNotFinshed = false;
-//        }
-//        animation.start();
-//    }
-//
-//    private void goneLayout() {
-//        animationBack = ObjectAnimator.ofFloat(showBtnLayout, "translationX", -1000);
-//        animationBack.setDuration(500);
-//        animationBack.start();
-//        new Handler(new Handler.Callback() {
-//            @Override
-//            public boolean handleMessage(Message msg) {
-//                return false;
-//            }
-//        }).sendEmptyMessageDelayed(50, 1000);
-//
-//    }
+    private void visibleLayout() {
+        if (locationNotFinshed) {
+            animation = ObjectAnimator.ofFloat(showBtnLayout, "translationX", (screenWidth - showBtnLayout.getWidth()) / 2 - 39);
+            animation.setDuration(500);
+            locationNotFinshed = false;
+        }
+        animation.start();
+    }
+
+    private void goneLayout() {
+        animationBack = ObjectAnimator.ofFloat(showBtnLayout, "translationX", -1500);
+        animationBack.setDuration(500);
+        animationBack.start();
+        new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+                return false;
+            }
+        }).sendEmptyMessageDelayed(50, 1000);
+    }
 
 
 }
