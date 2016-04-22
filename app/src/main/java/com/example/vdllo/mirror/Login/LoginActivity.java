@@ -119,6 +119,8 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
                                                 editor.putString("token", token);
                                                 editor.putBoolean("ifLogin", true);
                                                 editor.commit();
+                                                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                                                startActivity(intent);
                                                 finish();
                                             }
                                         } catch (JSONException e) {

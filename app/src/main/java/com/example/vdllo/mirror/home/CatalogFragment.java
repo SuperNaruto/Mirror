@@ -1,7 +1,10 @@
 package com.example.vdllo.mirror.home;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -26,6 +29,7 @@ public class CatalogFragment extends BaseFragment implements AdapterView.OnItemC
     private ListView listView;
     private ArrayList titleData;
     private CatalogAdapter catalogAdapter;
+    private TextView exitTv;
     // 当前Fragment位置
     private int linePosition;
 
@@ -45,6 +49,7 @@ public class CatalogFragment extends BaseFragment implements AdapterView.OnItemC
     protected void initView() {
         relativeLayout = bindView(R.id.catalog_relativelayout);
         listView = bindView(R.id.catalog_listview);
+        exitTv = bindView(R.id.pop_exit_textView);
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +65,12 @@ public class CatalogFragment extends BaseFragment implements AdapterView.OnItemC
         listView.setAdapter(catalogAdapter);
         listView.setOnItemClickListener(this);
         listView.setDividerHeight(0);
+        exitTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog();
+            }
+        });
     }
 
     @Override
@@ -68,6 +79,31 @@ public class CatalogFragment extends BaseFragment implements AdapterView.OnItemC
         Intent intent = new Intent(getActivity(), MainActivity.class);
         intent.putExtra("position", position);
         getActivity().startActivity(intent);
-
     }
+
+    public void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("确定退出登錄");
+        //积极响应
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                SharedPreferences sp = getActivity().getSharedPreferences("Mirror", getActivity().MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putBoolean("ifLogin", false);
+                editor.commit();
+                Intent intent = new Intent(getActivity(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        //消极响应
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getActivity(), "已取消", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.show();//显示
+    }
+
 }

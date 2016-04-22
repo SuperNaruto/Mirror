@@ -71,11 +71,16 @@ public class MainActivity extends BaseAcitvity {
                 public void onClick(View v) {
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             });
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

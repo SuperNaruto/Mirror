@@ -5,6 +5,7 @@
     android:background="@color/goods_share_background">
 
     <LinearLayout
+        android:id="@+id/share_details_linearlayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -13,6 +14,7 @@
         android:layout_marginLeft="@dimen/share_details_left"
         android:layout_marginRight="@dimen/share_details_right"
         android:background="@mipmap/share_details"
+        android:visibility="visible"
         android:orientation="vertical">
 
         <LinearLayout
@@ -25,7 +27,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/share_details_small_left"
-                android:text="@string/share_details_small_text"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/share_details_small_textSize" />
         </LinearLayout>
@@ -40,7 +41,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/share_details_title_left"
-                android:text="@string/share_details_title_text"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/share_details_title_textSize" />
         </LinearLayout>
@@ -56,7 +56,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/share_details_sub_left"
                 android:layout_marginRight="@dimen/share_details_sub_right"
-                android:text="@string/share_details_sub_text"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/share_details_sub_textSize" />
         </LinearLayout>

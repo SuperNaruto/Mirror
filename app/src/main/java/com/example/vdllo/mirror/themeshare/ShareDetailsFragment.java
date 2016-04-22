@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.vdllo.mirror.R;
@@ -30,6 +32,7 @@ public class ShareDetailsFragment extends BaseFragment {
     private Handler handler;
     private StoryInfoBean datas;
     private int i;
+    private LinearLayout linearLayout;
 
     public ShareDetailsFragment(int i) {
         this.i = i;
@@ -45,6 +48,7 @@ public class ShareDetailsFragment extends BaseFragment {
         smallTitleTv = bindView(R.id.share_details_smalltitle_tv);
         titleTv = bindView(R.id.share_details_title_tv);
         subTitleTv = bindView(R.id.share_details_subtitle_tv);
+        linearLayout = bindView(R.id.share_details_linearlayout);
 
     }
 
@@ -93,7 +97,13 @@ public class ShareDetailsFragment extends BaseFragment {
 
             }
         });
-
+linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
+    @Override
+    public boolean onLongClick(View v) {
+        linearLayout.setVisibility(View.GONE);
+        return false;
+    }
+});
 
     }
 }
