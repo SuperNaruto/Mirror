@@ -1,10 +1,12 @@
 package com.example.vdllo.mirror.home;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -30,15 +32,12 @@ public class AllTypeFragment extends BaseFragment {
     private RecyclerView recyclerView;
     private LinearLayout linearLayout;
     private AllTypeAdapter adapter;
-    private ArrayList<String> data;
+    private String title; // 标题上的文字
     private Handler handler;
     private int i;
-    private TextView textView;
     private TextView titleTextView;
-
-    public AllTypeFragment(int i) {
-        this.i = i;
-    }
+    private MainActivity mainActivity;
+    private String categoryId; // 每个fragment对应的id
 
     @Override
     public int getLayout() {
@@ -50,27 +49,23 @@ public class AllTypeFragment extends BaseFragment {
         recyclerView = bindView(R.id.recycleView);
         linearLayout = bindView(R.id.all_type_linearlayout);
         titleTextView = bindView(R.id.all_type_titleTv);
+        mainActivity = (MainActivity)getContext();
 
-        data = new ArrayList<>();
-        data.add("浏览所有分类");
-        data.add("浏览平光眼镜");
-        data.add("浏览太阳眼镜");
-        data.add("专题分享");
-        data.add("购物车");
         //为标签设置名字
-        titleTextView.setText(data.get(i));
+        // 接收fragment的id 放进请求参数里
+        Bundle bundle = getArguments();
+        title = bundle.getString("title");
+        titleTextView.setText(title);
+        categoryId = bundle.getString("id");
+        Log.d("android","++++" + categoryId);
 
         //设置popupWindow监听
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.setCustomAnimations(R.anim.popwindow_anim,android.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                ft.add(R.id.main_cataLogLayout, new CatalogFragment(getActivity(), data, i));
-                ft.addToBackStack(null);
-                ft.commit();
-            }
-        });
+                mainActivity.showMenu();
+    }
+});
 
     }
 
@@ -96,26 +91,13 @@ public class AllTypeFragment extends BaseFragment {
 
         //商品列表
         NetHelper netHelper = new NetHelper(getActivity());
-        netHelper.getGoods(handler);
+        if (categoryId.equals("268")){
+            netHelper.getSunGoods(handler);
+        }else if (categoryId.equals("269")){
+            netHelper.getLineGoods(handler);
+        }
 
-        //menu
-        data = new ArrayList<>();
-        data.add("浏览所有分类");
-        data.add("浏览太阳眼镜");
-        data.add("浏览平光眼镜");
-        data.add("专题分享");
-        data.add("购物车");
-        titleTextView.setText(data.get(i));
 
-//        linearLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-//                ft.add(R.id.main_cataLogLayout, new CatalogFragment(getActivity(), data, i));
-//                ft.addToBackStack(null);
-//                ft.commit();
-//            }
-//        });
     }
 
 }

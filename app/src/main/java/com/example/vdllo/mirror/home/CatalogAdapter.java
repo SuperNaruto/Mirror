@@ -11,31 +11,37 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.vdllo.mirror.R;
+import com.example.vdllo.mirror.bean.MenuListBean;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
  * Created by dllo on 16/3/31.
  */
 public class CatalogAdapter extends BaseAdapter {
-    private ArrayList<String> datas;
+    private MenuListBean datas;
     private int line;
     private Context context;
 
-    public CatalogAdapter(ArrayList<String> datas, Context context, int line) {
+    public CatalogAdapter(MenuListBean datas, Context context) {
         this.datas = datas;
-        this.line = line;
         this.context = context;
+    }
+    // 传入当前页码数
+    public void setLine(int position){
+        line = position;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return datas.size();
+        return datas.getData().getList().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return datas.get(position);
+        return datas.getData().getList().get(position);
     }
 
     @Override
@@ -53,7 +59,7 @@ public class CatalogAdapter extends BaseAdapter {
             convertView.setTag(holder);
         }
         holder = (ViewHolder) convertView.getTag();
-        holder.textView.setText(datas.get(position));
+        holder.textView.setText(datas.getData().getList().get(position).getTitle());
         if (line == position) {
             holder.imageView.setVisibility(View.VISIBLE);
         } else {

@@ -56,11 +56,11 @@ public class BackGroundFragment extends BaseFragment {
     @Override
     protected void initData() {
         datas = new ArrayList<>();
-        datas.add(new AllTypeFragment(0));
-        datas.add(new AllTypeFragment(1));
-        datas.add(new AllTypeFragment(2));
-        datas.add(new ThemeShareFragment(3));
-        datas.add(new ShoppingCartFragment(4));
+        datas.add(new AllTypeFragment());
+        datas.add(new AllTypeFragment());
+        datas.add(new AllTypeFragment());
+        datas.add(new ThemeShareFragment());
+        datas.add(new ShoppingCartFragment());
         adapter = new BackgroundAdapter(getActivity().getSupportFragmentManager(), datas);
         viewPager.setAdapter(adapter);
 

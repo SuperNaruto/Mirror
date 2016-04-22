@@ -9,6 +9,12 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.bean.UrlBean;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
@@ -22,6 +28,8 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -34,10 +42,22 @@ public class NetHelper {
     private Handler handler;
     private Context context;
     private ImageLoaderConfiguration configuration;
-    private ImageLoader imageLoader;
     private final DisplayImageOptions options;
-    private String diskPath;
     private final OkHttpClient mOkHttpClient;
+    private RequestQueue requestQueue; //创建请求队列
+    private Map<String, String> mMap;
+
+    /**
+     * 定义一个ImageLoder对象,用来加载网络图片
+     */
+    private ImageLoader imageLoader;
+    private String diskPath;
+
+    /**
+     * NetHelper 的构造方法
+     * 引入NetHelper 必须传入当前上下文对象
+     * 并在构造方法中,创建请求队列
+     */
 
     public NetHelper (Context context) {
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
@@ -72,7 +92,6 @@ public class NetHelper {
                 .handler(new Handler()) // default
                 .build();
     }
-
     //商品列表
     public void getGoods(final Handler handler) {
         //okhttp网络解析
@@ -82,6 +101,73 @@ public class NetHelper {
                 .addParams("page", "")
                 .addParams("last_time", "")
                 .addParams("category_id", "")
+                .addParams("version", "1.0.1").build().execute(new Callback() {
+            @Override
+            public Object parseNetworkResponse(Response response) throws Exception {
+                //子线程无法刷新UI,利用handler发送Message到主线程
+                String body = response.body().string();
+                Message message = new Message();
+                message.what = 1;
+                message.obj = body;
+                handler.sendMessage(message);
+                return null;
+            }
+
+            @Override
+            public void onError(Call call, Exception e) {
+
+            }
+
+            @Override
+            public void onResponse(Object response) {
+
+            }
+        });
+    }
+
+
+    //商品列表
+    public void getSunGoods(final Handler handler) {
+        //okhttp网络解析
+        OkHttpUtils.post().url(UrlBean.GOODS_LIST)
+                .addParams("token", "")
+                .addParams("device_type", "2")
+                .addParams("page", "")
+                .addParams("last_time", "")
+                .addParams("category_id", "268")
+                .addParams("version", "1.0.1").build().execute(new Callback() {
+            @Override
+            public Object parseNetworkResponse(Response response) throws Exception {
+                //子线程无法刷新UI,利用handler发送Message到主线程
+                String body = response.body().string();
+                Message message = new Message();
+                message.what = 1;
+                message.obj = body;
+                handler.sendMessage(message);
+                return null;
+            }
+
+            @Override
+            public void onError(Call call, Exception e) {
+
+            }
+
+            @Override
+            public void onResponse(Object response) {
+
+            }
+        });
+    }
+
+    //商品列表
+    public void getLineGoods(final Handler handler) {
+        //okhttp网络解析
+        OkHttpUtils.post().url(UrlBean.GOODS_LIST)
+                .addParams("token", "")
+                .addParams("device_type", "2")
+                .addParams("page", "")
+                .addParams("last_time", "")
+                .addParams("category_id", "269")
                 .addParams("version", "1.0.1").build().execute(new Callback() {
             @Override
             public Object parseNetworkResponse(Response response) throws Exception {
@@ -189,5 +275,50 @@ public class NetHelper {
         Log.i("path", imageLoader.getDiskCache().get(url).getPath());
         imageLoader.displayImage(url, imageView, options);
     }
+
+    /**
+     * 方法:getJsonData() 获取需要拉取的数据,使其拼接成可请求的 url
+     *
+     * @param requestType 请求类型
+     * @param mMap        请求参数
+     * @param netListener 网络请求成功和失败的监听对象
+     */
+    public void getJsonData(String requestType, NetListener netListener, HashMap<String, String> mMap) {
+        String idUrl = requestType;
+        postDataFromNet(idUrl, netListener, mMap);
+    }
+
+    /**
+     * 方法:postDataFromNet() 根据Url,HashMap 类型的请求参数来进行请求
+     *
+     * @param url         拼接后的请求网址
+     * @param mMap        POST请求所需的参数
+     * @param netListener 网络请求成功和失败的监听对象
+     */
+    private void postDataFromNet(String url, final NetListener netListener, final HashMap<String, String> mMap) {
+        final StringRequest request = new StringRequest(Request.Method.POST,
+                url,
+                new com.android.volley.Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        netListener.getSuccess(response);
+                    }
+                }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                netListener.getFailed("");
+            }
+        }) {
+            /**
+             *设置请求参数
+             * */
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                return mMap;
+            }
+        };
+        requestQueue.add(request);
+    }
+
 
 }

@@ -34,9 +34,6 @@ public class ShareDetailsFragment extends BaseFragment {
     private int i;
     private LinearLayout linearLayout;
 
-    public ShareDetailsFragment(int i) {
-        this.i = i;
-    }
 
     @Override
     public int getLayout() {

@@ -13,18 +13,28 @@
         <ListView
             android:id="@+id/catalog_listview"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/pop_listView_height"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/pop_listView" />
 
         <TextView
-            android:id="@+id/pop_return_textview"
+            android:id="@+id/pop_share_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/pop_return_left"
-            android:text="@string/pop_return_text"
+            android:text="專題分享"
+            android:layout_marginTop="22dp"
             android:textColor="@android:color/white"
             android:textSize="@dimen/pop_return_textSize" />
 
+        <TextView
+            android:id="@+id/pop_return_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/pop_text_left"
+            android:layout_marginTop="@dimen/pop_text_top"
+            android:text="@string/pop_return_text"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/pop_text_textSize" />
         <TextView
             android:id="@+id/pop_exit_textView"
             android:layout_width="match_parent"
