@@ -60,7 +60,7 @@ public class BackGroundFragment extends BaseFragment {
         datas.add(new AllTypeFragment(1));
         datas.add(new AllTypeFragment(2));
         datas.add(new ThemeShareFragment(3));
-        datas.add(new ShoppingCartFragment());
+        datas.add(new ShoppingCartFragment(4));
         adapter = new BackgroundAdapter(getActivity().getSupportFragmentManager(), datas);
         viewPager.setAdapter(adapter);
 

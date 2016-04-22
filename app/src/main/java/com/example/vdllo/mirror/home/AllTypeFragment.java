@@ -65,6 +65,7 @@ public class AllTypeFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.setCustomAnimations(R.anim.popwindow_anim,android.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.add(R.id.main_cataLogLayout, new CatalogFragment(getActivity(), data, i));
                 ft.addToBackStack(null);
                 ft.commit();

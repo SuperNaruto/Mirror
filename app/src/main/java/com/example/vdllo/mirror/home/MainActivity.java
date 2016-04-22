@@ -60,7 +60,7 @@ public class MainActivity extends BaseAcitvity {
                 @Override
                 public void onClick(View v) {
                     android.support.v4.app.FragmentTransaction myFt = getSupportFragmentManager().beginTransaction();
-                    myFt.replace(R.id.main_cataLogLayout, new ShoppingCartFragment());
+                    myFt.replace(R.id.main_cataLogLayout, new ShoppingCartFragment(1));
                     myFt.commit();
                 }
             });
