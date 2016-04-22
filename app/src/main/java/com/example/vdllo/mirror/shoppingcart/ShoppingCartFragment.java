@@ -17,9 +17,9 @@ public class ShoppingCartFragment extends BaseFragment {
     private ArrayList<String> data;
     private LinearLayout linearLayout;
 
-//    public ShoppingCartFragment(int i) {
-//        this.i = i;
-//    }
+    public ShoppingCartFragment(int i) {
+        this.i = i;
+    }
 
     @Override
     public int getLayout() {
