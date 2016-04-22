@@ -2,6 +2,7 @@ package com.example.vdllo.mirror.net;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Environment;
 import android.os.Handler;
@@ -59,9 +60,9 @@ public class NetHelper {
 
         //设置imageloader
         options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.mipmap.ic_launcher) // 设置图片下载期间显示的图片
-                .showImageForEmptyUri(R.mipmap.ic_launcher) // 设置图片Uri为空或是错误的时候显示的图片
-                .showImageOnFail(R.mipmap.ic_launcher) // 设置图片加载或解码过程中发生错误显示的图片
+                .showImageOnLoading(Color.TRANSPARENT) // 设置图片下载期间显示的图片
+                .showImageForEmptyUri(Color.TRANSPARENT) // 设置图片Uri为空或是错误的时候显示的图片
+                .showImageOnFail(Color.TRANSPARENT) // 设置图片加载或解码过程中发生错误显示的图片
                 .resetViewBeforeLoading(false)  // default 设置图片在加载前是否重置、复位
                 .delayBeforeLoading(1000)  // 下载前的延迟时间
                 .cacheInMemory(true) // default  设置下载的图片是否缓存在内存中
@@ -149,44 +150,12 @@ public class NetHelper {
         v.setBackground(new BitmapDrawable(context.getResources(), bitmap));
     }
 
-    public void setDrawable(final ImageView imageView, final String url, final int cutLenth) {
-        final Handler imageHandler = new Handler(new Handler.Callback() {
-            @Override
-            public boolean handleMessage(Message msg) {
-                if (msg.what == 3) {
-                    Bitmap bitmap = (Bitmap) msg.obj;
-                    if (bitmap == null) {
-                        return false;
-                    }
-                    if (bitmap.getHeight() > 500) {
-
-                        Bitmap newBitmap = Bitmap.createBitmap(bitmap, 0, cutLenth, bitmap.getWidth(), bitmap.getHeight() - cutLenth);
-                        imageView.setImageBitmap(newBitmap);
-                    } else imageView.setImageBitmap(bitmap);
-
-                }
-                return false;
-            }
-        });
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Bitmap bitmap = ImageLoader.getInstance().loadImageSync(url);
-                Message message = new Message();
-                message.what = 3;
-                message.obj = bitmap;
-                imageHandler.sendMessage(message);
-            }
-        }).start();
-    }
-
     /**
      * 给imageview 拉取图片并显示的方法
      * @param imageView 组件
      * @param url       网址
      */
     public void setImage(ImageView imageView, String url) {
-        Log.i("path", imageLoader.getDiskCache().get(url).getPath());
         imageLoader.displayImage(url, imageView, options);
     }
 

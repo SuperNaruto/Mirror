@@ -28,6 +28,7 @@ import com.example.vdllo.mirror.base.BaseAcitvity;
 import com.example.vdllo.mirror.bean.GoodsListBean;
 import com.example.vdllo.mirror.bean.OrderDetailsBean;
 import com.example.vdllo.mirror.bean.UrlBean;
+import com.example.vdllo.mirror.net.NetHelper;
 import com.example.vdllo.mirror.shoppingcart.OrderDetailsActivity;
 import com.example.vdllo.mirror.toolclass.LinkageListView;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -112,7 +113,6 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                 v = top.getChildAt(1);
                 if (v != null && view != null) {
                     radio = (float) (1.0 / (float) height);
-                    Log.i("scroll", height - v.getY() + "" + v.toString() + "     " + radio);
                     float y = v.getY();
                     view.setAlpha(1 - ((height - y) * radio));
                 }
@@ -383,6 +383,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                         String url = data.getData().getList().get(pos).getDesign_des().get(position - 3).getImg();
                         if (url != null) {
                             //Picasso加载图片
+//                            netHelper.setImage(listViewDetailHolder.background, url);
                             Picasso.with(parent.getContext()).cancelRequest(listViewDetailHolder.background);
                             Picasso.with(GoodsDetailsActivity.this).load(url).resize(600, 600).into(listViewDetailHolder.background);
                         }
