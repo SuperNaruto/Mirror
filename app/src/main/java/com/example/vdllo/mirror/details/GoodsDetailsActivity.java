@@ -56,11 +56,12 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
     private Handler handler;
     private static int pos;
     private SimpleDraweeView background;
-    private Button backBtn, wearAtlasBtn, buyBtn;
+    private Button wearAtlasBtn;
     private boolean btnNotShow = true;
     private RelativeLayout showBtnLayout;
     private ImageView buyIv, returnIv;
     private OrderDetailsBean orderDetailsBean;
+    private boolean ifLogin = true;
 
     public static void setData(GoodsListBean data, int pos) {
         GoodsDetailsActivity.data = data;
@@ -130,27 +131,32 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                 break;
             case R.id.details_buy_iv:
                 SharedPreferences sp = getSharedPreferences("Mirror", MODE_PRIVATE);
-                String token = sp.getString("token", "");
-                if (!token.equals("")) {
+                String token = sp.getString(getString(R.string.Mirror_token), "");
+                ifLogin = sp.getBoolean("ifLogin", false);
+                if (ifLogin) {
                     handler = new Handler(new Handler.Callback() {
                         @Override
                         public boolean handleMessage(Message msg) {
                             Gson gson = new Gson();
                             orderDetailsBean = gson.fromJson(msg.obj.toString(), OrderDetailsBean.class);
+                            //解析数据，通过Intent传入订单详情界面
+                            OrderDetailsBean.DataEntity.GoodsEntity goodsEntity = orderDetailsBean.getData().getGoods();
+                            OrderDetailsBean.DataEntity.AddressEntity addressEntity = orderDetailsBean.getData().getAddress();
+                            OrderDetailsBean.DataEntity dataEntity = orderDetailsBean.getData();
                             Intent bIntent = new Intent(GoodsDetailsActivity.this, OrderDetailsActivity.class);
-                            bIntent.putExtra("name", orderDetailsBean.getData().getGoods().getGoods_name());
-                            bIntent.putExtra("pic", orderDetailsBean.getData().getGoods().getPic());
-                            bIntent.putExtra("content", orderDetailsBean.getData().getGoods().getDes());
-                            bIntent.putExtra("price", orderDetailsBean.getData().getGoods().getPrice());
-                            bIntent.putExtra("order_id", orderDetailsBean.getData().getOrder_id());
-                            bIntent.putExtra("addr_id", orderDetailsBean.getData().getAddress().getAddr_id());
+                            bIntent.putExtra("name", goodsEntity.getGoods_name());
+                            bIntent.putExtra("pic", goodsEntity.getPic());
+                            bIntent.putExtra("content", goodsEntity.getDes());
+                            bIntent.putExtra("price", goodsEntity.getPrice());
+                            bIntent.putExtra("order_id", dataEntity.getOrder_id());
+                            bIntent.putExtra("addr_id", addressEntity.getAddr_id());
                             bIntent.putExtra("id", data.getData().getList().get(pos).getGoods_id());
                             startActivity(bIntent);
                             return false;
                         }
                     });
                     //点击购买下订单
-                    OkHttpUtils.post().url(UrlBean.ORDER_SUB).addParams("token", token).addParams("goods_id", data.getData().getList().get(pos).getGoods_id())
+                    OkHttpUtils.post().url(UrlBean.ORDER_SUB).addParams(getString(R.string.Mirror_token), token).addParams("goods_id", data.getData().getList().get(pos).getGoods_id())
                             .addParams("goods_num", "1").addParams("price", data.getData().getList().get(pos).getGoods_price())
                             .addParams("discout_id", "").addParams("device_type", "2").build().execute(new Callback() {
                         @Override
