@@ -53,6 +53,7 @@ public class CatalogFragment extends BaseFragment implements AdapterView.OnItemC
         });
     }
 
+
     @Override
     protected void initData() {
         catalogAdapter = new CatalogAdapter(titleData, context, linePosition);
