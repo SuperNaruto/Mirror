@@ -12,11 +12,13 @@ import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +38,7 @@ import com.zhy.http.okhttp.callback.Callback;
 
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
+import de.greenrobot.event.EventBus;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -45,7 +48,9 @@ import static android.widget.AbsListView.*;
  * Created by Bo on 16/4/8.
  */
 public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickListener {
-
+    private View v;
+    private float radio;
+    private float height;
     private LinkageListView listView;
     private static GoodsListBean data;
     private Handler handler;
@@ -75,6 +80,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
 
     @Override
     protected void initView() {
+        EventBus.getDefault().register(this);
         listView = bindView(R.id.detail_listView);
         background = bindView(R.id.goodsDetail_background);
         showBtnLayout = bindView(R.id.details_relativeLayout);
@@ -85,16 +91,15 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         returnIv.setOnClickListener(this);
         buyIv.setOnClickListener(this);
         wearAtlasBtn.setOnClickListener(this);
-//        Point size = new Point();
-//        Display display = getWindowManager().getDefaultDisplay();
-//        display.getRealSize(size);
-//        screenHeight = size.y;
-//        screenWidth = size.x;
-//        //开始的时候先移出屏幕,好看不少
-//        screenWidth = getWindowManager().getDefaultDisplay().getWidth();
-//        ObjectAnimator animator = ObjectAnimator.ofFloat(showBtnLayout, "translationX", -1500);
-//        animator.setDuration(1);
-//        animator.start();
+        Point size = new Point();
+        Display display = getWindowManager().getDefaultDisplay();
+        display.getRealSize(size);
+        screenHeight = size.y;
+        screenWidth = size.x;
+        screenWidth = getWindowManager().getDefaultDisplay().getWidth();
+        ObjectAnimator animator = ObjectAnimator.ofFloat(showBtnLayout, "translationX", -1500);
+        animator.setDuration(1);
+        animator.start();
     }
 
     @Override
@@ -102,6 +107,30 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         listView.setAdapter(new UpListViewAdapter(), new DownListViewAdapter());
         listView.setLinkageSpeed(1.2f);
         background.setImageURI(Uri.parse(data.getData().getList().get(pos).getGoods_img()));
+        final ListView top = listView.getTopListView();
+        new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+
+                return false;
+            }
+        }).sendEmptyMessageDelayed(200, 200);
+        Point point = new Point();
+        getWindowManager().getDefaultDisplay().getSize(point);
+        height = point.y;
+        top.setOnScrollChangeListener(new OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                View view = top.getChildAt(0);
+                v = top.getChildAt(1);
+                if (v != null && view != null) {
+                    radio = (float) (1.0 / (float) height);
+                    Log.i("scroll", height - v.getY() + "" + v.toString() + "     " + radio);
+                    float y = v.getY();
+                    view.setAlpha(1 - ((height - y) * radio));
+                }
+            }
+        });
     }
 
     @Override
@@ -408,44 +437,37 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
 
             public ListViewTitle(final View view) {
                 title = (TextView) view.findViewById(R.id.details_line_tv);
-                view.setOnScrollChangeListener(new OnScrollChangeListener() {
-                    @Override
-                    public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                        if (btnNotShow && (view.getY() <= 0 || (itemHeight == view.getY() && view.getY() < 300))) {
-                            visibleLayout();
-                            btnNotShow = false;
-                        }
-                        if (view.getY() > 0 && !btnNotShow && (itemHeight != view.getY())) {
-                            goneLayout();
-                            btnNotShow = true;
-                        }
-                        itemHeight = view.getY();
-                    }
-                });
             }
         }
     }
 
-    private void visibleLayout() {
-        if (locationNotFinshed) {
-            animation = ObjectAnimator.ofFloat(showBtnLayout, "translationX", (screenWidth - showBtnLayout.getWidth()) / 2 - 39);
-            animation.setDuration(500);
-            locationNotFinshed = false;
+    public void onEvent(Integer itemPosition) {
+        if (itemPosition >= 1 && btnNotShow) {
+            showBtnLayout.setVisibility(View.VISIBLE);
+            ObjectAnimator animator1 = ObjectAnimator.ofFloat(showBtnLayout, "translationX", -800f, 0f);
+            animator1.setDuration(500);
+            animator1.start();
+            btnNotShow = false;
         }
-        animation.start();
+        if (itemPosition < 1 && !btnNotShow) {
+            ObjectAnimator animator = ObjectAnimator.ofFloat(showBtnLayout, "translationX", 0f, -800f);
+            animator.setDuration(500);
+            animator.start();
+            new Handler(new Handler.Callback() {
+                @Override
+                public boolean handleMessage(Message msg) {
+                    showBtnLayout.setVisibility(View.GONE);
+                    return false;
+                }
+            }).sendEmptyMessageDelayed(99, 500);
+            btnNotShow = true;
+            //return;
+        }
     }
 
-    private void goneLayout() {
-        animationBack = ObjectAnimator.ofFloat(showBtnLayout, "translationX", -1500);
-        animationBack.setDuration(500);
-        animationBack.start();
-        new Handler(new Handler.Callback() {
-            @Override
-            public boolean handleMessage(Message msg) {
-                return false;
-            }
-        }).sendEmptyMessageDelayed(50, 1000);
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
-
-
 }

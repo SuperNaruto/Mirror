@@ -19,6 +19,8 @@ import com.example.vdllo.mirror.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
+
 /**
  * Created by Bo on 16/4/8.
  */
@@ -85,6 +87,7 @@ public class LinkageListView extends FrameLayout {
                 View child = view.getChildAt(0);
                 if (child != null) {
                     mTopListView.setSelectionFromTop(firstVisibleItem, (int) (child.getTop() * linkageSpeed));
+                    EventBus.getDefault().post(new Integer(firstVisibleItem));
                 }
             }
 
