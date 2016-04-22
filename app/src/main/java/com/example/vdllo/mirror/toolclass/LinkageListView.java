@@ -10,8 +10,16 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+
 import com.example.vdllo.mirror.R;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by Bo on 16/4/8.
@@ -23,6 +31,7 @@ public class LinkageListView extends FrameLayout {
     private ListView mBottomListView, mTopListView;
     private Context mContext;
     private BaseAdapter mBotAdapter, mTopAdapter;
+    private List<AbsListView.OnScrollListener> mScrollListeners;
 
     public LinkageListView(Context context) {
         this(context, null);
@@ -75,10 +84,10 @@ public class LinkageListView extends FrameLayout {
         mBottomListView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                Log.d("tag", "---->>>" + "firstVisibleItem" + firstVisibleItem + "visibleItemCount" + visibleItemCount + "totalItemCount" + totalItemCount);
                 View child = view.getChildAt(0);
                 if (child != null) {
                     mTopListView.setSelectionFromTop(firstVisibleItem, (int) (child.getTop() * linkageSpeed));
+                    EventBus.getDefault().post(new Integer(firstVisibleItem));
                 }
             }
 
@@ -114,4 +123,5 @@ public class LinkageListView extends FrameLayout {
     public ListView getBottomListView() {
         return mBottomListView;
     }
+
 }

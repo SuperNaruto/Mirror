@@ -3,17 +3,22 @@ package com.example.vdllo.mirror.details;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,13 +26,21 @@ import android.widget.Toast;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
 import com.example.vdllo.mirror.bean.GoodsListBean;
+import com.example.vdllo.mirror.bean.OrderDetailsBean;
+import com.example.vdllo.mirror.bean.UrlBean;
 import com.example.vdllo.mirror.shoppingcart.OrderDetailsActivity;
 import com.example.vdllo.mirror.toolclass.LinkageListView;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.Callback;
 
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
+import de.greenrobot.event.EventBus;
+import okhttp3.Call;
+import okhttp3.Response;
 
 import static android.widget.AbsListView.*;
 
@@ -35,7 +48,8 @@ import static android.widget.AbsListView.*;
  * Created by Bo on 16/4/8.
  */
 public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickListener {
-
+    private float radio;
+    private float height;
     private LinkageListView listView;
     private static GoodsListBean data;
     private Handler handler;
@@ -43,12 +57,9 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
     private SimpleDraweeView background;
     private Button backBtn, wearAtlasBtn, buyBtn;
     private boolean btnNotShow = true;
-    private boolean locationNotFinshed = true;
-    private int screenWidth;
-    private ObjectAnimator animation;
-    private ObjectAnimator animationBack;
     private RelativeLayout showBtnLayout;
     private ImageView buyIv, returnIv;
+    private OrderDetailsBean orderDetailsBean;
 
     public static void setData(GoodsListBean data, int pos) {
         GoodsDetailsActivity.data = data;
@@ -62,6 +73,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
 
     @Override
     protected void initView() {
+        EventBus.getDefault().register(this);
         listView = bindView(R.id.detail_listView);
         background = bindView(R.id.goodsDetail_background);
         showBtnLayout = bindView(R.id.details_relativeLayout);
@@ -72,7 +84,9 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         returnIv.setOnClickListener(this);
         buyIv.setOnClickListener(this);
         wearAtlasBtn.setOnClickListener(this);
-
+        ObjectAnimator animator = ObjectAnimator.ofFloat(showBtnLayout, "translationX", -1500);
+        animator.setDuration(1);
+        animator.start();
     }
 
     @Override
@@ -80,6 +94,30 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         listView.setAdapter(new UpListViewAdapter(), new DownListViewAdapter());
         listView.setLinkageSpeed(1.2f);
         background.setImageURI(Uri.parse(data.getData().getList().get(pos).getGoods_img()));
+        final ListView top = listView.getTopListView();
+        new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+
+                return false;
+            }
+        }).sendEmptyMessageDelayed(200, 200);
+        Point point = new Point();
+        getWindowManager().getDefaultDisplay().getSize(point);
+        height = point.y;
+        top.setOnScrollChangeListener(new OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                View view = top.getChildAt(0);
+                v = top.getChildAt(1);
+                if (v != null && view != null) {
+                    radio = (float) (1.0 / (float) height);
+                    Log.i("scroll", height - v.getY() + "" + v.toString() + "     " + radio);
+                    float y = v.getY();
+                    view.setAlpha(1 - ((height - y) * radio));
+                }
+            }
+        });
     }
 
     @Override
@@ -94,16 +132,50 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                 SharedPreferences sp = getSharedPreferences("Mirror", MODE_PRIVATE);
                 String token = sp.getString("token", "");
                 if (!token.equals("")) {
-                    Intent bIntent = new Intent(GoodsDetailsActivity.this, OrderDetailsActivity.class);
-                    bIntent.putExtra("name", data.getData().getList().get(pos).getGoods_name());
-                    bIntent.putExtra("pic", data.getData().getList().get(pos).getGoods_pic());
-                    bIntent.putExtra("content", data.getData().getList().get(pos).getBrand());
-                    bIntent.putExtra("price", data.getData().getList().get(pos).getGoods_price());
-                    bIntent.putExtra("id", data.getData().getList().get(pos).getGoods_id());
-                    startActivity(bIntent);
-                }else {
+                    handler = new Handler(new Handler.Callback() {
+                        @Override
+                        public boolean handleMessage(Message msg) {
+                            Gson gson = new Gson();
+                            orderDetailsBean = gson.fromJson(msg.obj.toString(), OrderDetailsBean.class);
+                            Intent bIntent = new Intent(GoodsDetailsActivity.this, OrderDetailsActivity.class);
+                            bIntent.putExtra("name", orderDetailsBean.getData().getGoods().getGoods_name());
+                            bIntent.putExtra("pic", orderDetailsBean.getData().getGoods().getPic());
+                            bIntent.putExtra("content", orderDetailsBean.getData().getGoods().getDes());
+                            bIntent.putExtra("price", orderDetailsBean.getData().getGoods().getPrice());
+                            bIntent.putExtra("order_id", orderDetailsBean.getData().getOrder_id());
+                            bIntent.putExtra("addr_id", orderDetailsBean.getData().getAddress().getAddr_id());
+                            bIntent.putExtra("id", data.getData().getList().get(pos).getGoods_id());
+                            startActivity(bIntent);
+                            return false;
+                        }
+                    });
+                    //点击购买下订单
+                    OkHttpUtils.post().url(UrlBean.ORDER_SUB).addParams("token", token).addParams("goods_id", data.getData().getList().get(pos).getGoods_id())
+                            .addParams("goods_num", "1").addParams("price", data.getData().getList().get(pos).getGoods_price())
+                            .addParams("discout_id", "").addParams("device_type", "2").build().execute(new Callback() {
+                        @Override
+                        public Object parseNetworkResponse(Response response) throws Exception {
+                            String body = response.body().string();
+                            Message message = new Message();
+                            message.obj = body;
+                            handler.sendMessage(message);
+                            return null;
+                        }
+
+                        @Override
+                        public void onError(Call call, Exception e) {
+
+                        }
+
+                        @Override
+                        public void onResponse(Object response) {
+
+                        }
+                    });
+                } else {
                     Toast.makeText(GoodsDetailsActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
                 }
+
 
                 break;
             case R.id.activity_details_return:
@@ -325,6 +397,9 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         public class ListViewHeadHolder {
             private TextView detailBrand, detailTitle, detailContext, detailPrice;
             private ImageView shareIv;
+            private LinearLayout linearLayout;
+            private boolean isFirst = true;
+            private float height;
 
             public ListViewHeadHolder(View view) {
                 detailBrand = (TextView) view.findViewById(R.id.detail_head_brand);
@@ -332,6 +407,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                 detailContext = (TextView) view.findViewById(R.id.detail_head_context);
                 detailPrice = (TextView) view.findViewById(R.id.detail_head_price);
                 shareIv = (ImageView) view.findViewById(R.id.details_head_share_iv);
+                linearLayout = (LinearLayout) view.findViewById(R.id.detail_head_linearLayout);
             }
         }
 
@@ -346,41 +422,39 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         public class ListViewTitle {
             private TextView title;
 
-            public ListViewTitle(View view) {
+            public ListViewTitle(final View view) {
                 title = (TextView) view.findViewById(R.id.details_line_tv);
             }
         }
     }
 
-//    private void visibleLayout() {
-//        if (btnNotShow && title.getY() <= 0) {
-//            visibleLayout();
-//            btnNotShow = false;
-//        }
-//        if (title.getY() > 0 && !btnNotShow) {
-//            goneLayout();
-//            btnNotShow = true;
-//        }
-//        if (locationNotFinshed) {
-//            animation = ObjectAnimator.ofFloat(showBtnLayout, "translationX", (screenWidth - showBtnLayout.getWidth()) / 2);
-//            animation.setDuration(500);
-//            locationNotFinshed = false;
-//        }
-//        animation.start();
-//    }
-//
-//    private void goneLayout() {
-//        animationBack = ObjectAnimator.ofFloat(showBtnLayout, "translationX", -1000);
-//        animationBack.setDuration(500);
-//        animationBack.start();
-//        new Handler(new Handler.Callback() {
-//            @Override
-//            public boolean handleMessage(Message msg) {
-//                return false;
-//            }
-//        }).sendEmptyMessageDelayed(50, 1000);
-//
-//    }
+    public void onEvent(Integer itemPosition) {
+        if (itemPosition >= 1 && btnNotShow) {
+            showBtnLayout.setVisibility(View.VISIBLE);
+            ObjectAnimator animator1 = ObjectAnimator.ofFloat(showBtnLayout, "translationX", -800f, 0f);
+            animator1.setDuration(500);
+            animator1.start();
+            btnNotShow = false;
+        }
+        if (itemPosition < 1 && !btnNotShow) {
+            ObjectAnimator animator = ObjectAnimator.ofFloat(showBtnLayout, "translationX", 0f, -800f);
+            animator.setDuration(500);
+            animator.start();
+            new Handler(new Handler.Callback() {
+                @Override
+                public boolean handleMessage(Message msg) {
+                    showBtnLayout.setVisibility(View.GONE);
+                    return false;
+                }
+            }).sendEmptyMessageDelayed(99, 500);
+            btnNotShow = true;
+            //return;
+        }
+    }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 }
