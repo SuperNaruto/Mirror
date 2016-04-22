@@ -360,7 +360,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                             // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
                             oks.setTitle(getString(R.string.app_name));
                             // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
-                            oks.setTitleUrl(data.getData().getList().get(pos).getGoods_name());
+                            oks.setTitleUrl(data.getData().getList().get(pos).getGoods_share());
                             // text是分享文本，所有平台都需要这个字段
                             oks.setText(share);
                             // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数

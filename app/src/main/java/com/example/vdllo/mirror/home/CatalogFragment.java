@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -14,31 +16,41 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseFragment;
-
-import java.util.ArrayList;
+import com.example.vdllo.mirror.bean.MenuListBean;
+import com.example.vdllo.mirror.bean.UrlBean;
+import com.example.vdllo.mirror.net.NetHelper;
+import com.example.vdllo.mirror.net.NetListener;
+import com.google.gson.Gson;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.Callback;
+import okhttp3.Call;
+import okhttp3.Response;
 
 /**
  * Created by dllo on 16/4/5.
  */
 public class CatalogFragment extends BaseFragment implements AdapterView.OnItemClickListener {
     private RelativeLayout relativeLayout;
-    private Context context;
     private ListView listView;
-    private ArrayList titleData;
     private CatalogAdapter catalogAdapter;
-    private TextView exitTv;
+    private TextView exitTv,shareTv;
     // 当前Fragment位置
-    private int linePosition;
+    private MenuListBean menuListBean;
+    private MainActivity mainActivity;
+    private
+    Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            Gson gson = new Gson();
+            menuListBean = gson.fromJson(msg.obj.toString(), MenuListBean.class);
+            catalogAdapter = new CatalogAdapter(menuListBean, getContext());
+            listView.setAdapter(catalogAdapter);
+            return false;
+        }
+    });
 
-    //构造方法传入上下文
-    public CatalogFragment(Context context, ArrayList titleData, int linePosition) {
-        this.context = context;
-        this.titleData = titleData;
-        this.linePosition = linePosition;
-    }
 
     @Override
     public int getLayout() {
@@ -47,13 +59,45 @@ public class CatalogFragment extends BaseFragment implements AdapterView.OnItemC
 
     @Override
     protected void initView() {
+        mainActivity = (MainActivity)getContext();
         relativeLayout = bindView(R.id.catalog_relativelayout);
         listView = bindView(R.id.catalog_listview);
         exitTv = bindView(R.id.pop_exit_textView);
+        shareTv = bindView(R.id.pop_share_textview);
+        shareTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.jumpViewPager(4);
+            }
+        });
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().popBackStack();
+                mainActivity.disappearMenu();
+            }
+        });
+
+        //okhttp网络解析
+        OkHttpUtils.post().url(UrlBean.MENU_LIST)
+                .build().execute(new Callback() {
+            @Override
+            public Object parseNetworkResponse(Response response) throws Exception {
+                //子线程无法刷新UI,利用handler发送Message到主线程
+                String body = response.body().string();
+                Message message = new Message();
+                message.obj = body;
+                handler.sendMessage(message);
+                return null;
+            }
+
+            @Override
+            public void onError(Call call, Exception e) {
+
+            }
+
+            @Override
+            public void onResponse(Object response) {
+
             }
         });
     }
@@ -61,8 +105,6 @@ public class CatalogFragment extends BaseFragment implements AdapterView.OnItemC
 
     @Override
     protected void initData() {
-        catalogAdapter = new CatalogAdapter(titleData, context, linePosition);
-        listView.setAdapter(catalogAdapter);
         listView.setOnItemClickListener(this);
         listView.setDividerHeight(0);
         exitTv.setOnClickListener(new View.OnClickListener() {
@@ -72,13 +114,13 @@ public class CatalogFragment extends BaseFragment implements AdapterView.OnItemC
             }
         });
     }
-
+    // 设置适配器
+    public void setupAdapter(int position) {
+        catalogAdapter.setLine(position);
+    }
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        // 跳转到MainActivity，显示menu对应的Fragment
-        Intent intent = new Intent(getActivity(), MainActivity.class);
-        intent.putExtra(context.getString(R.string.CatalogFragment_position), position);
-        getActivity().startActivity(intent);
+        mainActivity.jumpViewPager(position);
     }
 
     public void showDialog() {
@@ -88,9 +130,9 @@ public class CatalogFragment extends BaseFragment implements AdapterView.OnItemC
         builder.setPositiveButton(R.string.CatalogFragment_makesure, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                SharedPreferences sp = getActivity().getSharedPreferences(context.getString(R.string.CatalogFragment_Mirror), getActivity().MODE_PRIVATE);
+                SharedPreferences sp = getActivity().getSharedPreferences(getContext().getString(R.string.CatalogFragment_Mirror), getActivity().MODE_PRIVATE);
                 SharedPreferences.Editor editor = sp.edit();
-                editor.putBoolean(context.getString(R.string.CatalogFragment_ifLogin), false);
+                editor.putBoolean(getContext().getString(R.string.CatalogFragment_ifLogin), false);
                 editor.commit();
                 Intent intent = new Intent(getActivity(),MainActivity.class);
                 startActivity(intent);

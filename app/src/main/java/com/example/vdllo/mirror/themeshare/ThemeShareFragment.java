@@ -12,6 +12,7 @@ import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseFragment;
 import com.example.vdllo.mirror.bean.StoryListBean;
 import com.example.vdllo.mirror.home.CatalogFragment;
+import com.example.vdllo.mirror.home.MainActivity;
 import com.example.vdllo.mirror.net.NetHelper;
 import com.google.gson.Gson;
 
@@ -26,15 +27,12 @@ public class ThemeShareFragment extends BaseFragment {
     private RecyclerView recyclerView;
     private LinearLayout linearLayout;
     private ThemeShareAdapter adapter;
-    private ArrayList<String> data;
     private Handler handler;
     private int i;
     private StoryListBean storyListBean;
     private TextView titleTextView;
+    private MainActivity mainActivity;
 
-    public ThemeShareFragment(int i) {
-        this.i = i;
-    }
 
     @Override
     public int getLayout() {
@@ -46,22 +44,14 @@ public class ThemeShareFragment extends BaseFragment {
         recyclerView = bindView(R.id.recycleView);
         linearLayout = bindView(R.id.all_type_linearlayout);
         titleTextView = bindView(R.id.all_type_titleTv);
+        mainActivity = (MainActivity) getContext();
+        titleTextView.setText("專題分享");
 
-        data = new ArrayList<>();
-        data.add("浏览所有分类");
-        data.add("浏览太阳眼镜");
-        data.add("浏览平光眼镜");
-        data.add("专题分享");
-        data.add("购物车");
-
-        titleTextView.setText(data.get(i));
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.add(R.id.main_cataLogLayout, new CatalogFragment(getActivity(), data, i));
-                ft.addToBackStack(null);
-                ft.commit();
+                mainActivity.showMenu();
+
             }
         });
     }
