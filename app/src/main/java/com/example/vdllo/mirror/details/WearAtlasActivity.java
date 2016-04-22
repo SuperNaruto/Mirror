@@ -59,15 +59,15 @@ public class WearAtlasActivity extends BaseAcitvity implements View.OnClickListe
 
     @Override
     protected void initData() {
-        for (int i = 0; i < datas.getData().getList().get(pos).getWear_video().size(); i++) {
-            if (datas.getData().getList().get(pos).getWear_video().get(i).getType().equals("8")) {
-                jcVideoPlayer.setUp(datas.getData().getList().get(pos).getWear_video().get(i).getData(), null);
-            } else if (datas.getData().getList().get(pos).getWear_video().get(i).getType().equals("9")) {
+        GoodsListBean.DataEntity.ListEntity listEntity = datas.getData().getList().get(pos);
+        for (int i = 0; i < listEntity.getWear_video().size(); i++) {
+            if (listEntity.getWear_video().get(i).getType().equals("8")) {
+                jcVideoPlayer.setUp(listEntity.getWear_video().get(i).getData(), null);
+            } else if (listEntity.getWear_video().get(i).getType().equals("9")) {
                 Picasso.with(WearAtlasActivity.this).cancelRequest(jcVideoPlayer.ivThumb);
-                Picasso.with(WearAtlasActivity.this).load(datas.getData().getList().get(pos).getWear_video().get(i).getData()).into(jcVideoPlayer.ivThumb);
+                Picasso.with(WearAtlasActivity.this).load(listEntity.getWear_video().get(i).getData()).into(jcVideoPlayer.ivThumb);
             }
         }
-
         wearAtlasAdapter = new WearAtlasAdapter(datas, pos);
         listView.setAdapter(wearAtlasAdapter);
         listView.setDividerHeight(0);
@@ -82,12 +82,13 @@ public class WearAtlasActivity extends BaseAcitvity implements View.OnClickListe
                 finish();
                 break;
             case R.id.activity_details_buy:
+                GoodsListBean.DataEntity.ListEntity listEntity = datas.getData().getList().get(pos);
                 Intent Intent = new Intent(WearAtlasActivity.this, OrderDetailsActivity.class);
-                Intent.putExtra("name", datas.getData().getList().get(pos).getGoods_name());
-                Intent.putExtra("pic", datas.getData().getList().get(pos).getGoods_pic());
-                Intent.putExtra("content", datas.getData().getList().get(pos).getBrand());
-                Intent.putExtra("price", datas.getData().getList().get(pos).getGoods_price());
-                Intent.putExtra("id", datas.getData().getList().get(pos).getGoods_id());
+                Intent.putExtra(getString(R.string.WearAtlasActivity_name), listEntity.getGoods_name());
+                Intent.putExtra(getString(R.string.WearAtlasActivity_pic), listEntity.getGoods_pic());
+                Intent.putExtra(getString(R.string.WearAtlasActivity_content), listEntity.getBrand());
+                Intent.putExtra(getString(R.string.WearAtlasActivity_price), listEntity.getGoods_price());
+                Intent.putExtra(getString(R.string.WearAtlasActivity_id), listEntity.getGoods_id());
                 startActivity(Intent);
                 break;
         }
@@ -140,12 +141,12 @@ public class WearAtlasActivity extends BaseAcitvity implements View.OnClickListe
                     int[] location = new int[2];
                     //获取图片在屏幕上坐标和宽高
                     holder.imageView.getLocationOnScreen(location);
-                    intent.putExtra("locationX", location[0]);
-                    intent.putExtra("locationY", location[1]);
-                    intent.putExtra("width", holder.imageView.getWidth());
-                    intent.putExtra("height", holder.imageView.getHeight());
-                    intent.putExtra("position", position + 2);
-                    intent.putExtra("pos", pos);
+                    intent.putExtra(getString(R.string.WearAtlasActivity_locationX), location[0]);
+                    intent.putExtra(getString(R.string.WearAtlasActivity_locationY), location[1]);
+                    intent.putExtra(getString(R.string.WearAtlasActivity_width), holder.imageView.getWidth());
+                    intent.putExtra(getString(R.string.WearAtlasActivity_height), holder.imageView.getHeight());
+                    intent.putExtra(getString(R.string.WearAtlasActivity_position), position + 2);
+                    intent.putExtra(getString(R.string.WearAtlasActivity_pos), pos);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                 }

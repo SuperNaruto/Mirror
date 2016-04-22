@@ -38,12 +38,12 @@ public class WearAtlasDetailsActivity extends AppCompatActivity {
         //设置背景为黑
         this.getWindow().setBackgroundDrawableResource(R.drawable.wear_atlas_detail_background);
         //接收传过来的值
-        locationX = getIntent().getIntExtra("locationX", 0);
-        locationY = getIntent().getIntExtra("locationY", 0);
-        width = getIntent().getIntExtra("width", 0);
-        height = getIntent().getIntExtra("height", 0);
-        pos = getIntent().getIntExtra("pos", 0);
-        position = getIntent().getIntExtra("position", 0);
+        locationX = getIntent().getIntExtra(getString(R.string.WearAtlasActivity_locationX), 0);
+        locationY = getIntent().getIntExtra(getString(R.string.WearAtlasActivity_locationY), 0);
+        width = getIntent().getIntExtra(getString(R.string.WearAtlasActivity_width), 0);
+        height = getIntent().getIntExtra(getString(R.string.WearAtlasActivity_height), 0);
+        pos = getIntent().getIntExtra(getString(R.string.WearAtlasActivity_pos), 0);
+        position = getIntent().getIntExtra(getString(R.string.WearAtlasActivity_position), 0);
         smoothImageView = new SmoothImageView(this);
         smoothImageView.setOriginalInfo(width, height, locationX, locationY);
         smoothImageView.transformIn();

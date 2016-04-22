@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
+import com.example.vdllo.mirror.base.BaseToast;
 import com.example.vdllo.mirror.bean.CreateBean;
 import com.example.vdllo.mirror.bean.UrlBean;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -33,11 +34,9 @@ public class CreateAccountActivity extends BaseAcitvity {
     private EditText phoneEt, numEt, passwordEt;
     private Button sendBtn, createBtn;
     private ImageView returnIv;
-
     private TimerTask timerTask;
     private Timer timer;
     private int count = 60;
-
     private String num, number;
     private CreateBean data;
 
@@ -47,11 +46,13 @@ public class CreateAccountActivity extends BaseAcitvity {
         public boolean handleMessage(Message msg) {
             try {
                 JSONObject obj = new JSONObject(msg.obj.toString());
-                String result = obj.getString("result");
+                String result = obj.getString(getString(R.string.CreateAccountActivity_result));
                 if (result.equals("")) {
-                    Toast.makeText(CreateAccountActivity.this, obj.getString("msg"), Toast.LENGTH_SHORT).show();
-                } else if (result.equals("1")) {
-                    Toast.makeText(CreateAccountActivity.this, R.string.login_success_text, Toast.LENGTH_SHORT).show();}
+                    BaseToast.myToast(obj.getString(getString(R.string.CreateAccountActivity_msg)));
+                } else if (result.equals(getString(R.string.CreateAccountActivity_result_one))) {
+                    BaseToast.myToast(R.string.login_success_text);
+                }
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -97,7 +98,8 @@ public class CreateAccountActivity extends BaseAcitvity {
                                                    sendBtn.setOnClickListener(new View.OnClickListener() {
                                                                                   @Override
                                                                                   public void onClick(View v) {
-                                                                                      Toast.makeText(CreateAccountActivity.this, "请输入手机号", Toast.LENGTH_SHORT).show();
+                                                                                      Toast.makeText(CreateAccountActivity.this, R.string.CreateAccountActivity_inputNum, Toast.LENGTH_SHORT).show();
+                                                                                      BaseToast.myToast(R.string.CreateAccountActivity_inputNum);
                                                                                   }
 
 
@@ -113,7 +115,7 @@ public class CreateAccountActivity extends BaseAcitvity {
                                                        number = phoneEt.getText().toString();
 
                                                        OkHttpUtils.post().url(UrlBean.USER_SEND_CODE).
-                                                               addParams("phone number", number).build().execute(new Callback() {
+                                                               addParams(getString(R.string.CreateAccountActivity_phone_number), number).build().execute(new Callback() {
                                                            @Override
                                                            public Object parseNetworkResponse(Response response) throws Exception {
                                                                return null;
@@ -155,7 +157,9 @@ public class CreateAccountActivity extends BaseAcitvity {
                                                                    @Override
                                                                    public void onClick(View v) {
                                                                        OkHttpUtils.post().url(UrlBean.USER_REG).
-                                                                               addParams("phone number", number).addParams("number", num).addParams("password", password).build().execute(new Callback() {
+                                                                               addParams(getString(R.string.CreateAccountActivity_phone_number), number)
+                                                                               .addParams(getString(R.string.CreateAccountActivity_number), num)
+                                                                               .addParams(getString(R.string.CreateAccountActivity_password), password).build().execute(new Callback() {
                                                                            @Override
                                                                            public Object parseNetworkResponse(Response response) throws Exception {
                                                                                //子线程无法刷新UI,利用handler发送Message到主线程
@@ -226,9 +230,9 @@ public class CreateAccountActivity extends BaseAcitvity {
             switch (msg.what) {
                 case 1:
                     sendBtn.setText("" + count);
-                    if (count > 0) sendBtn.setText(count + "秒");
+                    if (count > 0) sendBtn.setText(count + getString(R.string.CreateAccountActivity_second));
                     else
-                        sendBtn.setText("重新获取");
+                        sendBtn.setText(R.string.CreateAccountActivity_getAgain);
             }
         }
     };

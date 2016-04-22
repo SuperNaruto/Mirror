@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
+import com.example.vdllo.mirror.base.BaseToast;
 import com.example.vdllo.mirror.bean.GoodsListBean;
 import com.example.vdllo.mirror.bean.OrderDetailsBean;
 import com.example.vdllo.mirror.bean.UrlBean;
@@ -86,7 +87,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         returnIv.setOnClickListener(this);
         buyIv.setOnClickListener(this);
         wearAtlasBtn.setOnClickListener(this);
-        ObjectAnimator animator = ObjectAnimator.ofFloat(showBtnLayout, "translationX", -1500);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(showBtnLayout, getString(R.string.GoodsDetails_translationX), -1500);
         animator.setDuration(1);
         animator.start();
     }
@@ -130,9 +131,9 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                 startActivity(intent);
                 break;
             case R.id.details_buy_iv:
-                SharedPreferences sp = getSharedPreferences("Mirror", MODE_PRIVATE);
+                SharedPreferences sp = getSharedPreferences(getString(R.string.GoodsDetails_Mirror), MODE_PRIVATE);
                 String token = sp.getString(getString(R.string.Mirror_token), "");
-                ifLogin = sp.getBoolean("ifLogin", false);
+                ifLogin = sp.getBoolean(getString(R.string.Login_ifLogin), false);
                 if (ifLogin) {
                     handler = new Handler(new Handler.Callback() {
                         @Override
@@ -144,21 +145,23 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                             OrderDetailsBean.DataEntity.AddressEntity addressEntity = orderDetailsBean.getData().getAddress();
                             OrderDetailsBean.DataEntity dataEntity = orderDetailsBean.getData();
                             Intent bIntent = new Intent(GoodsDetailsActivity.this, OrderDetailsActivity.class);
-                            bIntent.putExtra("name", goodsEntity.getGoods_name());
-                            bIntent.putExtra("pic", goodsEntity.getPic());
-                            bIntent.putExtra("content", goodsEntity.getDes());
-                            bIntent.putExtra("price", goodsEntity.getPrice());
-                            bIntent.putExtra("order_id", dataEntity.getOrder_id());
-                            bIntent.putExtra("addr_id", addressEntity.getAddr_id());
-                            bIntent.putExtra("id", data.getData().getList().get(pos).getGoods_id());
+                            bIntent.putExtra(getString(R.string.GoodsDetails_name), goodsEntity.getGoods_name());
+                            bIntent.putExtra(getString(R.string.GoodsDetails_pic), goodsEntity.getPic());
+                            bIntent.putExtra(getString(R.string.GoodsDetails_content), goodsEntity.getDes());
+                            bIntent.putExtra(getString(R.string.GoodsDetails_price), goodsEntity.getPrice());
+                            bIntent.putExtra(getString(R.string.GoodsDetails_order_id), dataEntity.getOrder_id());
+                            bIntent.putExtra(getString(R.string.GoodsDetails_addr_id), addressEntity.getAddr_id());
+                            bIntent.putExtra(getString(R.string.GoodsDetails_id), data.getData().getList().get(pos).getGoods_id());
                             startActivity(bIntent);
                             return false;
                         }
                     });
                     //点击购买下订单
-                    OkHttpUtils.post().url(UrlBean.ORDER_SUB).addParams(getString(R.string.Mirror_token), token).addParams("goods_id", data.getData().getList().get(pos).getGoods_id())
-                            .addParams("goods_num", "1").addParams("price", data.getData().getList().get(pos).getGoods_price())
-                            .addParams("discout_id", "").addParams("device_type", "2").build().execute(new Callback() {
+                    OkHttpUtils.post().url(UrlBean.ORDER_SUB).addParams(getString(R.string.Mirror_token), token)
+                            .addParams(getString(R.string.GoodsDetails_goods_id), data.getData().getList().get(pos).getGoods_id())
+                            .addParams(getString(R.string.GoodsDetails_goods_num), "1").addParams(getString(R.string.GoodsList_price), data.getData().getList().get(pos).getGoods_price())
+                            .addParams(getString(R.string.GoodsDetails_discount_id), "").addParams(getString(R.string.GoodsDetails_device_type), "2")
+                            .build().execute(new Callback() {
                         @Override
                         public Object parseNetworkResponse(Response response) throws Exception {
                             String body = response.body().string();
@@ -179,7 +182,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                         }
                     });
                 } else {
-                    Toast.makeText(GoodsDetailsActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                    BaseToast.myToast(getString(R.string.GoodsDetails_please_login));
                 }
 
 
@@ -242,24 +245,24 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                 case TYPE_2:
                     convertView = LayoutInflater.from(GoodsDetailsActivity.this).inflate(R.layout.down_listview, parent, false);
                     listViewDeatilHolder = new ListViewDeatilHolder(convertView);
+                    GoodsListBean.DataEntity.ListEntity.GoodsDataEntity goodsDataEntity = data.getData().getList().get(pos).getGoods_data().get(position - 3);
                     //-2因为前连个item被占了
                     try {
-                        String s = data.getData().getList().get(pos).getGoods_data().get(position - 3).getCountry();
-                        if (s.equals("")) {
-                            listViewDeatilHolder.goodsCountry.setText(data.getData().getList().get(pos).getGoods_data().get(position - 3).getName());
+                        String country = goodsDataEntity.getCountry();
+                        if (country.equals("")) {
+                            listViewDeatilHolder.goodsCountry.setText(goodsDataEntity.getName());
 
                         } else {
-                            listViewDeatilHolder.goodsCountry.setText(data.getData().getList().get(pos).getGoods_data().get(position - 3).getCountry());
+                            listViewDeatilHolder.goodsCountry.setText(goodsDataEntity.getCountry());
 
                         }
                     } catch (IndexOutOfBoundsException e) {
                         e.printStackTrace();
                     }
-
                     try {
-                        listViewDeatilHolder.goodsContext.setText(data.getData().getList().get(pos).getGoods_data().get(position - 3).getIntroContent());
-                        listViewDeatilHolder.goodsLoaction.setText(data.getData().getList().get(pos).getGoods_data().get(position - 3).getLocation());
-                        listViewDeatilHolder.goodsEnLocation.setText(data.getData().getList().get(pos).getGoods_data().get(position - 3).getEnglish());
+                        listViewDeatilHolder.goodsContext.setText(goodsDataEntity.getIntroContent());
+                        listViewDeatilHolder.goodsLoaction.setText(goodsDataEntity.getLocation());
+                        listViewDeatilHolder.goodsEnLocation.setText(goodsDataEntity.getEnglish());
                     } catch (IndexOutOfBoundsException e) {
                         e.printStackTrace();
                     }
@@ -338,33 +341,35 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                 case TYPE_1:
                     convertView = LayoutInflater.from(GoodsDetailsActivity.this).inflate(R.layout.details_head_item, parent, false);
                     listViewHeadHolder = new ListViewHeadHolder(convertView);
-                    listViewHeadHolder.detailContext.setText(data.getData().getList().get(pos).getInfo_des());
-                    listViewHeadHolder.detailPrice.setText(data.getData().getList().get(pos).getGoods_price());
-                    listViewHeadHolder.detailTitle.setText(data.getData().getList().get(pos).getBrand());
-                    listViewHeadHolder.detailBrand.setText(data.getData().getList().get(pos).getGoods_name());
+                    GoodsListBean.DataEntity.ListEntity listEntity = data.getData().getList().get(pos);
+                    listViewHeadHolder.detailContext.setText(listEntity.getInfo_des());
+                    listViewHeadHolder.detailPrice.setText(listEntity.getGoods_price());
+                    listViewHeadHolder.detailTitle.setText(listEntity.getBrand());
+                    listViewHeadHolder.detailBrand.setText(listEntity.getGoods_name());
                     listViewHeadHolder.shareIv.setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View v) {
-
-                            String s = data.getData().getList().get(pos).getGoods_share();
+                            String share = data.getData().getList().get(pos).getGoods_share();
+                            String pic = data.getData().getList().get(pos).getGoods_pic();
                             ShareSDK.initSDK(GoodsDetailsActivity.this);
                             OnekeyShare oks = new OnekeyShare();
                             //关闭sso授权
                             oks.disableSSOWhenAuthorize();
                             // 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
                             //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
+                            oks.setImageUrl(pic);
                             // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
                             oks.setTitle(getString(R.string.app_name));
                             // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
                             oks.setTitleUrl(data.getData().getList().get(pos).getGoods_name());
                             // text是分享文本，所有平台都需要这个字段
-                            oks.setText(s);
+                            oks.setText(share);
                             // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
                             //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
                             // url仅在微信（包括好友和朋友圈）中使用
                             oks.setUrl(null);
                             // comment是我对这条分享的评论，仅在人人网和QQ空间使用
-                            oks.setComment(s);
+                            oks.setComment(share);
                             // site是分享此内容的网站名称，仅在QQ空间使用
                             oks.setSite(getString(R.string.app_name));
                             // siteUrl是分享此内容的网站地址，仅在QQ空间使用

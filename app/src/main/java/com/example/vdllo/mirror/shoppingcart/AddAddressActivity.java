@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
+import com.example.vdllo.mirror.base.BaseToast;
 import com.example.vdllo.mirror.bean.UrlBean;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
@@ -59,19 +60,21 @@ public class AddAddressActivity extends BaseAcitvity implements View.OnClickList
                 String name = nameEt.getText().toString();
                 String tel = telEt.getText().toString();
                 String address = addressEt.getText().toString();
-                SharedPreferences sp = getSharedPreferences("Mirror", MODE_PRIVATE);
-                String token = sp.getString("token", "");
+                SharedPreferences sp = getSharedPreferences(getString(R.string.AddAddressActivity_Mirror), MODE_PRIVATE);
+                String token = sp.getString(getString(R.string.AddAddressActivity_token), "");
                 if (!name.equals("") && !tel.equals("") && !address.equals("")) {
                     handler = new Handler(new Handler.Callback() {
                         @Override
                         public boolean handleMessage(Message msg) {
-                            Toast.makeText(AddAddressActivity.this, "提交成功", Toast.LENGTH_SHORT).show();
+                            BaseToast.myToast(getString(R.string.AddAddressActivity_success));
                             finish();
                             return false;
                         }
                     });
-                    OkHttpUtils.post().url(UrlBean.USER_ADD_ADDRESS).addParams("token", token).addParams("username", name)
-                            .addParams("cellphone", tel).addParams("addr_info", address).build().execute(new Callback() {
+                    OkHttpUtils.post().url(UrlBean.USER_ADD_ADDRESS).addParams(getString(R.string.AddAddressActivity_token), token)
+                            .addParams(getString(R.string.AddAddressActivity_username), name)
+                            .addParams(getString(R.string.AddAddressActivity_cellphone), tel)
+                            .addParams(getString(R.string.AddAddressActivity_addr_info), address).build().execute(new Callback() {
                         @Override
                         public Object parseNetworkResponse(Response response) throws Exception {
                             String body = response.body().string();
@@ -92,7 +95,7 @@ public class AddAddressActivity extends BaseAcitvity implements View.OnClickList
                         }
                     });
                 } else {
-                    Toast.makeText(AddAddressActivity.this, "请填写信息", Toast.LENGTH_SHORT).show();
+                    BaseToast.myToast(getString(R.string.AddAddressActivity_write));
                 }
                 break;
         }

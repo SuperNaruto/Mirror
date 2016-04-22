@@ -19,6 +19,7 @@ import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
+import com.example.vdllo.mirror.base.BaseToast;
 import com.example.vdllo.mirror.bean.AddressBean;
 import com.example.vdllo.mirror.bean.UrlBean;
 import com.example.vdllo.mirror.toolclass.DensityUtils;
@@ -73,10 +74,13 @@ public class AddressActivity extends BaseAcitvity implements View.OnClickListene
             }
         });
         //解析地址数据，传到适配器
-        SharedPreferences sp = getSharedPreferences("Mirror", MODE_PRIVATE);
-        String token = sp.getString("token", "");
-        OkHttpUtils.post().url(UrlBean.USER_ADDRESS_LIST).addParams("token", token)
-                .addParams("device_type", "2").addParams("page", "").addParams("last_time", "")
+        SharedPreferences sp = getSharedPreferences(getString(R.string.AddressActivity_Mirror), MODE_PRIVATE);
+        String token = sp.getString(getString(R.string.AddressActivity_token), "");
+        OkHttpUtils.post().url(UrlBean.USER_ADDRESS_LIST)
+                .addParams(getString(R.string.AddressActivity_token), token)
+                .addParams(getString(R.string.AddressActivity_device_type), "2")
+                .addParams(getString(R.string.AddressActivity_page), "")
+                .addParams(getString(R.string.AddressActivity_last_time), "")
                 .build().execute(new Callback() {
             @Override
             public Object parseNetworkResponse(final Response response) throws Exception {
@@ -111,7 +115,7 @@ public class AddressActivity extends BaseAcitvity implements View.OnClickListene
                 //set item width
                 deleteItem.setWidth(DensityUtils.dp2px(AddressActivity.this, 90));
                 // set item title
-                deleteItem.setTitle("删除");
+                deleteItem.setTitle(getString(R.string.AddressActivity_menu_delete));
                 // set item title fontSize
                 deleteItem.setTitleSize(13);
                 // set item title font color
@@ -133,15 +137,15 @@ public class AddressActivity extends BaseAcitvity implements View.OnClickListene
                             public boolean handleMessage(Message msg) {
                                 myAdapter.setData(position);
                                 myListView.setAdapter(myAdapter);
-                                Toast.makeText(AddressActivity.this, "删除成功", Toast.LENGTH_SHORT).show();
+                                BaseToast.myToast(getString(R.string.AddressActivity_success));
                                 return false;
                             }
                         });
 
-                        SharedPreferences sp = getSharedPreferences("Mirror", MODE_PRIVATE);
-                        String token = sp.getString("token", "");
-                        OkHttpUtils.post().url(UrlBean.USER_DEL_ADDRESS).addParams("token", token)
-                                .addParams("addr_id", addressBean.getData().getList().get(position).getAddr_id()).build().execute(new Callback() {
+                        SharedPreferences sp = getSharedPreferences(getString(R.string.AddressActivity_Mirror), MODE_PRIVATE);
+                        String token = sp.getString(getString(R.string.AddressActivity_token), "");
+                        OkHttpUtils.post().url(UrlBean.USER_DEL_ADDRESS).addParams(getString(R.string.AddressActivity_token), token)
+                                .addParams(getString(R.string.AddressActivity_addr_id), addressBean.getData().getList().get(position).getAddr_id()).build().execute(new Callback() {
                             @Override
                             public Object parseNetworkResponse(Response response) throws Exception {
                                 String body = response.body().string();
@@ -177,14 +181,15 @@ public class AddressActivity extends BaseAcitvity implements View.OnClickListene
                     public boolean handleMessage(Message msg) {
                         try {
                             JSONObject object = new JSONObject(msg.obj.toString());
-                            String result = object.getString("result");
+                            String result = object.getString(getString(R.string.AddressActivity_result));
                             if (result.equals("1")) {
                                 myAdapter.notifyDataSetChanged();
-                                Toast.makeText(AddressActivity.this, "设置默认地址成功", Toast.LENGTH_SHORT).show();
+                                BaseToast.myToast(getString(R.string.AddressActivity_set_success));
                                 Intent intent = new Intent(AddressActivity.this, OrderDetailsActivity.class);
-                                intent.putExtra("name", addressBean.getData().getList().get(position).getUsername());
-                                intent.putExtra("tel", addressBean.getData().getList().get(position).getCellphone());
-                                intent.putExtra("info", addressBean.getData().getList().get(position).getAddr_info());
+                                AddressBean.DataEntity.ListEntity listEntity = addressBean.getData().getList().get(position);
+                                intent.putExtra(getString(R.string.AddressActivity_name), listEntity.getUsername());
+                                intent.putExtra(getString(R.string.AddressActivity_tel), listEntity.getCellphone());
+                                intent.putExtra(getString(R.string.AddressActivity_info), listEntity.getAddr_info());
                                 setResult(resultCode, intent);
                                 finish();
                             }
@@ -196,9 +201,9 @@ public class AddressActivity extends BaseAcitvity implements View.OnClickListene
                     }
                 });
 
-                SharedPreferences sp = getSharedPreferences("Mirror", MODE_PRIVATE);
-                String token = sp.getString("token", "");
-                OkHttpUtils.post().url(UrlBean.USER_MR_ADDRESS).addParams("token", token).addParams("addr_id", addressBean.getData().getList().get(position).getAddr_id())
+                SharedPreferences sp = getSharedPreferences(getString(R.string.AddressActivity_Mirror), MODE_PRIVATE);
+                String token = sp.getString(getString(R.string.AddressActivity_token), "");
+                OkHttpUtils.post().url(UrlBean.USER_MR_ADDRESS).addParams(getString(R.string.AddressActivity_token), token).addParams(getString(R.string.AddressActivity_addr_id), addressBean.getData().getList().get(position).getAddr_id())
                         .build().execute(new Callback() {
                     @Override
                     public Object parseNetworkResponse(Response response) throws Exception {

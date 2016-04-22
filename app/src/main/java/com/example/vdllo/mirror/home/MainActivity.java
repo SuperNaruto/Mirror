@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
+import com.example.vdllo.mirror.base.BaseToast;
 import com.example.vdllo.mirror.login.LoginActivity;
 import com.example.vdllo.mirror.shoppingcart.ShoppingCartFragment;
 
@@ -41,16 +42,16 @@ public class MainActivity extends BaseAcitvity {
                 // 参数1：目标对象（Object target）
                 // 参数2：属性名（String propertyName）
                 // 参数3~N：小数值
-                ObjectAnimator.ofFloat(v, "scaleX", 1.0f, 1.2f, 1.0f, 1.1f, 1.0f).setDuration(500).start();
-                ObjectAnimator.ofFloat(v, "scaleY", 1.0f, 1.2f, 1.0f, 1.1f, 1.0f).setDuration(500).start();
+                ObjectAnimator.ofFloat(v, getString(R.string.MainActivity_scaleX), 1.0f, 1.2f, 1.0f, 1.1f, 1.0f).setDuration(500).start();
+                ObjectAnimator.ofFloat(v, getString(R.string.CatalogFragment_scaleY), 1.0f, 1.2f, 1.0f, 1.1f, 1.0f).setDuration(500).start();
             }
         });
     }
 
     @Override
     protected void initData() {
-        SharedPreferences sp = getSharedPreferences("Mirror", MODE_PRIVATE);
-        ifLogin = sp.getBoolean("ifLogin", false);
+        SharedPreferences sp = getSharedPreferences(getString(R.string.MainActivity_Mirror), MODE_PRIVATE);
+        ifLogin = sp.getBoolean(getString(R.string.MainActivity_ifLogin), false);
         if (ifLogin) {
             textView.setText(R.string.main_activity_shoppingCart_text);
             textView.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +91,7 @@ public class MainActivity extends BaseAcitvity {
 
     private void exit() {
         if ((System.currentTimeMillis() - clickTime) > 2000) {
-            Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+            BaseToast.myToast(getString(R.string.MainActivity_clickQuit));
             clickTime = System.currentTimeMillis();
         } else {
             this.finish();

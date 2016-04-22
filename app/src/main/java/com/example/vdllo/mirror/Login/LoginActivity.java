@@ -10,10 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
+import com.example.vdllo.mirror.base.BaseToast;
 import com.example.vdllo.mirror.bean.UrlBean;
 import com.example.vdllo.mirror.home.MainActivity;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -102,17 +102,17 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
                                     public boolean handleMessage(Message msg) {
                                         try {
                                             JSONObject obj = new JSONObject(msg.obj.toString());
-                                            String result = obj.getString("result");
+                                            String result = obj.getString(getString(R.string.LoginActivity_result));
                                             if (result.equals("")) {
-                                                Toast.makeText(LoginActivity.this, obj.getString("msg"), Toast.LENGTH_SHORT).show();
+                                                BaseToast.myToast(obj.getString(getString(R.string.LoginActivity_msg)));
                                             } else if (result.equals("1")) {
-                                                Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+                                                BaseToast.myToast(getString(R.string.LoginActivity_success));
                                                 //sp 保存token
-                                                String token = obj.getJSONObject("data").getString("token");
-                                                SharedPreferences sp = getSharedPreferences("Mirror", MODE_PRIVATE);
+                                                String token = obj.getJSONObject(getString(R.string.LoginActivity_data)).getString(getString(R.string.LoginActivity_token));
+                                                SharedPreferences sp = getSharedPreferences(getString(R.string.LoginActivity_Mirror), MODE_PRIVATE);
                                                 SharedPreferences.Editor editor = sp.edit();
-                                                editor.putString("token", token);
-                                                editor.putBoolean("ifLogin", true);
+                                                editor.putString(getString(R.string.Login_token), token);
+                                                editor.putBoolean(getString(R.string.LoginActivity_ifLogin), true);
                                                 editor.commit();
                                                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                                                 startActivity(intent);
@@ -127,7 +127,7 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
                                 });
 
                                 OkHttpUtils.post().url(UrlBean.USER_LOGIN).
-                                        addParams("phone number", num).addParams("password", password).build().execute(new Callback() {
+                                        addParams(getString(R.string.LoginActivity_phone_number), num).addParams(getString(R.string.LoginActivity_password), password).build().execute(new Callback() {
                                     @Override
                                     public Object parseNetworkResponse(Response response) throws Exception {
                                         //子线程无法刷新UI,利用handler发送Message到主线程

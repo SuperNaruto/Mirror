@@ -77,30 +77,30 @@ public class CatalogFragment extends BaseFragment implements AdapterView.OnItemC
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         // 跳转到MainActivity，显示menu对应的Fragment
         Intent intent = new Intent(getActivity(), MainActivity.class);
-        intent.putExtra("position", position);
+        intent.putExtra(context.getString(R.string.CatalogFragment_position), position);
         getActivity().startActivity(intent);
     }
 
     public void showDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("确定退出登錄");
+        builder.setTitle(R.string.CatalogFragment_exit);
         //积极响应
-        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.CatalogFragment_makesure, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                SharedPreferences sp = getActivity().getSharedPreferences("Mirror", getActivity().MODE_PRIVATE);
+                SharedPreferences sp = getActivity().getSharedPreferences(context.getString(R.string.CatalogFragment_Mirror), getActivity().MODE_PRIVATE);
                 SharedPreferences.Editor editor = sp.edit();
-                editor.putBoolean("ifLogin", false);
+                editor.putBoolean(context.getString(R.string.CatalogFragment_ifLogin), false);
                 editor.commit();
                 Intent intent = new Intent(getActivity(),MainActivity.class);
                 startActivity(intent);
             }
         });
         //消极响应
-        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.CatalogFragment_cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getActivity(), "已取消", Toast.LENGTH_SHORT).show();
+
             }
         });
         builder.show();//显示
