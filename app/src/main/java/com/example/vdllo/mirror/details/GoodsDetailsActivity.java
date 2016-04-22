@@ -97,29 +97,29 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         listView.setAdapter(new UpListViewAdapter(), new DownListViewAdapter());
         listView.setLinkageSpeed(1.2f);
         background.setImageURI(Uri.parse(data.getData().getList().get(pos).getGoods_img()));
-        final ListView top = listView.getTopListView();
-        new Handler(new Handler.Callback() {
-            @Override
-            public boolean handleMessage(Message msg) {
-
-                return false;
-            }
-        }).sendEmptyMessageDelayed(200, 200);
-        Point point = new Point();
-        getWindowManager().getDefaultDisplay().getSize(point);
-        height = point.y;
-        top.setOnScrollChangeListener(new OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                View view = top.getChildAt(0);
-                v = top.getChildAt(1);
-                if (v != null && view != null) {
-                    radio = (float) (1.0 / (float) height);
-                    float y = v.getY();
-                    view.setAlpha(1 - ((height - y) * radio));
-                }
-            }
-        });
+//        final ListView top = listView.getBottomListView();
+//        new Handler(new Handler.Callback() {
+//            @Override
+//            public boolean handleMessage(Message msg) {
+//
+//                return false;
+//            }
+//        }).sendEmptyMessageDelayed(200, 200);
+//        Point point = new Point();
+//        getWindowManager().getDefaultDisplay().getSize(point);
+//        height = point.y;
+//        top.setOnScrollChangeListener(new OnScrollChangeListener() {
+//            @Override
+//            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+//                View view = top.getChildAt(0);
+//                v = top.getChildAt(1);
+//                if (v != null && view != null) {
+//                    radio = (float) (1.0 / (float) height);
+//                    float y = v.getY();
+//                    view.setAlpha(1 - ((height - y) * radio));
+//                }
+//            }
+//        });
     }
 
     @Override
@@ -334,7 +334,6 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
             int type = getItemViewType(position);
             switch (type) {
                 case TYPE_0:
-                    //blank
                     convertView = LayoutInflater.from(GoodsDetailsActivity.this).inflate(R.layout.up_listview_blank, parent, false);
                     break;
                 //半透明文字
@@ -412,13 +411,26 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
             private boolean isFirst = true;
             private float height;
 
-            public ListViewHeadHolder(View view) {
+            public ListViewHeadHolder(final View view) {
                 detailBrand = (TextView) view.findViewById(R.id.detail_head_brand);
                 detailTitle = (TextView) view.findViewById(R.id.detail_head_title);
                 detailContext = (TextView) view.findViewById(R.id.detail_head_context);
                 detailPrice = (TextView) view.findViewById(R.id.detail_head_price);
                 shareIv = (ImageView) view.findViewById(R.id.details_head_share_iv);
                 linearLayout = (LinearLayout) view.findViewById(R.id.detail_head_linearLayout);
+                listView.getBottomListView().setOnScrollChangeListener(new OnScrollChangeListener() {
+                    @Override
+                    public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                        if (isFirst) {
+                            height = view.getHeight();
+                            if (height != 0) {
+                                isFirst = false;
+                            }
+                        }
+                        //改变透明度
+                        linearLayout.setAlpha((float) ((1 / height) * view.getBottom()));
+                    }
+                });
             }
         }
 

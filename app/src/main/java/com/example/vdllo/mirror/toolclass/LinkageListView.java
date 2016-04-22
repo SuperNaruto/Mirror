@@ -102,6 +102,8 @@ public class LinkageListView extends FrameLayout {
         mTopAdapter = topAdapter;
         mBottomListView.setAdapter(mBotAdapter);
         mTopListView.setAdapter(mTopAdapter);
+        mBottomListView.setVerticalScrollBarEnabled(true);
+        mTopListView.setVerticalScrollBarEnabled(true);
     }
 
     public void setLinkageSpeed(float linkageSpeed) {
