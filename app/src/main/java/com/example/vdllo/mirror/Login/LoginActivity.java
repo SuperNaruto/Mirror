@@ -195,7 +195,7 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
                 platform.setPlatformActionListener(new PlatformActionListener() {
                     @Override
                     public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-                        Log.i("android", platform.getDb().getUserName());
+
                     }
 
                     @Override
@@ -220,7 +220,7 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
                 sPlatform.setPlatformActionListener(new PlatformActionListener() {
                     @Override
                     public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-                        Log.i("android", platform.getDb().getUserName());
+
                     }
 
                     @Override

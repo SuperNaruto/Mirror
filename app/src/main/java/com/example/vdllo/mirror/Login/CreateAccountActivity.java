@@ -59,9 +59,7 @@ public class CreateAccountActivity extends BaseAcitvity {
                 if (result.equals("")) {
                     Toast.makeText(CreateAccountActivity.this, obj.getString("msg"), Toast.LENGTH_SHORT).show();
                 } else if (result.equals("1")) {
-                    Toast.makeText(CreateAccountActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();}
-//                String mess = obj.getString("Msg");
-//                Toast.makeText(CreateAccountActivity.this, mess, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateAccountActivity.this, R.string.login_success_text, Toast.LENGTH_SHORT).show();}
             } catch (JSONException e) {
                 e.printStackTrace();
             }

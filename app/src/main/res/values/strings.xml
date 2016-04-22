@@ -43,5 +43,6 @@
     <string name="address_listView_address_text">地址:</string>
     <string name="main_activity_shoppingCart_text">購物車</string>
     <string name="main_activity_login_text">登錄</string>
+    <string name="login_success_text">登陆成功</string>
 
 </resources>
