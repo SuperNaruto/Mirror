@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.alipay.sdk.app.PayTask;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
+import com.example.vdllo.mirror.base.BaseToast;
 import com.example.vdllo.mirror.bean.AlipayBean;
 import com.example.vdllo.mirror.bean.OrderDetailsBean;
 import com.example.vdllo.mirror.bean.UrlBean;
@@ -109,6 +110,7 @@ public class OrderDetailsActivity extends BaseAcitvity {
         telTv = bindView(R.id.order_details_telTv);
         background = bindView(R.id.order_buy_background);
         inputAddressBtn = bindView(R.id.input_address_btn);
+        //跳转到添加地址界面
         inputAddressBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,14 +119,19 @@ public class OrderDetailsActivity extends BaseAcitvity {
             }
         });
         buyBtn = bindView(R.id.order_details_buyBtn);
-        buyBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                initPay();
-                showPopWindow(v);
-                background.setVisibility(View.VISIBLE);
-            }
-        });
+        if (!recipientTv.equals("") && !infoTv.equals("") && !telTv.equals("")) {
+
+            buyBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    initPay();
+                    showPopWindow(v);
+                    background.setVisibility(View.VISIBLE);
+                }
+            });
+        }else {
+            BaseToast.myToast("请设置购物地址");
+        }
     }
 
     public void showPopWindow(View view) {

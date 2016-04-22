@@ -1,12 +1,9 @@
-package com.example.vdllo.mirror.Login;
+package com.example.vdllo.mirror.login;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,18 +13,13 @@ import android.widget.Toast;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
 import com.example.vdllo.mirror.bean.CreateBean;
-import com.example.vdllo.mirror.bean.StoryInfoBean;
 import com.example.vdllo.mirror.bean.UrlBean;
-import com.example.vdllo.mirror.themeshare.ShareDetailsFragment;
-import com.example.vdllo.mirror.themeshare.ThemeShareActivityAdapter;
-import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 

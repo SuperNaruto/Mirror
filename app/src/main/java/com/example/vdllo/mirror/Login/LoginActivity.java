@@ -1,4 +1,4 @@
-package com.example.vdllo.mirror.Login;
+package com.example.vdllo.mirror.login;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,10 +15,7 @@ import android.widget.Toast;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
 import com.example.vdllo.mirror.bean.UrlBean;
-import com.example.vdllo.mirror.db.DaoSingleton;
-import com.example.vdllo.mirror.db.MirrorEntity;
 import com.example.vdllo.mirror.home.MainActivity;
-import com.example.vdllo.mirror.shoppingcart.AddressActivity;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 
@@ -33,7 +29,6 @@ import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qzone.QZone;
-import de.greenrobot.event.EventBus;
 import okhttp3.Call;
 import okhttp3.Response;
 

@@ -5,15 +5,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.vdllo.mirror.Login.LoginActivity;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseAcitvity;
+import com.example.vdllo.mirror.login.LoginActivity;
 import com.example.vdllo.mirror.shoppingcart.ShoppingCartFragment;
 
 public class MainActivity extends BaseAcitvity {

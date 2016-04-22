@@ -5,29 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.View;
-import android.widget.Scroller;
 import android.widget.TextView;
 
-import com.example.vdllo.mirror.Login.LoginActivity;
 import com.example.vdllo.mirror.R;
 import com.example.vdllo.mirror.base.BaseFragment;
 import com.example.vdllo.mirror.bean.MenuListBean;
-import com.example.vdllo.mirror.net.NetHelper;
 import com.example.vdllo.mirror.shoppingcart.ShoppingCartFragment;
 import com.example.vdllo.mirror.themeshare.ThemeShareFragment;
 import com.example.vdllo.mirror.toolclass.CustomViewPager;
-import com.google.gson.Gson;
-import com.zhy.http.okhttp.OkHttpUtils;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
-
-import de.greenrobot.event.EventBus;
 
 /**
  * Created by dllo on 16/4/5.
