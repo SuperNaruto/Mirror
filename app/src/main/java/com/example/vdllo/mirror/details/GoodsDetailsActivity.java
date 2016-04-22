@@ -48,7 +48,6 @@ import static android.widget.AbsListView.*;
  * Created by Bo on 16/4/8.
  */
 public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickListener {
-    private View v;
     private float radio;
     private float height;
     private LinkageListView listView;
@@ -58,12 +57,6 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
     private SimpleDraweeView background;
     private Button backBtn, wearAtlasBtn, buyBtn;
     private boolean btnNotShow = true;
-    private boolean locationNotFinshed = true;
-    private int screenWidth;
-    private int screenHeight;
-    private float itemHeight = 0;
-    private ObjectAnimator animation;
-    private ObjectAnimator animationBack;
     private RelativeLayout showBtnLayout;
     private ImageView buyIv, returnIv;
     private OrderDetailsBean orderDetailsBean;
@@ -91,12 +84,6 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         returnIv.setOnClickListener(this);
         buyIv.setOnClickListener(this);
         wearAtlasBtn.setOnClickListener(this);
-        Point size = new Point();
-        Display display = getWindowManager().getDefaultDisplay();
-        display.getRealSize(size);
-        screenHeight = size.y;
-        screenWidth = size.x;
-        screenWidth = getWindowManager().getDefaultDisplay().getWidth();
         ObjectAnimator animator = ObjectAnimator.ofFloat(showBtnLayout, "translationX", -1500);
         animator.setDuration(1);
         animator.start();
