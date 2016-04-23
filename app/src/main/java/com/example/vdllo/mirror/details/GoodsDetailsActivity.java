@@ -317,7 +317,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                 case TYPE_1:
                     convertView = LayoutInflater.from(GoodsDetailsActivity.this).inflate(R.layout.details_head_item, parent, false);
                     listViewHeadHolder = new ListViewHeadHolder(convertView);
-                    GoodsListBean.DataEntity.ListEntity listEntity = data.getData().getList().get(pos);
+                    final GoodsListBean.DataEntity.ListEntity listEntity = data.getData().getList().get(pos);
                     listViewHeadHolder.detailContext.setText(listEntity.getInfo_des());
                     listViewHeadHolder.detailPrice.setText(listEntity.getGoods_price());
                     listViewHeadHolder.detailTitle.setText(listEntity.getBrand());
@@ -325,8 +325,8 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                     listViewHeadHolder.shareIv.setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            String share = data.getData().getList().get(pos).getGoods_share();
-                            String pic = data.getData().getList().get(pos).getGoods_pic();
+                            String share = listEntity.getGoods_share();
+                            String pic = listEntity.getGoods_pic();
                             ShareSDK.initSDK(GoodsDetailsActivity.this);
                             OnekeyShare oks = new OnekeyShare();
                             //关闭sso授权

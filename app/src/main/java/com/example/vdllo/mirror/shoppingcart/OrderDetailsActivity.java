@@ -119,8 +119,7 @@ public class OrderDetailsActivity extends BaseAcitvity {
             }
         });
         buyBtn = bindView(R.id.order_details_buyBtn);
-        if (!recipientTv.equals("收件人：") && !infoTv.equals("地址：") && !telTv.equals("联系电话：")) {
-
+        if (!recipientTv.equals("") && !infoTv.equals("") && !telTv.equals("")) {
             buyBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -236,9 +235,9 @@ public class OrderDetailsActivity extends BaseAcitvity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 200 && resultCode == 100) {
-            recipientTv.setText("收件人：" + data.getStringExtra("name"));
-            infoTv.setText("地址：" + data.getStringExtra("info"));
-            telTv.setText("联系电话：" + data.getStringExtra("tel"));
+            recipientTv.setText(data.getStringExtra("name"));
+            infoTv.setText(data.getStringExtra("info"));
+            telTv.setText(data.getStringExtra("tel"));
             inputAddressBtn.setText("更改地址");
         }
     }
