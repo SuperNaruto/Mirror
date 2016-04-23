@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -164,7 +165,7 @@ public class MainActivity extends BaseAcitvity implements ViewPager.OnPageChange
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    android.support.v4.app.FragmentTransaction myFt = getSupportFragmentManager().beginTransaction();
+                    FragmentTransaction myFt = getSupportFragmentManager().beginTransaction();
                     myFt.commit();
                 }
             });

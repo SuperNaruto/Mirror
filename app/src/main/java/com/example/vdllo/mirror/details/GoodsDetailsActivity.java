@@ -97,29 +97,6 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         listView.setAdapter(new UpListViewAdapter(), new DownListViewAdapter());
         listView.setLinkageSpeed(1.2f);
         background.setImageURI(Uri.parse(data.getData().getList().get(pos).getGoods_img()));
-//        final ListView top = listView.getBottomListView();
-//        new Handler(new Handler.Callback() {
-//            @Override
-//            public boolean handleMessage(Message msg) {
-//
-//                return false;
-//            }
-//        }).sendEmptyMessageDelayed(200, 200);
-//        Point point = new Point();
-//        getWindowManager().getDefaultDisplay().getSize(point);
-//        height = point.y;
-//        top.setOnScrollChangeListener(new OnScrollChangeListener() {
-//            @Override
-//            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-//                View view = top.getChildAt(0);
-//                v = top.getChildAt(1);
-//                if (v != null && view != null) {
-//                    radio = (float) (1.0 / (float) height);
-//                    float y = v.getY();
-//                    view.setAlpha(1 - ((height - y) * radio));
-//                }
-//            }
-//        });
     }
 
     @Override

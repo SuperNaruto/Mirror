@@ -119,7 +119,7 @@ public class OrderDetailsActivity extends BaseAcitvity {
             }
         });
         buyBtn = bindView(R.id.order_details_buyBtn);
-        if (!recipientTv.equals("") && !infoTv.equals("") && !telTv.equals("")) {
+        if (!recipientTv.equals("收件人：") && !infoTv.equals("地址：") && !telTv.equals("联系电话：")) {
 
             buyBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
