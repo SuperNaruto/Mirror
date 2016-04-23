@@ -22,6 +22,8 @@ import com.zhy.http.okhttp.callback.Callback;
 
 import java.util.ArrayList;
 
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -32,7 +34,7 @@ public class ThemeShareActivity extends BaseAcitvity implements View.OnClickList
     private CustomViewPager customViewPager;
     private ThemeShareActivityAdapter themeShareActivityAdapter;
     private ArrayList<Fragment> datas;
-    private ImageView cImageView;
+    private ImageView cImageView,shareIv;
     private SimpleDraweeView simpleDraweeView;
     private Handler handler;
     private StoryInfoBean data;
@@ -48,6 +50,39 @@ public class ThemeShareActivity extends BaseAcitvity implements View.OnClickList
         customViewPager = bindView(R.id.theme_share_viewpager);
         cImageView = bindView(R.id.theme_share_close_iv);
         simpleDraweeView = bindView(R.id.theme_share_AIv);
+        shareIv = bindView(R.id.theme_share_share_iv);
+        shareIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String s = data.getData().getStory_url();
+                String u = data .getData().getStory_img();
+                ShareSDK.initSDK(ThemeShareActivity.this);
+                            OnekeyShare oks = new OnekeyShare();
+                            //关闭sso授权
+                            oks.disableSSOWhenAuthorize();
+                            // 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
+                            //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
+                            oks.setImageUrl("");
+                            // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
+                            oks.setTitle(getString(R.string.app_name));
+                            // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
+                            oks.setTitleUrl(s);
+                            // text是分享文本，所有平台都需要这个字段
+                            oks.setText("CESHI");
+                            // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+                            //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+                            // url仅在微信（包括好友和朋友圈）中使用
+                            oks.setUrl(null);
+                            // comment是我对这条分享的评论，仅在人人网和QQ空间使用
+                            oks.setComment("");
+                            // site是分享此内容的网站名称，仅在QQ空间使用
+                            oks.setSite(getString(R.string.app_name));
+                            // siteUrl是分享此内容的网站地址，仅在QQ空间使用
+                            oks.setSiteUrl(null);
+                            // 启动分享GUI
+                            oks.show(ThemeShareActivity.this);
+            }
+        });
 
     }
 

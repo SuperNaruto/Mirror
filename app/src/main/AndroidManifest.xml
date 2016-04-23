@@ -39,11 +39,8 @@
         <activity android:name=".details.WearAtlasDetailsActivity" />
         <activity android:name=".themeshare.ThemeShareActivity" />
         <activity android:name=".shoppingcart.OrderDetailsActivity" />
-        <activity android:name=".details.WearAtlasDetailsActivity" />
-        <activity android:name=".themeshare.ThemeShareActivity" />
         <activity android:name=".user.LoginActivity" />
         <activity android:name=".user.CreateAccountActivity" />
-        <activity android:name=".shoppingcart.OrderDetailsActivity" />
 
 
         <activity

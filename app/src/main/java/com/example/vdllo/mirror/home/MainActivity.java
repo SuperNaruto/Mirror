@@ -165,8 +165,7 @@ public class MainActivity extends BaseAcitvity implements ViewPager.OnPageChange
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    FragmentTransaction myFt = getSupportFragmentManager().beginTransaction();
-                    myFt.commit();
+                    viewPager.setCurrentItem(3);
                 }
             });
         } else {
