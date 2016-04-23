@@ -1,4 +1,4 @@
-package com.example.vdllo.mirror.login;
+package com.example.vdllo.mirror.user;
 
 import android.content.Intent;
 import android.content.SharedPreferences;

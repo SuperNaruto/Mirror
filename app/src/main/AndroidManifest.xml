@@ -38,13 +38,11 @@
             android:screenOrientation="landscape" />
         <activity android:name=".details.WearAtlasDetailsActivity" />
         <activity android:name=".themeshare.ThemeShareActivity" />
-        <activity android:name=".login.LoginActivity" />
-        <activity android:name=".login.CreateAccountActivity" />
         <activity android:name=".shoppingcart.OrderDetailsActivity" />
         <activity android:name=".details.WearAtlasDetailsActivity" />
         <activity android:name=".themeshare.ThemeShareActivity" />
-        <activity android:name=".login.LoginActivity" />
-        <activity android:name=".login.CreateAccountActivity" />
+        <activity android:name=".user.LoginActivity" />
+        <activity android:name=".user.CreateAccountActivity" />
         <activity android:name=".shoppingcart.OrderDetailsActivity" />
 
 
@@ -82,6 +80,8 @@
             android:windowSoftInputMode="adjustResize|stateHidden">
         </activity>
         <!-- alipay sdk end -->
+
+
     </application>
 
 

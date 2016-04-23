@@ -122,5 +122,8 @@
     <string name="AddressActivity_name">name</string>
     <string name="AddressActivity_tel">tel</string>
     <string name="AddressActivity_info">info</string>
+    <string name="AllFragment_allType">全部分類</string>
+    <string name="AllTypeFragment_title">title</string>
+    <string name="AllTypeFragment_id">id</string>
 
 </resources>

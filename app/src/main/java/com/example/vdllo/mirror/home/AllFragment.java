@@ -43,7 +43,7 @@ public class AllFragment extends BaseFragment {
         linearLayout = bindView(R.id.all_type_linearlayout);
         titleTextView = bindView(R.id.all_type_titleTv);
         mainActivity = (MainActivity) getContext();
-        titleTextView.setText("全部分類");
+        titleTextView.setText(R.string.AllFragment_allType);
 
         //设置监听
         linearLayout.setOnClickListener(new View.OnClickListener() {

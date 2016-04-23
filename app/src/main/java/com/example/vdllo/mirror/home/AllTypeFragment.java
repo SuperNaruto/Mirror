@@ -54,9 +54,9 @@ public class AllTypeFragment extends BaseFragment {
         //为标签设置名字
         // 接收fragment的id 放进请求参数里
         Bundle bundle = getArguments();
-        title = bundle.getString("title");
+        title = bundle.getString(mainActivity.getString(R.string.AllTypeFragment_title));
         titleTextView.setText(title);
-        categoryId = bundle.getString("id");
+        categoryId = bundle.getString(mainActivity.getString(R.string.AllTypeFragment_id));
 
         //设置popupWindow监听
         linearLayout.setOnClickListener(new View.OnClickListener() {
