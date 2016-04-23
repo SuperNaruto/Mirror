@@ -53,7 +53,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
     private float radio;
     private float height;
     private LinkageListView listView;
-    private static GoodsListBean data;
+    private  static GoodsListBean data;
     private Handler handler;
     private static int pos;
     private SimpleDraweeView background;
@@ -97,6 +97,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
         listView.setAdapter(new UpListViewAdapter(), new DownListViewAdapter());
         listView.setLinkageSpeed(1.2f);
         background.setImageURI(Uri.parse(data.getData().getList().get(pos).getGoods_img()));
+        Log.d("+++++","____"+data);
     }
 
     @Override
@@ -277,7 +278,7 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
 
         @Override
         public int getCount() {
-            return data.getData().getList().get(pos).getDesign_des().size() + 3;
+         return data.getData().getList().get(pos).getDesign_des().size() + 3;
         }
 
         @Override
@@ -325,27 +326,26 @@ public class GoodsDetailsActivity extends BaseAcitvity implements View.OnClickLi
                     listViewHeadHolder.shareIv.setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            String share = listEntity.getGoods_share();
-                            String pic = listEntity.getGoods_pic();
+                            String share = data.getData().getList().get(pos).getGoods_share();
                             ShareSDK.initSDK(GoodsDetailsActivity.this);
                             OnekeyShare oks = new OnekeyShare();
                             //关闭sso授权
                             oks.disableSSOWhenAuthorize();
                             // 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
                             //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
-                            oks.setImageUrl(pic);
+//                            oks.setImageUrl("");
                             // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
                             oks.setTitle(getString(R.string.app_name));
                             // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
-                            oks.setTitleUrl(data.getData().getList().get(pos).getGoods_share());
+                            oks.setTitleUrl(share);
                             // text是分享文本，所有平台都需要这个字段
-                            oks.setText(share);
+                            oks.setText(data.getData().getList().get(pos).getBrand());
                             // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
                             //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
                             // url仅在微信（包括好友和朋友圈）中使用
                             oks.setUrl(null);
                             // comment是我对这条分享的评论，仅在人人网和QQ空间使用
-                            oks.setComment(share);
+                            oks.setComment("");
                             // site是分享此内容的网站名称，仅在QQ空间使用
                             oks.setSite(getString(R.string.app_name));
                             // siteUrl是分享此内容的网站地址，仅在QQ空间使用
