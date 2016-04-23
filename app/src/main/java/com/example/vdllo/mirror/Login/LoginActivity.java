@@ -180,7 +180,7 @@ public class LoginActivity extends BaseAcitvity implements View.OnClickListener 
                 finish();
                 break;
             case R.id.login_create_btn:
-                Intent myIntent = new Intent(LoginActivity.this, CreateAccountActivity.class);
+                Intent myIntent = new Intent(LoginActivity.this,CreateAccountActivity.class);
                 startActivity(myIntent);
                 break;
             case R.id.login_sina_iv:
