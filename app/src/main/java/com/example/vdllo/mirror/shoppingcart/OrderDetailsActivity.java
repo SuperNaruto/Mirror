@@ -318,4 +318,55 @@ public class OrderDetailsActivity extends BaseAcitvity {
             }
         });
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //地址详细
+        handler = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+                try {
+                    orderDetailsBean = new Gson().fromJson(msg.obj.toString(), OrderDetailsBean.class);
+                    if (orderDetailsBean != null) {
+                        recipientTv.setText("收件人:" + orderDetailsBean.getData().getAddress().getUsername());
+                        telTv.setText("联系电话：" + orderDetailsBean.getData().getAddress().getCellphone());
+                        infoTv.setText("地址:" + orderDetailsBean.getData().getAddress().getAddr_info());
+                        inputAddressBtn.setText("更改地址");
+                    } else {
+                        inputAddressBtn.setText("添加地址");
+                    }
+                } catch (JsonSyntaxException e) {
+                    e.printStackTrace();
+                }
+                return false;
+            }
+        });
+        Intent intent = getIntent();
+        String id = intent.getStringExtra("id");
+        String price = intent.getStringExtra("price");
+        SharedPreferences sp = getSharedPreferences("Mirror", MODE_PRIVATE);
+        String token = sp.getString("token", "");
+        OkHttpUtils.post().url(UrlBean.ORDER_SUB).addParams("token", token).addParams("goods_id", id)
+                .addParams("price", price).addParams("device_type", "2").addParams("goods_num", "1").build().execute(new Callback() {
+            @Override
+            public Object parseNetworkResponse(Response response) throws Exception {
+                String body = response.body().string();
+                Message message = new Message();
+                message.obj = body;
+                handler.sendMessage(message);
+                return null;
+            }
+
+            @Override
+            public void onError(Call call, Exception e) {
+
+            }
+
+            @Override
+            public void onResponse(Object response) {
+
+            }
+        });
+    }
 }
