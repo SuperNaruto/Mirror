@@ -85,7 +85,6 @@ public class MainActivity extends BaseAcitvity implements ViewPager.OnPageChange
             fragments.add(new ThemeShareFragment());
             adapter = new BackgroundAdapter(getSupportFragmentManager(), fragments);
             viewPager.setAdapter(adapter);
-
             return false;
         }
     });
