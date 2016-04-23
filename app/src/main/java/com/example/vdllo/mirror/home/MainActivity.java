@@ -63,8 +63,6 @@ public class MainActivity extends BaseAcitvity implements ViewPager.OnPageChange
                 String categoryId = menuListBean.getData().getList().get(i).getInfo_data();// fragment需要的id
                 String title = menuListBean.getData().getList().get(i).getTitle();// 得到title
                 // "3"是商品 "4"是购物车 "2"是专题分享 "6"是全部分类
-                Log.d("+++++", "" + type);
-                Log.d("_____", "" + menuListBean.getData().getList().size());
                 switch (type) {
                     case "3":
                         AllTypeFragment fragment = new AllTypeFragment();
@@ -87,7 +85,6 @@ public class MainActivity extends BaseAcitvity implements ViewPager.OnPageChange
             fragments.add(new ThemeShareFragment());
             adapter = new BackgroundAdapter(getSupportFragmentManager(), fragments);
             viewPager.setAdapter(adapter);
-
             return false;
         }
     });
